@@ -1,0 +1,53 @@
+<section class="vh-100" style="background-color: #508bfc;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <img src="assets/img/logo.png" style="width:75px;" />
+            <h3 class="mb-5">Sign in </h3>
+            <h5 *ngIf="errorMsg" class="text-danger" style="text-align: center ;">{{errorMsg}}
+            </h5>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+              <div class="form-outline mb-4">
+                <!-- <p>{{loginForm.valid}}</p> -->
+                <input [(ngModel)]="user.username" name="username" id="username" type="email" formControlName="username"
+                  class="form-control form-control-lg" placeholder="Email" required />
+                <p *ngIf="userName && userName.touched && userName?.hasError('required') " class="text-danger"
+                  style="text-align: left ;">Email is Required
+                </p>
+                <p *ngIf="userName?.hasError('email')" class="text-danger" style="text-align: left ;">Invalid Email Id
+                </p>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input [(ngModel)]="user.password" name="password" id="password" type="password"
+                  formControlName="password" class="form-control form-control-lg" placeholder="Password" required />
+                <p *ngIf="password && password.invalid && password.touched" class="text-danger"
+                  style="text-align: left ;">Password is
+                  Required
+                </p>
+              </div>
+
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-start mb-4">
+                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                <label class="form-check-label" for="form1Example3"> Remember password </label>
+              </div>
+
+              <button [disabled]="!loginForm?.valid" class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+              <hr class="my-4">
+
+              <!-- Copyright -->
+              <div class="mb-3 mb-md-0 text-center" style="width:100%;">
+                Copyright © 2022. INNOVENTO All rights reserved.
+              </div>
+              <!-- Copyright -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

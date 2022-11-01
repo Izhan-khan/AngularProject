@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+body{
+    font-size:11px !important;
+}
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+.container{
+    width:80%;
+}
+.caption{
+    font-size:14px;
+}
+.tab-pane{
+    padding:10px 18px;
+}
+.title{
+    font-weight:500;
+    font-size:12px;
+    color:darkslateblue;
+}
+.headerbg{
+    background-color:#f2f2f2 !important;    
+}
+.align-top{
+    vertical-align: top;
+}
+.mr-1{
+    margin-right:10px;
+}
+.btn-block{
+    border:1px solid #ccc !important;
+}
+.float-right{
+    float:right;
+}
+.hover-effect:hover{
+    background-color: #ccc !important;
+    cursor:pointer;
+}
+.pr-1{
+    padding-right:10px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

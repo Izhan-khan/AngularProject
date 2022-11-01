@@ -1,0 +1,122 @@
+<div class="container mt-3">
+    <!-- Header -->
+    <div class="row">
+      <div class="col-lg-12 text-center mt-3 mb-3">
+          <img  src="assets/img/logo.png" style="width:100px">
+      </div>
+    </div>
+  <!-- Header End -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h4>Vesveswaraiah Technological University, Belgaum 
+          <span class="caption"><em>ID : U-0249</em></span> </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card mb-3">
+          <ul class="nav nav-tabs" id="myTab" role="tablist" >
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="intake-tab" data-bs-toggle="tab" data-bs-target="#intake-tab-pane" type="button" role="tab" aria-controls="intake-tab-pane" aria-selected="true"> <i class="bi-bank2"></i> University</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="ugpg-tab" data-bs-toggle="tab" data-bs-target="#ugpg-tab-pane" type="button" role="tab" aria-controls="ugpg-tab-pane" aria-selected="false"><i class="bi-mortarboard-fill"></i> Institute</button>
+            </li>
+            
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="intake-tab-pane" role="tabpanel" aria-labelledby="intake-tab" tabindex="0">
+              
+                <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <button class="nav-link active" id="v-pills-overall-tab" data-bs-toggle="pill" data-bs-target="#v-pills-overall" type="button" role="tab" aria-controls="v-pills-overall" aria-selected="true">Overall</button>
+                      <button class="nav-link" id="v-pills-tlr-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tlr" type="button" role="tab" aria-controls="v-pills-tlr" aria-selected="false">TLR</button>
+                      <button class="nav-link" id="v-pills-rp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-rp" type="button" role="tab" aria-controls="v-pills-rp" aria-selected="false">RP</button>
+                      <button class="nav-link" id="v-pills-go-tab" data-bs-toggle="pill" data-bs-target="#v-pills-go" type="button" role="tab" aria-controls="v-pills-go" aria-selected="false">GO</button>
+                      <button class="nav-link" id="v-pills-oi-tab" data-bs-toggle="pill" data-bs-target="#v-pills-oi" type="button" role="tab" aria-controls="v-pills-oi" aria-selected="false">OI</button>
+                    </div>
+                    <div class="tab-content" id="v-pills-tabContent" style="border:1px solid #ccc;width:100%;">
+                      <div class="tab-pane fade show active" id="v-pills-overall" role="tabpanel" aria-labelledby="v-pills-overall-tab">
+                          
+                        <app-university-overall></app-university-overall>  
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-tlr" role="tabpanel" aria-labelledby="v-pills-tlr-tab">
+                        <app-university-tlr></app-university-tlr> 
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-rp" role="tabpanel" aria-labelledby="v-pills-rp-tab">
+                        <app-university-rp></app-university-rp>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-go" role="tabpanel" aria-labelledby="v-pills-go-tab">
+                        <app-university-go></app-university-go>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-oi" role="tabpanel" aria-labelledby="v-pills-oi-tab">
+                        <app-university-oi></app-university-oi>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="tab-pane fade" id="ugpg-tab-pane" role="tabpanel" aria-labelledby="ugpg-tab" tabindex="0">
+                <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <button class="nav-link active" id="v-pills-i-overall-tab" data-bs-toggle="pill" data-bs-target="#v-pills-i-overall" type="button" role="tab" aria-controls="v-pills-overall" aria-selected="true">Overall</button>
+                      <button class="nav-link" id="v-pills-i-tlr-tab" data-bs-toggle="pill" data-bs-target="#v-pills-i-tlr" type="button" role="tab" aria-controls="v-pills-i-tlr" aria-selected="false">TLR</button>
+                      <button class="nav-link" id="v-pills-i-rp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-i-rp" type="button" role="tab" aria-controls="v-pills-i-rp" aria-selected="false">RP</button>
+                      <button class="nav-link" id="v-pills-i-go-tab" data-bs-toggle="pill" data-bs-target="#v-pills-i-go" type="button" role="tab" aria-controls="v-pills-i-go" aria-selected="false">GO</button>
+                      <button class="nav-link" id="v-pills-i-oi-tab" data-bs-toggle="pill" data-bs-target="#v-pills-i-oi" type="button" role="tab" aria-controls="v-pills-i-oi" aria-selected="false">OI</button>
+                    </div>
+                    <div class="tab-content" id="v-pills-tabContent" style="border:1px solid #ccc;width:100%;">
+                      <div class="tab-pane fade show active" id="v-pills-i-overall" role="tabpanel" aria-labelledby="v-pills-i-overall-tab">
+                          
+                        <app-university-institute-overall></app-university-institute-overall>  
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-i-tlr" role="tabpanel" aria-labelledby="v-pills-i-tlr-tab">
+                        <app-university-institute-tlr></app-university-institute-tlr> 
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-i-rp" role="tabpanel" aria-labelledby="v-pills-i-rp-tab">
+                        <app-university-institute-rp></app-university-institute-rp>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-i-go" role="tabpanel" aria-labelledby="v-pills-i-go-tab">
+                        <app-university-institute-go></app-university-institute-go>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-i-oi" role="tabpanel" aria-labelledby="v-pills-i-oi-tab">
+                        <app-university-institute-oi></app-university-institute-oi>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            
+            <div class="text-center" style="display:block;width:100%;border:0px solid #000;text-align:center">
+                <table class = "table table-bordered mb-3 mt-3 text-center" style="width:50%;margin:0px auto;"> 
+                  <tbody>
+                    <tr>
+                      <td class="hover-effect">Download Excel (NIRF Format)</td>
+                      <td class="hover-effect">Download PDF (NIRF Format)</td>
+                      <td class="hover-effect">Download Top View Report (PDF)</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    
+  
+    <!-- Footer -->
+    <div class="row">
+      <div class="col-lg-12 text-center mt-3 mb-3">
+          <p>Copyright. INNOVENTO LLP.</p>
+      </div>
+    </div>
+    <!-- Footer End -->
+  </div>
+  
+  
+  
+  
+  
+  
+  
+      

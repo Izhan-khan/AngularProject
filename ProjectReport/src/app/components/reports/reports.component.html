@@ -1,0 +1,29 @@
+<!-- Verticle Tabs-->
+<div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <button class="nav-link active" id="v-pills-overall-tab" data-bs-toggle="pill" data-bs-target="#v-pills-overall" type="button" role="tab" aria-controls="v-pills-overall" aria-selected="true">Overall</button>
+      <button class="nav-link" id="v-pills-tlr-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tlr" type="button" role="tab" aria-controls="v-pills-tlr" aria-selected="false">TLR</button>
+      <button class="nav-link" id="v-pills-rp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-rp" type="button" role="tab" aria-controls="v-pills-rp" aria-selected="false">RP</button>
+      <button class="nav-link" id="v-pills-go-tab" data-bs-toggle="pill" data-bs-target="#v-pills-go" type="button" role="tab" aria-controls="v-pills-go" aria-selected="false">GO</button>
+      <button class="nav-link" id="v-pills-oi-tab" data-bs-toggle="pill" data-bs-target="#v-pills-oi" type="button" role="tab" aria-controls="v-pills-oi" aria-selected="false">OI</button>
+    </div>
+    <div class="tab-content" id="v-pills-tabContent" style="border:1px solid #ccc;width:100%;">
+      <div class="tab-pane fade show active" id="v-pills-overall" role="tabpanel" aria-labelledby="v-pills-overall-tab">
+          
+        <app-report-overall></app-report-overall>  
+      </div>
+      <div class="tab-pane fade" id="v-pills-tlr" role="tabpanel" aria-labelledby="v-pills-tlr-tab">
+        <app-report-tlr></app-report-tlr> 
+      </div>
+      <div class="tab-pane fade" id="v-pills-rp" role="tabpanel" aria-labelledby="v-pills-rp-tab">
+        <app-report-rp></app-report-rp>
+      </div>
+      <div class="tab-pane fade" id="v-pills-go" role="tabpanel" aria-labelledby="v-pills-go-tab">
+        <app-report-go></app-report-go>
+      </div>
+      <div class="tab-pane fade" id="v-pills-oi" role="tabpanel" aria-labelledby="v-pills-oi-tab">
+        <app-report-oi></app-report-oi>
+      </div>
+    </div>
+  </div>
+  <!-- Verticle Tabs end-->

@@ -6,6 +6,7 @@ import { IntakeComponent } from './components/intake/intake.component';
 import { ReportOverallComponent } from './components/report-overall/report-overall.component';
 import { InstituteDashboardComponent } from './components/institute-dashboard/institute-dashboard.component';
 import { UniversityDashboardComponent } from './components/university-dashboard/university-dashboard.component';
+import { UniversityComponent } from './components/university/university.component';
 
 const routes:Routes = [      
   { path: '', redirectTo: 'login' ,pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes:Routes = [
   { path: 'Merge', component: ReportOverallComponent, pathMatch: 'full' },
   { path: 'instituteDashboard', component: InstituteDashboardComponent, pathMatch: 'full' },
   { path: 'universityDashboard', component: UniversityDashboardComponent, pathMatch: 'full' },
+  { path: 'universityLogin', component: UniversityComponent, pathMatch: 'full' },
  
 ];
 export  const APP_ROUTER_PROVIDERS = [

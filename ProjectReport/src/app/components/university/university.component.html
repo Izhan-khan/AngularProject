@@ -1,56 +1,57 @@
 <section class="vh-100">
-    <div class="container-fluid h-custom">
-      <div class="row">
-        <div class="col-lg-12 justify-content-center mt-2 text-center">
-            <img src="assets/img/logo.png" style="width:150px;"/>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-          <img src="assets/img/draw2.webp" style="width:100%"
-            alt="Sample image">
-        </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form>
-            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-              <p class="lead fw-normal mb-0 me-3">University Top View/User</p>              
-            </div>
-  
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <select class="form-control form-control-lg"
-                placeholder="Select Institute" >
-                    <option value="">Choose University</option>
-                </select>
-              <label class="form-label" for="form3Example3">University</label>
-            </div>
-  
-            <!-- Password input -->
-            <div class="form-outline mb-3">
-              <input type="password" id="form3Example4" class="form-control form-control-lg"
-                placeholder="Enter password" />
-              <label class="form-label" for="form3Example4">Password</label>
-            </div>
-  
-            
-  
-            <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="button" class="btn btn-primary btn-lg"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>              
-            </div>
-  
-          </form>
-        </div>
+  <div class="container-fluid h-custom">
+    <div class="row">
+      <div class="col-lg-12 justify-content-center mt-2 text-center">
+        <img src="assets/img/logo.png" style="width:150px;" />
       </div>
     </div>
-    <div
-      class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-      <!-- Copyright -->
-      <div class="text-white mb-3 mb-md-0 col-lg-12 text-center">
-        Copyright © 2022.INNOVENTO All rights reserved.
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="assets/img/draw2.webp" style="width:100%" alt="Sample image">
       </div>
-      <!-- Copyright -->
-  
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <h3 *ngIf="errorMsg" class="text-danger" style="text-align: center ;">{{errorMsg}}</h3>
+
+             
+        <form [formGroup]="universityLoginForm" (ngSubmit)="universityLogin()" >
+          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+            <p class="lead fw-normal mb-0 me-3">University Top View/User</p>
+          </div>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <select class="form-control form-control-lg"  [(ngModel)]="university.name" name="name" id="name" 
+              formControlName="name"  required>
+              <option value="" selected disabled>Choose University</option>
+              <option  *ngFor="let university of universityNameList">
+                {{university[1]}}
+             </option>
+            </select>
+            <label class="form-label" for="form3Example3">University</label>
       
+
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input [(ngModel)]="university.password" name="password" id="password" type="password"
+              formControlName="password" class="form-control form-control-lg" placeholder="Enter password" required />
+            <label class="form-label" for="form3Example4">Password</label>
+            <p *ngIf="password && password.invalid && password.touched" class="text-danger" style="text-align: left ;">
+              Password is Required
+            </p>
+          </div>
+
+    
+
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button  [disabled]="!universityLoginForm?.valid"type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+          </div>
+
+        </form>
+      </div>
     </div>
-  </section>
+  </div>
+
+</section>

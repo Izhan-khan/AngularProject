@@ -135,279 +135,262 @@
 
 
   <div class="title mb-3">Total Actual Student Strength (Program(s) Offered by your Institution) </div>
-  <table class="table table-responsive table-hover table-bordered mb-3 ">
-    <thead>
-      <tr>
-        <th class="text-center headerbg align-top">(All programms of all years)</th>
-        <th class="text-center headerbg align-top">No of Male Students</th>
-        <th class="text-center headerbg align-top">No of Female Students</th>
-        <th class="text-center headerbg align-top">Total Students</th>
-        <th class="text-center headerbg align-top">Within State (Including male & female)</th>
-        <th class="text-center headerbg align-top">Outside State (Including male & female)</th>
-        <th class="text-center headerbg align-top">Outside Country (Including male & female)</th>
-        <th class="text-center headerbg align-top ">Economically Backward(Including male & female)</th>
-        <th class="text-center headerbg align-top">Socially Challenged (SC + ST + OBC male & female)</th>
-        <th class="text-center headerbg align-top">
-          No of students received full tution fee reimbursement from the State and Central Government
-        </th>
-        <th class="text-center headerbg align-top">
-          No of students received full tution fee reimbursement from Institutional Funds
-        </th>
-        <th class="text-center headerbg align-top">
-          No of students received full tution fee reimbursement from Private Bodies
-        </th>
-        <th class="text-center headerbg align-top">
-          No of students who are not received full tution fee reimbursement
-        </th>
-        <!-- <th class="text-center headerbg align-top">Action</th> -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let totalStudent of totalStudentsList">
-        <td>
-          <div *ngIf="totalStudent.programId==1">
-            UG (4 Year Program)
-          </div>
-          <div *ngIf="totalStudent.programId==2">
-            UG (5 Year Program)
-          </div>
-          <div *ngIf="totalStudent.programId==3">
-            PG (2 Year Program)
-          </div>
-          <div *ngIf="totalStudent.programId==4">
-            PG (3 Year Program)
-          </div>
-        </td>
+  <div style="overflow-x:scroll; overflow: auto">
+    <table class="table table-responsive table-hover table-bordered mb-3 ">
+      <thead>
+        <tr>
+          <th class="text-center headerbg align-top">(All programms of all years)</th>
+          <th class="text-center headerbg align-top">No of Male Students</th>
+          <th class="text-center headerbg align-top">No of Female Students</th>
+          <th class="text-center headerbg align-top">Total Students</th>
+          <th class="text-center headerbg align-top">Within State (Including male & female)</th>
+          <th class="text-center headerbg align-top">Outside State (Including male & female)</th>
+          <th class="text-center headerbg align-top">Outside Country (Including male & female)</th>
+          <th class="text-center headerbg align-top ">Economically Backward(Including male & female)</th>
+          <th class="text-center headerbg align-top">Socially Challenged (SC + ST + OBC male & female)</th>
+          <th class="text-center headerbg align-top">
+            No of students received full tution fee reimbursement from the State and Central Government
+          </th>
+          <th class="text-center headerbg align-top">
+            No of students received full tution fee reimbursement from Institutional Funds
+          </th>
+          <th class="text-center headerbg align-top">
+            No of students received full tution fee reimbursement from Private Bodies
+          </th>
+          <th class="text-center headerbg align-top">
+            No of students who are not received full tution fee reimbursement
+          </th>
+          <!-- <th class="text-center headerbg align-top">Action</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let totalStudent of totalStudentsList">
+          <td>
+            <div *ngIf="totalStudent.programId==1">
+              UG (4 Year Program)
+            </div>
+            <div *ngIf="totalStudent.programId==2">
+              UG (5 Year Program)
+            </div>
+            <div *ngIf="totalStudent.programId==3">
+              PG (2 Year Program)
+            </div>
+            <div *ngIf="totalStudent.programId==4">
+              PG (3 Year Program)
+            </div>
+          </td>
 
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'noOfMaleStudents')">
-          <div *ngIf="totalStudent.enableEdit =='noOfMaleStudents'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.noOfMaleStudents"
-                name="noOfMaleStudents" placeholder="{{totalStudent.noOfMaleStudents}} " id="noOfMaleStudents">
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'noOfMaleStudents')">
+            <div *ngIf="totalStudent.enableEdit =='noOfMaleStudents'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.noOfMaleStudents"
+                  name="noOfMaleStudents" placeholder="{{totalStudent.noOfMaleStudents}} " id="noOfMaleStudents">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='noOfMaleStudents'">
-            {{totalStudent.noOfMaleStudents}}
-          </div>
-        </td>
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'noOfFemaleStudents')">
-          <div *ngIf="totalStudent.enableEdit =='noOfFemaleStudents'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.noOfFemaleStudents"
-                name="noOfFemaleStudents" placeholder="{{totalStudent.noOfFemaleStudents}} " id="noOfFemaleStudents">
+            <div *ngIf="totalStudent.enableEdit !=='noOfMaleStudents'">
+              {{totalStudent.noOfMaleStudents}}
+            </div>
+          </td>
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'noOfFemaleStudents')">
+            <div *ngIf="totalStudent.enableEdit =='noOfFemaleStudents'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.noOfFemaleStudents"
+                  name="noOfFemaleStudents" placeholder="{{totalStudent.noOfFemaleStudents}} " id="noOfFemaleStudents">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='noOfFemaleStudents'">
-            {{totalStudent.noOfFemaleStudents}}
-          </div>
-        </td>
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'totalStudents')">
-          <div *ngIf="totalStudent.enableEdit =='totalStudents'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.totalStudents"
-                name="totalStudents" placeholder="{{totalStudent.totalStudents}} " id="totalStudents">
+            <div *ngIf="totalStudent.enableEdit !=='noOfFemaleStudents'">
+              {{totalStudent.noOfFemaleStudents}}
+            </div>
+          </td>
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'totalStudents')">
+            <div *ngIf="totalStudent.enableEdit =='totalStudents'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.totalStudents"
+                  name="totalStudents" placeholder="{{totalStudent.totalStudents}} " id="totalStudents">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='totalStudents'">
-            {{totalStudent.totalStudents}}
-          </div>
-        </td>
-
-
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'withinState')">
-          <div *ngIf="totalStudent.enableEdit =='withinState'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.withinState"
-                name="withinState" placeholder="{{totalStudent.withinState}} " id="withinState">
+            <div *ngIf="totalStudent.enableEdit !=='totalStudents'">
+              {{totalStudent.totalStudents}}
             </div>
-            <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
-            </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='withinState'">
-            {{totalStudent.withinState}}
-          </div>
-        </td>
+          </td>
 
 
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'outsideState')">
-          <div *ngIf="totalStudent.enableEdit =='outsideState'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.outsideState"
-                name="outsideState" placeholder="{{totalStudent.outsideState}} " id="outsideState">
-            </div>
-            <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
-            </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='outsideState'">
-            {{totalStudent.outsideState}}
-          </div>
-        </td>
-
-
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'outsideCountry')">
-          <div *ngIf="totalStudent.enableEdit =='outsideCountry'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.outsideCountry"
-                name="outsideCountry" placeholder="{{totalStudent.outsideCountry}} " id="outsideCountry">
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'withinState')">
+            <div *ngIf="totalStudent.enableEdit =='withinState'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.withinState"
+                  name="withinState" placeholder="{{totalStudent.withinState}} " id="withinState">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='outsideCountry'">
-            {{totalStudent.outsideCountry}}
-          </div>
-        </td>
+            <div *ngIf="totalStudent.enableEdit !=='withinState'">
+              {{totalStudent.withinState}}
+            </div>
+          </td>
 
 
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'economicallyBackward')">
-          <div *ngIf="totalStudent.enableEdit =='economicallyBackward'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.economicallyBackward"
-                name="economicallyBackward" placeholder="{{totalStudent.economicallyBackward}} "
-                id="economicallyBackward">
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'outsideState')">
+            <div *ngIf="totalStudent.enableEdit =='outsideState'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.outsideState"
+                  name="outsideState" placeholder="{{totalStudent.outsideState}} " id="outsideState">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='economicallyBackward'">
-            {{totalStudent.economicallyBackward}}
-          </div>
-        </td>
+            <div *ngIf="totalStudent.enableEdit !=='outsideState'">
+              {{totalStudent.outsideState}}
+            </div>
+          </td>
 
 
-
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'sociallyChallenged')">
-          <div *ngIf="totalStudent.enableEdit =='sociallyChallenged'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.sociallyChallenged"
-                name="sociallyChallenged" placeholder="{{totalStudent.sociallyChallenged}} " id="sociallyChallenged">
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'outsideCountry')">
+            <div *ngIf="totalStudent.enableEdit =='outsideCountry'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.outsideCountry"
+                  name="outsideCountry" placeholder="{{totalStudent.outsideCountry}} " id="outsideCountry">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='sociallyChallenged'">
-            {{totalStudent.sociallyChallenged}}
-          </div>
-        </td>
+            <div *ngIf="totalStudent.enableEdit !=='outsideCountry'">
+              {{totalStudent.outsideCountry}}
+            </div>
+          </td>
 
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'recievedFeeStateAndCentralGovernment')">
-          <div *ngIf="totalStudent.enableEdit =='recievedFeeStateAndCentralGovernment'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm"
-                [(ngModel)]="totalStudent.recievedFeeStateAndCentralGovernment"
-                name="recievedFeeStateAndCentralGovernment"
-                placeholder="{{totalStudent.recievedFeeStateAndCentralGovernment}} "
-                id="recievedFeeStateAndCentralGovernment">
+
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'economicallyBackward')">
+            <div *ngIf="totalStudent.enableEdit =='economicallyBackward'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm"
+                  [(ngModel)]="totalStudent.economicallyBackward" name="economicallyBackward"
+                  placeholder="{{totalStudent.economicallyBackward}} " id="economicallyBackward">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='recievedFeeStateAndCentralGovernment'">
-            {{totalStudent.recievedFeeStateAndCentralGovernment}}
-          </div>
-        </td>
+            <div *ngIf="totalStudent.enableEdit !=='economicallyBackward'">
+              {{totalStudent.economicallyBackward}}
+            </div>
+          </td>
 
 
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'recievedFeeFromInstitutionalFunds')">
-          <div *ngIf="totalStudent.enableEdit =='recievedFeeFromInstitutionalFunds'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm"
-                [(ngModel)]="totalStudent.recievedFeeFromInstitutionalFunds" name="recievedFeeFromInstitutionalFunds"
-                placeholder="{{totalStudent.recievedFeeFromInstitutionalFunds}} "
-                id="recievedFeeFromInstitutionalFunds">
+
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'sociallyChallenged')">
+            <div *ngIf="totalStudent.enableEdit =='sociallyChallenged'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.sociallyChallenged"
+                  name="sociallyChallenged" placeholder="{{totalStudent.sociallyChallenged}} " id="sociallyChallenged">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='recievedFeeFromInstitutionalFunds'">
-            {{totalStudent.recievedFeeFromInstitutionalFunds}}
-          </div>
-        </td>
+            <div *ngIf="totalStudent.enableEdit !=='sociallyChallenged'">
+              {{totalStudent.sociallyChallenged}}
+            </div>
+          </td>
 
-
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'recievedFeeFromPrivateBodies')">
-          <div *ngIf="totalStudent.enableEdit =='recievedFeeFromPrivateBodies'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm"
-                [(ngModel)]="totalStudent.recievedFeeFromPrivateBodies" name="recievedFeeFromPrivateBodies"
-                placeholder="{{totalStudent.recievedFeeFromPrivateBodies}} " id="recievedFeeFromPrivateBodies">
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'recievedFeeStateAndCentralGovernment')">
+            <div *ngIf="totalStudent.enableEdit =='recievedFeeStateAndCentralGovernment'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm"
+                  [(ngModel)]="totalStudent.recievedFeeStateAndCentralGovernment"
+                  name="recievedFeeStateAndCentralGovernment"
+                  placeholder="{{totalStudent.recievedFeeStateAndCentralGovernment}} "
+                  id="recievedFeeStateAndCentralGovernment">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='recievedFeeFromPrivateBodies'">
-            {{totalStudent.recievedFeeFromPrivateBodies}}
-          </div>
-        </td>
+            <div *ngIf="totalStudent.enableEdit !=='recievedFeeStateAndCentralGovernment'">
+              {{totalStudent.recievedFeeStateAndCentralGovernment}}
+            </div>
+          </td>
 
 
-
-        <td (dblclick)="onTotalStudentsEdit(totalStudent,'notRecievedFeeReimbursement')">
-          <div *ngIf="totalStudent.enableEdit =='notRecievedFeeReimbursement'">
-            <div class="input-group  ">
-              <input type="number" class="form-control form-control-sm"
-                [(ngModel)]="totalStudent.notRecievedFeeReimbursement" name="notRecievedFeeReimbursement"
-                placeholder="{{totalStudent.notRecievedFeeReimbursement}} " id="notRecievedFeeReimbursement">
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'recievedFeeFromInstitutionalFunds')">
+            <div *ngIf="totalStudent.enableEdit =='recievedFeeFromInstitutionalFunds'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm"
+                  [(ngModel)]="totalStudent.recievedFeeFromInstitutionalFunds" name="recievedFeeFromInstitutionalFunds"
+                  placeholder="{{totalStudent.recievedFeeFromInstitutionalFunds}} "
+                  id="recievedFeeFromInstitutionalFunds">
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-sm btn-success rounded-circle"
-                (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="totalStudent.enableEdit !=='notRecievedFeeReimbursement'">
-            {{totalStudent.notRecievedFeeReimbursement}}
-          </div>
-        </td>
-
-
-
-
-        <!-- <td style='white-space: nowrap' class="text-center">
-            <div *ngIf="totalStudents.enableEdit">
-              <section>
-                <button type="button" class="btn btn-sm btn-success mr-1"
-                  (click)="totalStudents.enableEdit = false">Update</button>
-                <button class="btn btn-sm btn-danger" (click)="sanctionIntake.enableEdit = false">Cancel</button>
-              </section>
+            <div *ngIf="totalStudent.enableEdit !=='recievedFeeFromInstitutionalFunds'">
+              {{totalStudent.recievedFeeFromInstitutionalFunds}}
             </div>
-            <div *ngIf="!totalStudents.enableEdit">
-              <button type="button" class="btn btn-sm btn-primary"
-              (click)="onTotalStudentsEdit(totalStudents)">Edit</button>
+          </td>
+
+
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'recievedFeeFromPrivateBodies')">
+            <div *ngIf="totalStudent.enableEdit =='recievedFeeFromPrivateBodies'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm"
+                  [(ngModel)]="totalStudent.recievedFeeFromPrivateBodies" name="recievedFeeFromPrivateBodies"
+                  placeholder="{{totalStudent.recievedFeeFromPrivateBodies}} " id="recievedFeeFromPrivateBodies">
+              </div>
+              <div style="text-align: center;">
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
             </div>
-          </td> -->
+            <div *ngIf="totalStudent.enableEdit !=='recievedFeeFromPrivateBodies'">
+              {{totalStudent.recievedFeeFromPrivateBodies}}
+            </div>
+          </td>
 
 
-      </tr>
-    </tbody>
-  </table>
+
+          <td (dblclick)="onTotalStudentsEdit(totalStudent,'notRecievedFeeReimbursement')">
+            <div *ngIf="totalStudent.enableEdit =='notRecievedFeeReimbursement'">
+              <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm"
+                  [(ngModel)]="totalStudent.notRecievedFeeReimbursement" name="notRecievedFeeReimbursement"
+                  placeholder="{{totalStudent.notRecievedFeeReimbursement}} " id="notRecievedFeeReimbursement">
+              </div>
+              <div style="text-align: center;">
+                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
+              </div>
+            </div>
+            <div *ngIf="totalStudent.enableEdit !=='notRecievedFeeReimbursement'">
+              {{totalStudent.notRecievedFeeReimbursement}}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="title mb-3">Faculty Details </div>
   <table class="table table-responsive table-hover table-bordered mb-3 ">

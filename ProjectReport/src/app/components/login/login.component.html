@@ -6,8 +6,9 @@
           <div class="card-body p-5 text-center">
             <img src="assets/img/logo.png" style="width:75px;" />
             <h3 class="mb-5">Sign in </h3>
-            <h5 *ngIf="errorMsg" class="text-danger" style="text-align: center ;">{{errorMsg}}
-            </h5>
+            <h4 *ngIf="errorMsg" class="text-danger" style="text-align: center ;">{{errorMsg}}
+            </h4>
+        
             <form [formGroup]="loginForm" (ngSubmit)="login()">
               <div class="form-outline mb-4">
                 <!-- <p>{{loginForm.valid}}</p> -->

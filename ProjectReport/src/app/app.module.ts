@@ -35,6 +35,7 @@ import { AuthInterceptorService } from './service/authInterceptor/auth-intercept
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PhdComponent } from './components/phd/phd.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UniversityInstituteRpComponent,
     UniversityInstituteTlrComponent,
     UniversityInstituteOverallComponent,
+    PhdComponent,
     
   ],
   imports: [

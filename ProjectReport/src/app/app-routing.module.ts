@@ -16,7 +16,6 @@ const routes:Routes = [
   { path: 'instituteDashboard', component: InstituteDashboardComponent, pathMatch: 'full' },
   { path: 'universityDashboard', component: UniversityDashboardComponent, pathMatch: 'full' },
   { path: 'universityLogin', component: UniversityComponent, pathMatch: 'full' },
- 
 ];
 export  const APP_ROUTER_PROVIDERS = [
   provideRouter(routes)];

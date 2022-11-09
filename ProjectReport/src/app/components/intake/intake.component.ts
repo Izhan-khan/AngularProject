@@ -102,12 +102,7 @@ export class IntakeComponent implements OnInit {
   }
 
 
-
-
-
-
-
-  addSanctionIntakeList(sanctionIntakeList: any) {
+ addSanctionIntakeList(sanctionIntakeList: any) {
       
     this.sanctionIntakeList.forEach((element: {
       id: any;
@@ -130,7 +125,6 @@ export class IntakeComponent implements OnInit {
     this.getSactionApprovedListFromService;
 
   }
-
 
 
   addTotalStudentsList(totalStudentsList: any) {

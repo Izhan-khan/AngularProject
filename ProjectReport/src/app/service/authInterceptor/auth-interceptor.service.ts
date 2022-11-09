@@ -1,17 +1,20 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptorService implements HttpInterceptor {
+  authenticationService: any;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+    let errorMsg="";
     let bearerToken= "";
 
     if(sessionStorage.getItem("token") !=null){
@@ -26,6 +29,21 @@ export class AuthInterceptorService implements HttpInterceptor {
       }
     })
 
-    return next.handle(jwtToken);
+    return next.handle(jwtToken).pipe(
+      map((event: HttpEvent<any>) => {
+        return event;
+      }),
+      catchError(
+        (
+          httpErrorResponse: HttpErrorResponse,
+          _: Observable<HttpEvent<any>>
+        ) => {
+          if (httpErrorResponse.status === HttpStatusCode.Unauthorized) {
+            this.router.navigateByUrl("/login");
+          }
+          return throwError(httpErrorResponse);
+        }
+      )
+    );
   }
 }

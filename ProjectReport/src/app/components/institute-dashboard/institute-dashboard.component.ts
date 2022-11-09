@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import baseUrl from 'src/app/service/helper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-institute-dashboard',
@@ -9,14 +8,22 @@ import baseUrl from 'src/app/service/helper';
 })
 export class InstituteDashboardComponent implements OnInit {
 
+   userName:any ="";
+   logoutMsg="";
 
+  
   ngOnInit(): void {
+    this.userName = sessionStorage.getItem("userName");
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router) { }
 
+  public logout() {
+    sessionStorage.removeItem("token");
+    this.router.navigate(['login']); 
 
-  public getList() {
-    return this.http.get(`${baseUrl}/sactionApprovedIntake/getList/`);;
   }
+
+
+
 }

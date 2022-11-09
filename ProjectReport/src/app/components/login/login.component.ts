@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router} from '@angular/router';
 import { LoginService } from 'src/app/service/login/login.service';
 @Component({
   selector: 'app-login',
@@ -19,15 +19,16 @@ export class LoginComponent implements OnInit {
 
   loginForm: any;
 
-  constructor(private router: Router, private route: ActivatedRoute, private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       'username': new FormControl("", [Validators.required]),
       'password': new FormControl("", [Validators.required])
     })
-
+    
     sessionStorage.setItem("token",this.user.token)
+
   }
 
 
@@ -47,7 +48,9 @@ export class LoginComponent implements OnInit {
           (data) => {
             this.user = data;
             sessionStorage.setItem("token","Bearer "+this.user.token)
+            sessionStorage.setItem("userName",this.user.responseString)
             console.log("TOKEN -->"+sessionStorage.getItem("token"));
+            sessionStorage.setItem("logoutErrorMsg","");
             this.router.navigate(['instituteDashboard']);
           },
           (error) => {

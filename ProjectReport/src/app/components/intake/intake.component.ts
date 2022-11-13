@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { data, error } from 'jquery';
 import { IntakeService } from 'src/app/service/intake/intake.service';
 import { ProgramService } from 'src/app/service/program/program.service';
 
@@ -14,12 +15,14 @@ export class IntakeComponent implements OnInit {
   // programName1 = new String();/
   successMsg = new String();
   errorMsg = new String();
+  pgName= new String();
 
   public programObj: any;
 
   public sanctionIntakeList: any;
 
   public totalStudentsList: any;
+
 
 
 
@@ -31,14 +34,28 @@ export class IntakeComponent implements OnInit {
 
     this.getSactionApprovedListFromService();
     this.getTotalStudentListFromService();
+    // this.getSactionApprovedListNameFromService();
+    // console.warn(this.getSactionApprovedListNameFromService);
 
   }
 
 
+  public getSactionApprovedListNameFromService(temp: any) {
+    return this.programService.getProgramFromId(temp).subscribe(
+      (data:any) =>{
+        this.pgName=data;
+      },(error) =>{
+        console.log(error);
+      }
+    )
+  }
+
   public getSactionApprovedListFromService() {
     this.intakeService.getSactionApprovedList().subscribe(
-      (data) => {
+      (data: any) => {
+
         this.sanctionIntakeList = data;
+        
         // this.sanctionIntakeList.forEach((element: any) => {
         //   element.enableEdit = false;
         //   element._2020_21_Count=element[7];
@@ -53,7 +70,7 @@ export class IntakeComponent implements OnInit {
         //   for (let index = 0; index <= 7; index++) {
         //     delete element[index]
         //   }
-              
+
         // })
         // console.log(this.sanctionIntakeList);
 
@@ -61,6 +78,7 @@ export class IntakeComponent implements OnInit {
         console.log(error);
       }
     )
+    // console.log(this.sanctionIntakeList)
   }
 
 
@@ -81,7 +99,7 @@ export class IntakeComponent implements OnInit {
     });
     item.enableEdit = attribute;
     console.log(this.sanctionIntakeList);
-    
+
   }
 
   onSanctionIntakeClose(item: any) {
@@ -94,7 +112,7 @@ export class IntakeComponent implements OnInit {
     });
     item.enableEdit = attribute;
     console.log(this.totalStudentsList);
-    
+
   }
 
   onTotalStudentsClose(item: any) {
@@ -102,8 +120,8 @@ export class IntakeComponent implements OnInit {
   }
 
 
- addSanctionIntakeList(sanctionIntakeList: any) {
-      
+  addSanctionIntakeList(sanctionIntakeList: any) {
+
     this.sanctionIntakeList.forEach((element: {
       id: any;
       acedamicName: any;
@@ -113,7 +131,7 @@ export class IntakeComponent implements OnInit {
       delete element.acedamicName;
       delete element.enableEdit;
     });
-    console.info( this.sanctionIntakeList);
+    console.info(this.sanctionIntakeList);
 
     this.intakeService.addSactionApprovedList(sanctionIntakeList).subscribe(
       (data) => {

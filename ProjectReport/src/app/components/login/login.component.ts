@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
     token:""
   }
 
-   errorMsg = new String();  
+  errorMsg = new String();  
+  logoutMsg = new String();  
 
   loginForm: any;
 
@@ -26,8 +27,9 @@ export class LoginComponent implements OnInit {
       'username': new FormControl("", [Validators.required]),
       'password': new FormControl("", [Validators.required])
     })
-    
+
     sessionStorage.setItem("token",this.user.token)
+     this.logoutMsg =sessionStorage.getItem("logoutMessage")!;
 
   }
 

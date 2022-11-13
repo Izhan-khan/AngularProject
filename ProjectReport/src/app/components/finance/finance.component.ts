@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-finance',
@@ -8,12 +9,25 @@ import Chart from 'chart.js/auto';
 
 export class FinanceComponent implements OnInit {
   public chart: any;
-  constructor() { }
+
+  @Output() disabledReport: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+
+  constructor(private router :Router) { 
+  }
 
   ngOnInit(): void {
     //this.createChart();
   }
  
+  
+
+  saveNsubmit(){
+      // this.activateReport = true;  
+
+      this.disabledReport.emit(false);
+   }
+
   createChart(){
   
     this.chart = new Chart("MyChart", {

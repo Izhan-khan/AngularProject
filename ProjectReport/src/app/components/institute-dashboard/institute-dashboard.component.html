@@ -7,7 +7,7 @@
     <div class="col-lg-12 justify-content-center mt-2 text-left d-none d-md-block">
       <img src="assets/img/logo.png" style="width:150px; float:left" />
       <div style="margin:60px 0px;width:auto;float:right;vertical-align: middle;display:block;">
-        <h3><span><strong class="m-4"> Welcome,   {{userName}} </strong> <button type="button"
+        <h3><span><strong class="m-4"> Welcome, {{userName}} </strong> <button type="button"
               class="btn btn-dark btn-sm" (click)="logout()">Logout</button>
           </span></h3>
       </div>
@@ -61,12 +61,12 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane"
               type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false"><i
-                class="bi-calculator-fill"></i> Finance</button>
+                class="bi-calculator-fill"></i> Finance </button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="report-tab" data-bs-toggle="tab" data-bs-target="#report-tab-pane"
-              type="button" role="tab" aria-controls="report-tab-pane" aria-selected="false"> <i
-                class="bi-bar-chart"></i> Reports</button>
+              type="button" role="tab" [disabled]="disabledReport"  aria-controls="report-tab-pane" aria-selected="false"> <i
+                class="bi-bar-chart"></i> Reports </button>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -87,9 +87,9 @@
             <app-pcs></app-pcs>
           </div>
           <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">
-            <app-finance></app-finance>
+            <app-finance (disabledReport)="onMessageReceived($event)"></app-finance>
           </div>
-          <div class="tab-pane fade" id="report-tab-pane" role="tabpanel" aria-labelledby="report-tab" tabindex="0">
+          <div class="tab-pane fade " id="report-tab-pane" role="tabpanel" aria-labelledby="report-tab" tabindex="0" dis>
             <app-reports></app-reports>
           </div>
         </div>

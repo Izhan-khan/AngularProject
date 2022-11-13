@@ -10,11 +10,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AppComponent implements OnInit {
   
   title = 'ProjectReport';
+
   ngOnInit(){
     // $('button').click(function(){
     //   alert('Wass up!');
-    //  });
-      
+    //  });    
+
      }
 }
 declare var $: any;

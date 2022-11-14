@@ -1,6 +1,6 @@
 <form (ngSubmit)="addSanctionIntakeList(sanctionIntakeList) ; addTotalStudentsList(totalStudentsList);">
   <h4 style="text-align: center; color: green;" *ngIf="successMsg">{{successMsg}}</h4>
-  <div class="title mb-3">Saction (Approved) Intake</div>
+  <div class="title mb-3">Saction (Approved) Intake  </div>
   <div style="overflow-x:scroll; overflow: auto">
     <table class="table table-hover table-bordered mb-3" cellspacing="0">
       <!-- <form  (ngSubmit)="addsactionAprvdList()"> -->
@@ -19,24 +19,10 @@
       <tbody>
         <tr *ngFor="let sanctionIntake of sanctionIntakeList">
           <td>
-            <div *ngIf="sanctionIntake.programId==1">
-              UG (4 Year Program)
-            </div>
-            <div *ngIf="sanctionIntake.programId==2">
-              UG (5 Year Program)
-            </div>
-            <div *ngIf="sanctionIntake.programId==3">
-              PG (2 Year Program)
-            </div>
-            <div *ngIf="sanctionIntake.programId==4">
-              PG (3 Year Program)
+            <div>
+              {{sanctionIntake.programName}}
             </div>
           </td>
-          <!-- <td >
-              <div class="input-group  ">
-                {{pgName}}
-            </div>
-          </td> -->
           <td (dblclick)="onSanctionIntakeEdit(sanctionIntake,'_2020_21_Count')">
             <div *ngIf="sanctionIntake.enableEdit =='_2020_21_Count'">
               <div class="input-group  ">
@@ -171,20 +157,11 @@
       <tbody>
         <tr *ngFor="let totalStudent of totalStudentsList">
           <td>
-            <div *ngIf="totalStudent.programId==1">
-              UG (4 Year Program)
-            </div>
-            <div *ngIf="totalStudent.programId==2">
-              UG (5 Year Program)
-            </div>
-            <div *ngIf="totalStudent.programId==3">
-              PG (2 Year Program)
-            </div>
-            <div *ngIf="totalStudent.programId==4">
-              PG (3 Year Program)
+            <div>
+              {{totalStudent.programName}}
             </div>
           </td>
-
+         
           <td (dblclick)="onTotalStudentsEdit(totalStudent,'noOfMaleStudents')">
             <div *ngIf="totalStudent.enableEdit =='noOfMaleStudents'">
               <div class="input-group  ">
@@ -215,19 +192,9 @@
               {{totalStudent.noOfFemaleStudents}}
             </div>
           </td>
-          <td (dblclick)="onTotalStudentsEdit(totalStudent,'totalStudents')">
-            <div *ngIf="totalStudent.enableEdit =='totalStudents'">
-              <div class="input-group  ">
-                <input type="number" class="form-control form-control-sm" [(ngModel)]="totalStudent.totalStudents"
-                  name="totalStudents" placeholder="{{totalStudent.totalStudents}} " id="totalStudents">
-              </div>
-              <div style="text-align: center;">
-                <button type="button" class="btn btn-sm btn-success rounded-circle"
-                  (click)="onTotalStudentsClose(totalStudent)"><i class="bi bi-check2"></i></button>
-              </div>
-            </div>
-            <div *ngIf="totalStudent.enableEdit !=='totalStudents'">
-              {{totalStudent.totalStudents}}
+          <td>
+            <div>
+              {{totalStudent.noOfMaleStudents+totalStudent.noOfFemaleStudents}}
             </div>
           </td>
 

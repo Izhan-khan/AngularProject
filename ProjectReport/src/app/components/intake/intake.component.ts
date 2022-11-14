@@ -40,14 +40,8 @@ export class IntakeComponent implements OnInit {
   }
 
 
-  public getSactionApprovedListNameFromService(temp: any) {
-    return this.programService.getProgramFromId(temp).subscribe(
-      (data:any) =>{
-        this.pgName=data;
-      },(error) =>{
-        console.log(error);
-      }
-    )
+  public getProgramName(id: number) {
+    return this.programService.getProgramFromId(id)
   }
 
   public getSactionApprovedListFromService() {
@@ -55,24 +49,18 @@ export class IntakeComponent implements OnInit {
       (data: any) => {
 
         this.sanctionIntakeList = data;
-        
-        // this.sanctionIntakeList.forEach((element: any) => {
-        //   element.enableEdit = false;
-        //   element._2020_21_Count=element[7];
-        //   element._2019_20_Count=element[6];
-        //   element._2018_19_Count=element[5];
-        //   element._2017_18_Count=element[4];
-        //   element._2016_17_Count=element[3];
-        //   element._2015_16_Count=element[2];
-        //   element.acedamicName=element[1];
-        //   element.acedamicId=element[0];
-
-        //   for (let index = 0; index <= 7; index++) {
-        //     delete element[index]
-        //   }
-
-        // })
-        // console.log(this.sanctionIntakeList);
+             
+        this.sanctionIntakeList.forEach((element: any) => {
+          element.enableEdit = false;
+          this.getProgramName(element.programId).subscribe(
+            (data:any) =>{
+              element.programName = data.programName;
+            },(error) =>{
+              console.log(error);
+            }
+          );
+        })
+        console.log(this.sanctionIntakeList);
 
       }, (error) => {
         console.log(error);
@@ -86,6 +74,18 @@ export class IntakeComponent implements OnInit {
     this.intakeService.getTotalStudentList().subscribe(
       (data) => {
         this.totalStudentsList = data;
+
+        this.totalStudentsList.forEach((element: any) => {
+          element.enableEdit = false;
+          this.getProgramName(element.programId).subscribe(
+            (data:any) =>{
+              element.programName = data.programName;
+            },(error) =>{
+              console.log(error);
+            }
+          );
+        })
+        console.log(this.sanctionIntakeList);
       }, (error) => {
         console.log(error);
       }
@@ -98,7 +98,7 @@ export class IntakeComponent implements OnInit {
       element.enableEdit = false;
     });
     item.enableEdit = attribute;
-    console.log(this.sanctionIntakeList);
+    // console.log(this.sanctionIntakeList);
 
   }
 
@@ -111,7 +111,7 @@ export class IntakeComponent implements OnInit {
       element.enableEdit = false;
     });
     item.enableEdit = attribute;
-    console.log(this.totalStudentsList);
+    // console.log(this.totalStudentsList);
 
   }
 
@@ -122,20 +122,9 @@ export class IntakeComponent implements OnInit {
 
   addSanctionIntakeList(sanctionIntakeList: any) {
 
-    this.sanctionIntakeList.forEach((element: {
-      id: any;
-      acedamicName: any;
-      enableEdit?: boolean;
-    }) => {
-      delete element.id;
-      delete element.acedamicName;
-      delete element.enableEdit;
-    });
-    console.info(this.sanctionIntakeList);
-
     this.intakeService.addSactionApprovedList(sanctionIntakeList).subscribe(
       (data) => {
-        console.info(this.sanctionIntakeList);
+        console.warn(this.sanctionIntakeList);
         this.successMsg = "Data Inserted"
       }, (error) => {
         console.log(error);
@@ -147,18 +136,9 @@ export class IntakeComponent implements OnInit {
 
   addTotalStudentsList(totalStudentsList: any) {
 
-    this.totalStudentsList.forEach((element: {
-      id: any;
-      acedamicId: any;
-      enableEdit?: boolean;
-    }) => {
-      delete element.id;
-      delete element.enableEdit;
-    });
-
     this.intakeService.addTotalStudentList(totalStudentsList).subscribe(
       (data) => {
-        console.info(this.totalStudentsList);
+        console.warn(this.totalStudentsList);
         this.successMsg = "Data Inserted";
         setTimeout(() => { this.successMsg = ""; }, 7000);
       }, (error) => {

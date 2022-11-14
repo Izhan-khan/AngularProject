@@ -36,6 +36,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PhdComponent } from './components/phd/phd.component';
+import { TestTabComponent } from './components/test-tab/test-tab.component';
+import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
 
 
 @NgModule({
@@ -68,6 +70,8 @@ import { PhdComponent } from './components/phd/phd.component';
     UniversityInstituteTlrComponent,
     UniversityInstituteOverallComponent,
     PhdComponent,
+    TestTabComponent,
+    NumberToWordsPipe,
     
   ],
   imports: [

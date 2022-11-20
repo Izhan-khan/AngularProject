@@ -11,22 +11,14 @@ import { ProgramService } from 'src/app/service/program/program.service';
 })
 export class IntakeComponent implements OnInit {
 
-
-  // programName1 = new String();/
   successMsg = new String();
   errorMsg = new String();
-  pgName= new String();
-
-  public programObj: any;
 
   public sanctionIntakeList: any;
-
   public totalStudentsList: any;
 
 
-
-
-  constructor(private intakeService: IntakeService, private programService: ProgramService, private formBuilder: FormBuilder) { }
+  constructor(private intakeService: IntakeService, private programService: ProgramService) { }
 
 
 
@@ -60,13 +52,12 @@ export class IntakeComponent implements OnInit {
             }
           );
         })
-        console.log(this.sanctionIntakeList);
+        console.log("Saction Approved List: ",this.sanctionIntakeList);
 
       }, (error) => {
         console.log(error);
       }
     )
-    // console.log(this.sanctionIntakeList)
   }
 
 
@@ -85,7 +76,7 @@ export class IntakeComponent implements OnInit {
             }
           );
         })
-        console.log(this.sanctionIntakeList);
+        console.log("Total Student List: ",this.totalStudentsList);
       }, (error) => {
         console.log(error);
       }
@@ -98,8 +89,6 @@ export class IntakeComponent implements OnInit {
       element.enableEdit = false;
     });
     item.enableEdit = attribute;
-    // console.log(this.sanctionIntakeList);
-
   }
 
   onSanctionIntakeClose(item: any) {
@@ -111,8 +100,6 @@ export class IntakeComponent implements OnInit {
       element.enableEdit = false;
     });
     item.enableEdit = attribute;
-    // console.log(this.totalStudentsList);
-
   }
 
   onTotalStudentsClose(item: any) {
@@ -124,10 +111,11 @@ export class IntakeComponent implements OnInit {
 
     this.intakeService.addSactionApprovedList(sanctionIntakeList).subscribe(
       (data) => {
-        console.warn(this.sanctionIntakeList);
+        console.warn("Saction Approved List: ",this.sanctionIntakeList);
         this.successMsg = "Data Inserted"
       }, (error) => {
         console.log(error);
+        this.errorMsg="Something is wrong"
       });
     this.getSactionApprovedListFromService;
 
@@ -138,11 +126,12 @@ export class IntakeComponent implements OnInit {
 
     this.intakeService.addTotalStudentList(totalStudentsList).subscribe(
       (data) => {
-        console.warn(this.totalStudentsList);
+        console.warn("Total Student List: ",this.totalStudentsList);
         this.successMsg = "Data Inserted";
         setTimeout(() => { this.successMsg = ""; }, 7000);
       }, (error) => {
         console.log(error);
+        this.errorMsg="Something is wrong"
       });
     this.getTotalStudentListFromService;
 

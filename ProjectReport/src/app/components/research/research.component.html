@@ -1,89 +1,157 @@
-<div class="title mb-3">Sponsored Research Details</div>
-<table class = "table table-hover table-bordered mb-3">               
-    <thead>
-        <tr>
-            <th class="text-center headerbg">Financial Year</th>
-            <th class="text-center headerbg">2020-21</th>
-            <th class="text-center headerbg">2019-20</th>
-            <th class="text-center headerbg">2018-19</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Total no of sponsored project</td>
-            <td>677</td>
-            <td>605</td>
-            <td>575</td>
-            
-        </tr>
-        <tr>
-            <td>Total no of funding agencies</td>
-            <td>91</td>
-            <td>97</td>
-            <td>64</td>
-        
-        </tr>
-        <tr>
-            <td>Total amount received (Amount in rupees)</td>
-            <td>400236000</td>
-            <td>400236000</td>
-            <td>400236000</td>
-        
-        </tr>
-        <tr>
-            <td>Amount received in words</td>
-            <td>forty crore two lakh thirty six thousand Rupees and zero paisa only</td>
-            <td>forty crore two lakh thirty six thousand Rupees and zero paisa only</td>
-            <td>forty crore two lakh thirty six thousand Rupees and zero paisa only</td>        
-        </tr>
-    </tbody>
-</table>
+<form
+    (ngSubmit)="addSponsoredResearchDetailsList(SponsoredResearchDetailsList); addConsultingProjectDetailsList(ConsultingProjectDetailsList)">
 
-<div class="title mb-3">Consulting Project Details</div>
-<table class = "table table-hover table-bordered mb-3">               
-    <thead>
-        <tr>
-            <th class="text-center headerbg">Financial Year</th>
-            <th class="text-center headerbg">2020-21</th>
-            <th class="text-center headerbg">2019-20</th>
-            <th class="text-center headerbg">2018-19</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Total no of sponsored project</td>
-            <td>677</td>
-            <td>605</td>
-            <td>575</td>
-            
-        </tr>
-        <tr>
-            <td>Total no of funding agencies</td>
-            <td>91</td>
-            <td>97</td>
-            <td>64</td>
-        
-        </tr>
-        <tr>
-            <td>Total amount received (Amount in rupees)</td>
-            <td>400236000</td>
-            <td>400236000</td>
-            <td>400236000</td>
-        
-        </tr>
-        <tr>
-            <td>Amount received in words</td>
-            <td>forty crore two lakh thirty six thousand Rupees and zero paisa only</td>
-            <td>forty crore two lakh thirty six thousand Rupees and zero paisa only</td>
-            <td>forty crore two lakh thirty six thousand Rupees and zero paisa only</td>        
-        </tr>
-    </tbody>
-</table>
-<div class="text-center">
-    <button class="btn btn-info mr-1"><i class="bi-arrow-left-square-fill"> Previous</i></button>
-    <button class="btn btn-default btn-block mr-1"><i class="bi-arrow-clockwise"> Reset</i></button>
-    <button class="btn btn-primary mr-1"><i class="bi-save-fill"> Save</i></button>
-    <button class="btn btn-success mr-1"><i class="bi-arrow-right-square-fill"> Save & Next</i></button>
-</div>
+    <div class="title mb-3">Sponsored Research Details</div>
+    <h4 style="text-align: center; color: green;" *ngIf="successMsg">{{successMsg}}</h4>
+    <script>
+        function printDiv() {
+            //Get the HTML of div
+            var divElements = document.getElementById(tdId)
+            alert(divElements);
+        }
+    </script>
+    
+    <table onload="printDiv()" class="table table-hover table-bordered mb-3" id="tableId">
+        <thead>
+            <tr>
+                <th class="text-center headerbg">Financial Year</th>
+                <th class="text-center headerbg">2020-21</th>
+                <th class="text-center headerbg">2019-20</th>
+                <th class="text-center headerbg">2018-19</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let SponsoredResearchDetails of SponsoredResearchDetailsList">
+                
+                <td id="tdId">{{SponsoredResearchDetails.researchDetails}}</td>
+                <td (dblclick)="onSponsoredResearchDetailsListEdit(SponsoredResearchDetails,'_2020_2021_count')">
+                    <div *ngIf="SponsoredResearchDetails.enableEdit =='_2020_2021_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="SponsoredResearchDetails._2020_2021_count" name="_2020_2021_count"
+                                placeholder="{{SponsoredResearchDetails._2020_2021_count}}" id="_2020_2021_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onSponsoredResearchDetailsListClose(SponsoredResearchDetails)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="SponsoredResearchDetails.enableEdit !=='_2020_2021_count'">
+                        {{SponsoredResearchDetails._2020_2021_count}}
+                    </div>
+                </td>
+                <td (dblclick)="onSponsoredResearchDetailsListEdit(SponsoredResearchDetails,'_2019_2020_count')">
+                    <div *ngIf="SponsoredResearchDetails.enableEdit =='_2019_2020_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="SponsoredResearchDetails._2019_2020_count" name="_2019_2020_count"
+                                placeholder="{{SponsoredResearchDetails._2019_2020_count}}" id="_2019_2020_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onSponsoredResearchDetailsListClose(SponsoredResearchDetails)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="SponsoredResearchDetails.enableEdit !=='_2019_2020_count'">
+                        {{SponsoredResearchDetails._2019_2020_count}}
+                    </div>
+                </td>
+                <td (dblclick)="onSponsoredResearchDetailsListEdit(SponsoredResearchDetails,'_2018_2019_count')">
+                    <div *ngIf="SponsoredResearchDetails.enableEdit =='_2018_2019_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="SponsoredResearchDetails._2018_2019_count" name="_2018_2019_count"
+                                placeholder="{{SponsoredResearchDetails._2018_2019_count}}" id="_2018_2019_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onSponsoredResearchDetailsListClose(SponsoredResearchDetails)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="SponsoredResearchDetails.enableEdit !=='_2018_2019_count'">
+                        {{SponsoredResearchDetails._2018_2019_count}}
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>Amount received in words</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="title mb-3">Consulting Project Details</div>
+    <table class="table table-hover table-bordered mb-3">
+        <thead>
+            <tr>
+                <th class="text-center headerbg">Financial Year</th>
+                <th class="text-center headerbg">2020-21</th>
+                <th class="text-center headerbg">2019-20</th>
+                <th class="text-center headerbg">2018-19</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ConsultingProjectDetails of ConsultingProjectDetailsList">
+                <td>{{ConsultingProjectDetails.researchDetails}}</td>
+                <td (dblclick)="onConsultingProjectDetailsListEdit(ConsultingProjectDetails,'_2020_2021_count')">
+                    <div *ngIf="ConsultingProjectDetails.enableEdit =='_2020_2021_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="ConsultingProjectDetails._2020_2021_count" name="_2020_2021_count"
+                                placeholder="{{ConsultingProjectDetails._2020_2021_count}}" id="_2020_2021_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onConsultingProjectDetailsListClose(ConsultingProjectDetails)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="ConsultingProjectDetails.enableEdit !=='_2020_2021_count'">
+                        {{ConsultingProjectDetails._2020_2021_count}}
+                    </div>
+                </td>
+                <td (dblclick)="onConsultingProjectDetailsListEdit(ConsultingProjectDetails,'_2019_2020_count')">
+                    <div *ngIf="ConsultingProjectDetails.enableEdit =='_2019_2020_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="ConsultingProjectDetails._2019_2020_count" name="_2019_2020_count"
+                                placeholder="{{ConsultingProjectDetails._2019_2020_count}}" id="_2019_2020_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onConsultingProjectDetailsListClose(ConsultingProjectDetails)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="ConsultingProjectDetails.enableEdit !=='_2019_2020_count'">
+                        {{ConsultingProjectDetails._2019_2020_count}}
+                    </div>
+                </td>
+                <td (dblclick)="onConsultingProjectDetailsListEdit(ConsultingProjectDetails,'_2018_2019_count')">
+                    <div *ngIf="ConsultingProjectDetails.enableEdit =='_2018_2019_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="ConsultingProjectDetails._2018_2019_count" name="_2018_2019_count"
+                                placeholder="{{ConsultingProjectDetails._2018_2019_count}}" id="_2018_2019_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onConsultingProjectDetailsListClose(ConsultingProjectDetails)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="ConsultingProjectDetails.enableEdit !=='_2018_2019_count'">
+                        {{ConsultingProjectDetails._2018_2019_count}}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Amount received in words</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <button class="btn btn-info mr-1" type="button"><i class="bi-arrow-left-square-fill"> Previous</i></button>
+        <button class="btn btn-default btn-block mr-1" type="button"><i class="bi-arrow-clockwise"
+                (click)="getSponsoredResearchDetailsListFromService(); getConsultingProjectDetailsListFromService();">
+                Reset</i></button>
+        <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>
+        <button class="btn btn-success mr-1" type="button"><i class="bi-arrow-right-square-fill"> Save &
+                Next</i></button>
+    </div>
+</form>

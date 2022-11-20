@@ -1,113 +1,230 @@
-<div class="title mb-3">Financial Resources: Utilised Amount for the Capital expenditure for Previous 3 years</div>
-<table class = "table table-hover table-bordered mb-3">               
-    <thead>
-        <tr>
-            <th class="text-center headerbg">Financial Year</th>
-            <th class="text-center headerbg">2020-21</th>
-            <th class="text-center headerbg">2019-20</th>
-            <th class="text-center headerbg">2018-19</th>
-            
-        </tr>
-        <tr>
-            <th class="text-center headerbg"></th>
-            <th class="text-center headerbg">Utilised Amount</th>
-            <th class="text-center headerbg">Utilised Amount</th>
-            <th class="text-center headerbg">Utilised Amount</th>
-            
-        </tr>
-        <tr>
-            <th class="text-center headerbg" colspan="4">
-                Annual Capital Expenditure of Acadimic Activities and Resources (Exluding expenditureof building)   
-            </th>
-            
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Library (Books, Journal and Resources only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            
-        </tr>
-        <tr>
-            <td>New Equipment and Software for Laboratories</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-        
-        </tr>
-        <tr>
-            <td>Engineering workshop</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-        
-        </tr>
-        <tr>
-            <td>Other Expenditure on creation of Capital</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>        
-        </tr>
-    </tbody>
-</table>
-<div class="title mb-3">Financial Resources: Utilised Amount for the Operation expenditure for Previous 3 years</div>
-<table class = "table table-hover table-bordered mb-3">               
-    <thead>
-        <tr>
-            <th class="text-center headerbg">Financial Year</th>
-            <th class="text-center headerbg">2020-21</th>
-            <th class="text-center headerbg">2019-20</th>
-            <th class="text-center headerbg">2018-19</th>
-            
-        </tr>
-        <tr>
-            <th class="text-center headerbg"></th>
-            <th class="text-center headerbg">Utilised Amount</th>
-            <th class="text-center headerbg">Utilised Amount</th>
-            <th class="text-center headerbg">Utilised Amount</th>
-            
-        </tr>
-        <tr>
-            <th class="text-center headerbg" colspan="4">
-                Amount Operation Expenditure   
-            </th>
-            
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Salaries (Teaching and non teaching staff)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            
-        </tr>
-        <tr>
-            <td>Maintenance of Academic Infrastrucure or consumable</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-        
-        </tr>
-        <tr>
-            <td>Seminar/Conference/Workshop</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-            <td>400236000 (forty crore two lakh thirty six thousand Rupees and zero paisa only)</td>
-        
-        </tr>
-        
-    </tbody>
-</table>
+<form
+    (ngSubmit)="addCapitalExpenditureAmountList(CapitalExpenditureAmountList); addOperationExpenditureAmountList(OperationExpenditureAmountList)">
 
-<div class="text-center">
-    <button class="btn btn-info mr-1"><i class="bi-arrow-left-square-fill"> Previous</i></button>
-    <button class="btn btn-default btn-block mr-1"><i class="bi-arrow-clockwise"> Reset</i></button>
-    <button class="btn btn-primary mr-1"><i class="bi-save-fill"> Save</i></button>
-    <button class="btn btn-success mr-1" (click)="saveNsubmit()"><i class="bi-arrow-right-square-fill"> Save & Submit </i></button>
-</div>
+    <div class="title mb-3">Financial Resources: Utilised Amount for the Capital expenditure for Previous 3 years</div>
+    <h4 style="text-align: center; color: green;" *ngIf="successMsg">{{successMsg}}</h4>
+    <table class="table table-hover table-bordered mb-3">
+        <thead>
+            <tr>
+                <th class="text-center headerbg">Financial Year</th>
+                <th class="text-center headerbg">2020-21</th>
+                <th class="text-center headerbg">2019-20</th>
+                <th class="text-center headerbg">2018-19</th>
 
+            </tr>
+            <tr>
+                <th class="text-center headerbg"></th>
+                <th class="text-center headerbg">Utilised Amount</th>
+                <th class="text-center headerbg">Utilised Amount</th>
+                <th class="text-center headerbg">Utilised Amount</th>
+
+            </tr>
+            <tr>
+                <th class="text-center headerbg" colspan="4">
+                    Annual Capital Expenditure of Acadimic Activities and Resources (Exluding expenditureof building)
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let CapitalExpenditureAmount of CapitalExpenditureAmountList">
+                <td (dblclick)="onCapitalExpenditureAmountEdit(CapitalExpenditureAmount,'financialResources')">
+                    <div *ngIf="CapitalExpenditureAmount.enableEdit =='financialResources'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="CapitalExpenditureAmount.financialResources" name="financialResources"
+                                placeholder="{{CapitalExpenditureAmount.financialResources}}" id="financialResources">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onCapitalExpenditureAmountClose(CapitalExpenditureAmount)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="CapitalExpenditureAmount.enableEdit !=='financialResources'">
+                        {{CapitalExpenditureAmount.financialResources}}
+                    </div>
+                </td>
+
+                <td (dblclick)="onCapitalExpenditureAmountEdit(CapitalExpenditureAmount,'_2020_2021_count')">
+                    <div *ngIf="CapitalExpenditureAmount.enableEdit =='_2020_2021_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="CapitalExpenditureAmount._2020_2021_count" name="_2020_2021_count"
+                                placeholder="{{CapitalExpenditureAmount._2020_2021_count}}" id="_2020_2021_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onCapitalExpenditureAmountClose(CapitalExpenditureAmount)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="CapitalExpenditureAmount.enableEdit !=='_2020_2021_count'">
+                        {{CapitalExpenditureAmount._2020_2021_count}}
+                        ({{CapitalExpenditureAmount._2020_2021_count|numberToWords}})
+                    </div>
+                </td>
+
+                <td (dblclick)="onCapitalExpenditureAmountEdit(CapitalExpenditureAmount,'_2019_2020_count')">
+                    <div *ngIf="CapitalExpenditureAmount.enableEdit =='_2019_2020_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="CapitalExpenditureAmount._2019_2020_count" name="_2019_2020_count"
+                                placeholder="{{CapitalExpenditureAmount._2019_2020_count}}" id="_2019_2020_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onCapitalExpenditureAmountClose(CapitalExpenditureAmount)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="CapitalExpenditureAmount.enableEdit !=='_2019_2020_count'">
+                        {{CapitalExpenditureAmount._2019_2020_count}}
+                        ({{CapitalExpenditureAmount._2019_2020_count|numberToWords}})
+                    </div>
+                </td>
+
+                <td (dblclick)="onCapitalExpenditureAmountEdit(CapitalExpenditureAmount,'_2018_2019_count')">
+                    <div *ngIf="CapitalExpenditureAmount.enableEdit =='_2018_2019_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="CapitalExpenditureAmount._2018_2019_count" name="_2018_2019_count"
+                                placeholder="{{CapitalExpenditureAmount._2018_2019_count}}" id="_2018_2019_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onCapitalExpenditureAmountClose(CapitalExpenditureAmount)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="CapitalExpenditureAmount.enableEdit !=='_2018_2019_count'">
+                        {{CapitalExpenditureAmount._2018_2019_count}}
+                        ({{CapitalExpenditureAmount._2018_2019_count|numberToWords}})
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="title mb-3">Financial Resources: Utilised Amount for the Operation expenditure for Previous 3 years
+    </div>
+    <table class="table table-hover table-bordered mb-3">
+        <thead>
+            <tr>
+                <th class="text-center headerbg">Financial Year</th>
+                <th class="text-center headerbg">2020-21</th>
+                <th class="text-center headerbg">2019-20</th>
+                <th class="text-center headerbg">2018-19</th>
+
+            </tr>
+            <tr>
+                <th class="text-center headerbg"></th>
+                <th class="text-center headerbg">Utilised Amount</th>
+                <th class="text-center headerbg">Utilised Amount</th>
+                <th class="text-center headerbg">Utilised Amount</th>
+
+            </tr>
+            <tr>
+                <th class="text-center headerbg" colspan="4">
+                    Amount Operation Expenditure
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let OperationExpenditureAmount of OperationExpenditureAmountList">
+                <td (dblclick)="onOperationExpenditureAmountEdit(OperationExpenditureAmount,'financialResources')">
+                    <div *ngIf="OperationExpenditureAmount.enableEdit =='financialResources'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="OperationExpenditureAmount.financialResources" name="financialResources"
+                                placeholder="{{OperationExpenditureAmount.financialResources}}" id="financialResources">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onOperationExpenditureAmountClose(OperationExpenditureAmount)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="OperationExpenditureAmount.enableEdit !=='financialResources'">
+                        {{OperationExpenditureAmount.financialResources}}
+                    </div>
+                </td>
+
+                <td (dblclick)="onOperationExpenditureAmountEdit(OperationExpenditureAmount,'_2020_2021_count')">
+                    <div *ngIf="OperationExpenditureAmount.enableEdit =='_2020_2021_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="OperationExpenditureAmount._2020_2021_count" name="_2020_2021_count"
+                                placeholder="{{OperationExpenditureAmount._2020_2021_count}}" id="_2020_2021_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onOperationExpenditureAmountClose(OperationExpenditureAmount)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="OperationExpenditureAmount.enableEdit !=='_2020_2021_count'">
+                        <div *ngIf="OperationExpenditureAmount._2020_2021_count!=0">
+                            {{OperationExpenditureAmount._2020_2021_count}}
+                            ({{OperationExpenditureAmount._2020_2021_count|numberToWords}})
+                        </div>
+                        <div *ngIf="OperationExpenditureAmount._2020_2021_count ==0">
+                            {{OperationExpenditureAmount._2020_2021_count}}
+                            (zero)
+                        </div>
+                    </div>
+                   
+                </td>
+
+                <td (dblclick)="onOperationExpenditureAmountEdit(OperationExpenditureAmount,'_2019_2020_count')">
+                    <div *ngIf="OperationExpenditureAmount.enableEdit =='_2019_2020_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="OperationExpenditureAmount._2019_2020_count" name="_2019_2020_count"
+                                placeholder="{{OperationExpenditureAmount._2019_2020_count}}" id="_2019_2020_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onOperationExpenditureAmountClose(OperationExpenditureAmount)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="OperationExpenditureAmount.enableEdit !=='_2019_2020_count'">
+                        <div *ngIf="OperationExpenditureAmount._2019_2020_count !=0">
+                            {{OperationExpenditureAmount._2019_2020_count}}
+                            ({{OperationExpenditureAmount._2019_2020_count|numberToWords}})
+                        </div>
+                        <div *ngIf="OperationExpenditureAmount._2019_2020_count ==0">
+                            {{OperationExpenditureAmount._2019_2020_count}}
+                            (zero)
+                        </div>
+                    </div>
+
+                </td>
+
+                <td (dblclick)="onOperationExpenditureAmountEdit(OperationExpenditureAmount,'_2018_2019_count')">
+                    <div *ngIf="OperationExpenditureAmount.enableEdit =='_2018_2019_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="OperationExpenditureAmount._2018_2019_count" name="_2018_2019_count"
+                                placeholder="{{OperationExpenditureAmount._2018_2019_count}}" id="_2018_2019_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onOperationExpenditureAmountClose(OperationExpenditureAmount)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="OperationExpenditureAmount.enableEdit !=='_2018_2019_count'">
+                        <div *ngIf="OperationExpenditureAmount._2018_2019_count !=0">
+                            {{OperationExpenditureAmount._2018_2019_count}}
+                            ({{OperationExpenditureAmount._2018_2019_count|numberToWords}})
+                        </div>
+                        <div *ngIf="OperationExpenditureAmount._2018_2019_count ==0">
+                            {{OperationExpenditureAmount._2018_2019_count}}
+                            (zero)
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <button class="btn btn-info mr-1" type="button"><i class="bi-arrow-left-square-fill"> Previous</i></button>
+        <button class="btn btn-default btn-block mr-1" type="button"
+            (click)="getOperationExpenditureAmountListFromService(); getOperationExpenditureAmountListFromService();"><i
+                class="bi-arrow-clockwise"> Reset</i></button>
+        <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>
+        <button class="btn btn-success mr-1" type="button" (click)="saveNsubmit()"><i
+                class="bi-arrow-right-square-fill"> Save &
+                Submit </i></button>
+    </div>
+</form>

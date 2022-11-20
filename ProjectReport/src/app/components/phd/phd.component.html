@@ -1,74 +1,147 @@
-<div class="title mb-3">Ph.D Student Details</div>
-<table class = "table table-hover table-bordered" style="margin-bottom:0px;">               
-    <thead>
-        <tr>
-            <th class="text-center headerbg" colspan="2">
-                Ph.D ( Student persuing doctoral program till 2020-21)
-            </th>
-            
-            
-        </tr>
-        
-        <tr>
-            <th class="text-center headerbg">
-                  
-            </th>
-            <th class="text-center headerbg">
-                  Total Students
-            </th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Full Time</td>
-            <td>2168</td>
-            
-        </tr>
-        <tr>
-            <td>Part Time</td>
-            <td>36</td>  
-        </tr>        
-    </tbody>
-</table>
-<table class = "table table-hover table-bordered ">               
-    <thead>
-        <tr>
-            <th class="text-center headerbg" colspan="4">
-                No. of Ph.D student graduated (including integrated Ph.D)
-            </th>
-            
-            
-        </tr>
-        
-        <tr>
-            <th class="text-center headerbg">
-                  
-            </th>
-            <th class="text-center headerbg">
-                2020-21
-            </th>
-            <th class="text-center headerbg">
-                2019-20
-            </th>
-            <th class="text-center headerbg">
-                2018-19
-            </th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Full Time</td>
-            <td>203</td>
-            <td>264</td>
-            <td>265</td>
-        </tr>
-        <tr>
-            <td>Part Time</td>
-            <td>2</td> 
-            <td>3</td>
-            <td>4</td> 
-        </tr>        
-    </tbody>
-</table>
+<form
+    (ngSubmit)="addPhdPersuingStudentList(PhdPersuingStudentsList); addPhdGraduatedStudentsList(PhdGraduatedStudentsList)">
+    <div class="title mb-3">Ph.D Student Details</div>
+    <h4 style="text-align: center; color: green;" *ngIf="successMsg">{{successMsg}}</h4>
+    <table class="table table-hover table-bordered" style="margin-bottom:0px;">
+        <thead>
+            <tr>
+                <th class="text-center headerbg" colspan="2">
+                    Ph.D ( Student persuing doctoral program till 2020-21)
+                </th>
+
+
+            </tr>
+
+            <tr>
+                <th class="text-center headerbg">
+
+                </th>
+                <th class="text-center headerbg">
+                    Total Students
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let PhdPersuingStudent of PhdPersuingStudentsList">
+                <td>{{PhdPersuingStudent.programTime}}</td>
+                <td (dblclick)="onPhdPersuingStudentEdit(PhdPersuingStudent,'totalStudentsCount')">
+                    <div *ngIf="PhdPersuingStudent.enableEdit =='totalStudentsCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PhdPersuingStudent.totalStudentsCount" name="totalStudentsCount"
+                                placeholder="{{PhdPersuingStudent.totalStudentsCount}}" id="totalStudentsCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPhdPersuingStudentClose(PhdPersuingStudent)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PhdPersuingStudent.enableEdit !=='totalStudentsCount'">
+                        {{PhdPersuingStudent.totalStudentsCount}}
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-hover table-bordered ">
+        <thead>
+            <tr>
+                <th class="text-center headerbg" colspan="4">
+                    No. of Ph.D student graduated (including integrated Ph.D)
+                </th>
+
+
+            </tr>
+
+            <tr>
+                <th class="text-center headerbg">
+
+                </th>
+                <th class="text-center headerbg">
+                    2020-21
+                </th>
+                <th class="text-center headerbg">
+                    2019-20
+                </th>
+                <th class="text-center headerbg">
+                    2018-19
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let PhdGraduatedStudent of PhdGraduatedStudentsList">
+                <td (dblclick)="onPhdGraduatedStudentsEdit(PhdGraduatedStudent,'courseType')">
+                    <div *ngIf="PhdGraduatedStudent.enableEdit =='courseType'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PhdGraduatedStudent.courseType" name="courseType"
+                                placeholder="{{PhdGraduatedStudent.courseType}}" id="courseType">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPhdPersuingStudentClose(PhdGraduatedStudent)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PhdGraduatedStudent.enableEdit !=='courseType'">
+                        {{PhdGraduatedStudent.programTime}}
+                    </div>
+                </td>
+                <td (dblclick)="onPhdGraduatedStudentsEdit(PhdGraduatedStudent,'_2020_2021_count')">
+                    <div *ngIf="PhdGraduatedStudent.enableEdit =='_2020_2021_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PhdGraduatedStudent._2020_2021_count" name="_2020_2021_count"
+                                placeholder="{{PhdGraduatedStudent._2020_2021_count}}" id="_2020_2021_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPhdPersuingStudentClose(PhdGraduatedStudent)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PhdGraduatedStudent.enableEdit !=='_2020_2021_count'">
+                        {{PhdGraduatedStudent._2020_2021_count}}
+                    </div>
+                </td>
+                <td (dblclick)="onPhdGraduatedStudentsEdit(PhdGraduatedStudent,'_2019_2020_count')">
+                    <div *ngIf="PhdGraduatedStudent.enableEdit =='_2019_2020_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PhdGraduatedStudent._2019_2020_count" name="_2019_2020_count"
+                                placeholder="{{PhdGraduatedStudent._2019_2020_count}}" id="_2019_2020_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPhdPersuingStudentClose(PhdGraduatedStudent)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PhdGraduatedStudent.enableEdit !=='_2019_2020_count'">
+                        {{PhdGraduatedStudent._2019_2020_count}}
+                    </div>
+                </td>
+                <td (dblclick)="onPhdGraduatedStudentsEdit(PhdGraduatedStudent,'_2018_2019_count')">
+                    <div *ngIf="PhdGraduatedStudent.enableEdit =='_2018_2019_count'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PhdGraduatedStudent._2018_2019_count" name="_2018_2019_count"
+                                placeholder="{{PhdGraduatedStudent._2018_2019_count}}" id="_2018_2019_count">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPhdPersuingStudentClose(PhdGraduatedStudent)"><i
+                                    class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PhdGraduatedStudent.enableEdit !=='_2018_2019_count'">
+                        {{PhdGraduatedStudent._2018_2019_count}}
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <button class="btn btn-info mr-1"><i class="bi-arrow-left-square-fill"> Previous</i></button>
+        <button class="btn btn-default btn-block mr-1" type="button"
+            (click)="getPhdPersuingStudentsListFromService(); getPhdGraduatedStudentsListFromService();"><i
+                class="bi-arrow-clockwise"> Reset</i></button>
+        <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>
+        <button class="btn btn-success mr-1" type="button"><i class="bi-arrow-right-square-fill"> Save &
+                Next</i></button>
+    </div>
+</form>

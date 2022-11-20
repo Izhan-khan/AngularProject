@@ -1,114 +1,321 @@
-<div class="title mb-3">UG [4 Years Programm(s)] : Placement and higher studies for Previous 3 years</div>
-<table class = "table table-hover table-bordered mb-3">               
-<thead>
-    <tr>
-        <th class="text-center headerbg  align-top">Acedamic Year</th>
-        <th class="text-center headerbg  align-top">No. of first year students intake in the years</th>
-        <th class="text-center headerbg align-top">No. of first year students admitted in the years</th>
-        <th class="text-center headerbg align-top">Acedimic Year</th>
-        <th class="text-center headerbg align-top">No. of students admitted through lateral entry</th>
-        <th class="text-center headerbg align-top">Acedimic Year</th>
-        <th class="text-center headerbg align-top">No ofStudent graduating in minimum stipulated time </th>
-        <th class="text-center headerbg align-top">No. of students placed</th>
-        <th class="text-center headerbg align-top">Median salary of placed graduates (Amount in Rs.)</th>
-        <th class="text-center headerbg align-top">No. of students selected for higher studies</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>2015-16</td>
-        <td>677</td>
-        <td>762</td>
-        <td>2016-17</td>
-        <td>0</td>
-        <td>2018-19</td>
-        <td>344</td>
-        <td>466</td>
-        <td>1360000 (Thirteen Lacs Sixty Thousand)</td>
-        <td>150</td>
-    </tr>
-    <tr>
-    <td>2015-16</td>
-    <td>677</td>
-    <td>762</td>
-    <td>2016-17</td>
-    <td>0</td>
-    <td>2018-19</td>
-    <td>344</td>
-    <td>466</td>
-    <td>1360000 (Thirteen Lacs Sixty Thousand)</td>
-    <td>150</td>
-    </tr>
-    <tr>
-    <td>2015-16</td>
-    <td>677</td>
-    <td>762</td>
-    <td>2016-17</td>
-    <td>0</td>
-    <td>2018-19</td>
-    <td>344</td>
-    <td>466</td>
-    <td>1360000 (Thirteen Lacs Sixty Thousand)</td>
-    <td>150</td>
-    </tr>
-    
-</tbody>
-</table>
+<form (ngSubmit)="addUG_4yearList(UG_4yearList); addPG_2yearList(PG_2yearList)">
+    <div class="title mb-3">UG [4 Years Programm(s)] : Placement and higher studies for Previous 3 years</div>
+    <h4 style="text-align: center; color: green;" *ngIf="successMsg">{{successMsg}}</h4>
+    <table class="table table-hover table-bordered mb-3">
+        <thead>
+            <tr>
+                <th class="text-center headerbg  align-top">Acedamic Year</th>
+                <th class="text-center headerbg  align-top">No. of first year students intake in the years</th>
+                <th class="text-center headerbg align-top">No. of first year students admitted in the years</th>
+                <th class="text-center headerbg align-top">No. of students admitted through lateral entry</th>
+                <th class="text-center headerbg align-top">No ofStudent graduating in minimum stipulated time </th>
+                <th class="text-center headerbg align-top">No. of students placed</th>
+                <th class="text-center headerbg align-top">Median salary of placed graduates (Amount in Rs.)</th>
+                <th class="text-center headerbg align-top">No. of students selected for higher studies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let UG_4year of UG_4yearList">
+                <td (dblclick)="onUG_4yearEdit(UG_4year,'AcademicYear')">
+                    <div *ngIf="UG_4year.enableEdit =='AcademicYear'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="UG_4year.AcademicYear" name="AcademicYear"
+                                placeholder="{{UG_4year.AcademicYear}}" id="AcademicYear">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="UG_4year.enableEdit !=='AcademicYear'">
+                        {{UG_4year.AcademicYear}}
+                    </div>
+                </td>
 
-<div class="title mb-3">PG [2 Years Programm(s)] : Placement and higher studies for Previous 3 years</div>
-<table class = "table table-hover table-bordered mb-3">               
-<thead>
-    <tr>
-        <th class="text-center headerbg  align-top">Acedamic Year</th>
-        <th class="text-center headerbg  align-top">No. of first year students intake in the years</th>
-        <th class="text-center headerbg align-top">No. of first year students admitted in the years</th>
-        
-        <th class="text-center headerbg align-top">Acedimic Year</th>
-        <th class="text-center headerbg align-top">No ofStudent graduating in minimum stipulated time </th>
-        <th class="text-center headerbg align-top">No. of students placed</th>
-        <th class="text-center headerbg align-top">Median salary of placed graduates (Amount in Rs.)</th>
-        <th class="text-center headerbg align-top">No. of students selected for higher studies</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>2015-16</td>
-        <td>677</td>
-        <td>762</td>        
-        <td>2018-19</td>
-        <td>344</td>
-        <td>466</td>
-        <td>1360000 (Thirteen Lacs Sixty Thousand)</td>
-        <td>150</td>
-    </tr>
-    <tr>
-    <td>2015-16</td>
-    <td>677</td>
-    <td>762</td>
-    <td>2016-17</td>
-    <td>0</td>
-   
-    <td>466</td>
-    <td>1360000 (Thirteen Lacs Sixty Thousand)</td>
-    <td>150</td>
-    </tr>
-    <tr>
-    <td>2015-16</td>
-    <td>677</td>
-    <td>762</td>    
-    <td>2018-19</td>
-    <td>344</td>
-    <td>466</td>
-    <td>1360000 (Thirteen Lacs Sixty Thousand)</td>
-    <td>150</td>
-    </tr>
-    
-</tbody>
-</table>
 
-<div class="text-center">
-    <button class="btn btn-info mr-1"><i class="bi-arrow-left-square-fill"> Previous</i></button>
-    <button class="btn btn-default btn-block mr-1"><i class="bi-arrow-clockwise"> Reset</i></button>
-    <button class="btn btn-primary mr-1"><i class="bi-save-fill"> Save</i></button>
-    <button class="btn btn-success mr-1"><i class="bi-arrow-right-square-fill"> Save & Next</i></button>
-</div>
+                <td (dblclick)="onUG_4yearEdit(UG_4year,'firstYearStudentIntakeCount')">
+                    <div *ngIf="UG_4year.enableEdit =='firstYearStudentIntakeCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="UG_4year.firstYearStudentIntakeCount" name="firstYearStudentIntakeCount"
+                                placeholder="{{UG_4year.firstYearStudentIntakeCount}}" id="firstYearStudentIntakeCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="UG_4year.enableEdit !=='firstYearStudentIntakeCount'">
+                        {{UG_4year.firstYearStudentIntakeCount}}
+                    </div>
+                </td>
+
+
+                <td (dblclick)="onUG_4yearEdit(UG_4year,'firstYearStudentAdmittedCount')">
+                    <div *ngIf="UG_4year.enableEdit =='firstYearStudentAdmittedCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="UG_4year.firstYearStudentAdmittedCount"
+                                name="firstYearStudentAdmittedCount"
+                                placeholder="{{UG_4year.firstYearStudentAdmittedCount}}"
+                                id="firstYearStudentAdmittedCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="UG_4year.enableEdit !=='firstYearStudentAdmittedCount'">
+                        {{UG_4year.firstYearStudentAdmittedCount}}
+                    </div>
+                </td>
+
+
+                <td (dblclick)="onUG_4yearEdit(UG_4year,'lateralEntryStudentCount')">
+                    <div *ngIf="UG_4year.enableEdit =='lateralEntryStudentCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="UG_4year.lateralEntryStudentCount" name="lateralEntryStudentCount"
+                                placeholder="{{UG_4year.lateralEntryStudentCount}}" id="lateralEntryStudentCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="UG_4year.enableEdit !=='lateralEntryStudentCount'">
+                        {{UG_4year.lateralEntryStudentCount}}
+                    </div>
+                </td>
+
+                <td (dblclick)="onUG_4yearEdit(UG_4year,'studentGraduatedInMinTimeCount')">
+                    <div *ngIf="UG_4year.enableEdit =='studentGraduatedInMinTimeCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="UG_4year.studentGraduatedInMinTimeCount"
+                                name="studentGraduatedInMinTimeCount"
+                                placeholder="{{UG_4year.studentGraduatedInMinTimeCount}}"
+                                id="studentGraduatedInMinTimeCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="UG_4year.enableEdit !=='studentGraduatedInMinTimeCount'">
+                        {{UG_4year.studentGraduatedInMinTimeCount}}
+                    </div>
+                </td>
+
+
+                <td (dblclick)="onUG_4yearEdit(UG_4year,'studentPlacedCount')">
+                    <div *ngIf="UG_4year.enableEdit =='studentPlacedCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="UG_4year.studentPlacedCount" name="studentPlacedCount"
+                                placeholder="{{UG_4year.studentPlacedCount}}" id="studentPlacedCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="UG_4year.enableEdit !=='studentPlacedCount'">
+                        {{UG_4year.studentPlacedCount}}
+                    </div>
+                </td>
+
+
+                <td (dblclick)="onUG_4yearEdit(UG_4year,'medianSalaryOfPlacedStudentCount')">
+                    <div *ngIf="UG_4year.enableEdit =='medianSalaryOfPlacedStudentCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="UG_4year.medianSalaryOfPlacedStudentCount"
+                                name="medianSalaryOfPlacedStudentCount"
+                                placeholder="{{UG_4year.medianSalaryOfPlacedStudentCount}}"
+                                id="medianSalaryOfPlacedStudentCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="UG_4year.enableEdit !=='medianSalaryOfPlacedStudentCount'">
+                        <div *ngIf="UG_4year.medianSalaryOfPlacedStudentCount !=0">
+                            {{UG_4year.medianSalaryOfPlacedStudentCount}}
+                            ({{UG_4year.medianSalaryOfPlacedStudentCount|numberToWords}})
+                        </div>
+                        <div *ngIf="UG_4year.medianSalaryOfPlacedStudentCount ==0">
+                            {{UG_4year.medianSalaryOfPlacedStudentCount}}
+                            (zero)
+                        </div>
+                    </div>
+                </td>
+
+                <td (dblclick)="onUG_4yearEdit(UG_4year,'studentSelectedForHigerStudiesCount')">
+                    <div *ngIf="UG_4year.enableEdit =='studentSelectedForHigerStudiesCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="UG_4year.studentSelectedForHigerStudiesCount"
+                                name="studentSelectedForHigerStudiesCount"
+                                placeholder="{{UG_4year.studentSelectedForHigerStudiesCount}}"
+                                id="studentSelectedForHigerStudiesCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="UG_4year.enableEdit !=='studentSelectedForHigerStudiesCount'">
+                        {{UG_4year.studentSelectedForHigerStudiesCount}}
+                    </div>
+                </td>
+
+
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="title mb-3">PG [2 Years Programm(s)] : Placement and higher studies for Previous 3 years</div>
+    <table class="table table-hover table-bordered mb-3">
+        <thead>
+            <tr>
+                <th class="text-center headerbg  align-top">Acedamic Year</th>
+                <th class="text-center headerbg  align-top">No. of first year students intake in the years</th>
+                <th class="text-center headerbg align-top">No. of first year students admitted in the years</th>
+
+                <th class="text-center headerbg align-top">No ofStudent graduating in minimum stipulated time </th>
+                <th class="text-center headerbg align-top">No. of students placed</th>
+                <th class="text-center headerbg align-top">Median salary of placed graduates (Amount in Rs.)</th>
+                <th class="text-center headerbg align-top">No. of students selected for higher studies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let PG_2year of PG_2yearList">
+                <td (dblclick)="onPG_2yearEdit(PG_2year,'AcademicYear')">
+                    <div *ngIf="PG_2year.enableEdit =='AcademicYear'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PG_2year.AcademicYear" name="AcademicYear"
+                                placeholder="{{PG_2year.AcademicYear}}" id="AcademicYear">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PG_2year.enableEdit !=='AcademicYear'">
+                        {{PG_2year.AcademicYear}}
+                    </div>
+                </td>
+
+
+                <td (dblclick)="onPG_2yearEdit(PG_2year,'firstYearStudentIntakeCount')">
+                    <div *ngIf="PG_2year.enableEdit =='firstYearStudentIntakeCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PG_2year.firstYearStudentIntakeCount" name="firstYearStudentIntakeCount"
+                                placeholder="{{PG_2year.firstYearStudentIntakeCount}}" id="firstYearStudentIntakeCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PG_2year.enableEdit !=='firstYearStudentIntakeCount'">
+                        {{PG_2year.firstYearStudentIntakeCount}}
+                    </div>
+                </td>
+
+
+                <td (dblclick)="onPG_2yearEdit(PG_2year,'firstYearStudentAdmitted')">
+                    <div *ngIf="PG_2year.enableEdit =='firstYearStudentAdmitted'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PG_2year.firstYearStudentAdmitted" name="firstYearStudentAdmitted"
+                                placeholder="{{PG_2year.firstYearStudentAdmitted}}" id="firstYearStudentAdmitted">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PG_2year.enableEdit !=='firstYearStudentAdmitted'">
+                        {{PG_2year.firstYearStudentAdmitted}}
+                    </div>
+                </td>
+
+
+
+                <td (dblclick)="onPG_2yearEdit(PG_2year,'studentGraduatedInMinTimeCount')">
+                    <div *ngIf="PG_2year.enableEdit =='studentGraduatedInMinTimeCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PG_2year.studentGraduatedInMinTimeCount"
+                                name="studentGraduatedInMinTimeCount"
+                                placeholder="{{PG_2year.studentGraduatedInMinTimeCount}}"
+                                id="studentGraduatedInMinTimeCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PG_2year.enableEdit !=='studentGraduatedInMinTimeCount'">
+                        {{PG_2year.studentGraduatedInMinTimeCount}}
+                    </div>
+                </td>
+
+
+
+                <td (dblclick)="onPG_2yearEdit(PG_2year,'studentPlacedCount')">
+                    <div *ngIf="PG_2year.enableEdit =='studentPlacedCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PG_2year.studentPlacedCount" name="studentPlacedCount"
+                                placeholder="{{PG_2year.studentPlacedCount}}" id="studentPlacedCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PG_2year.enableEdit !=='studentPlacedCount'">
+                        {{PG_2year.studentPlacedCount}}
+                    </div>
+                </td>
+
+
+                <td (dblclick)="onPG_2yearEdit(PG_2year,'  medianSalaryOfPlacedStudentCount')">
+                    <div *ngIf="PG_2year.enableEdit =='  medianSalaryOfPlacedStudentCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PG_2year.  medianSalaryOfPlacedStudentCount"
+                                name="  medianSalaryOfPlacedStudentCount"
+                                placeholder="{{PG_2year.  medianSalaryOfPlacedStudentCount}}"
+                                id="  medianSalaryOfPlacedStudentCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PG_2year.enableEdit !=='  medianSalaryOfPlacedStudentCount'">
+                        <div *ngIf="PG_2year.medianSalaryOfPlacedStudentCount !=0">
+                            {{PG_2year.medianSalaryOfPlacedStudentCount}}
+                            ({{PG_2year.medianSalaryOfPlacedStudentCount|numberToWords}})
+                        </div>
+                        <div *ngIf="PG_2year.medianSalaryOfPlacedStudentCount ==0">
+                            {{PG_2year.medianSalaryOfPlacedStudentCount}}
+                            (zero)
+                        </div>
+                    </div>
+                </td>
+
+
+                <td (dblclick)="onPG_2yearEdit(PG_2year,'studentSelectedForHigerStudiesCount')">
+                    <div *ngIf="PG_2year.enableEdit =='studentSelectedForHigerStudiesCount'">
+                        <div class="input-group">
+                            <input type="number" class="form-control form-control-sm"
+                                [(ngModel)]="PG_2year.studentSelectedForHigerStudiesCount"
+                                name="studentSelectedForHigerStudiesCount"
+                                placeholder="{{PG_2year.studentSelectedForHigerStudiesCount}}"
+                                id="studentSelectedForHigerStudiesCount">
+                            <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="PG_2year.enableEdit !=='studentSelectedForHigerStudiesCount'">
+                        {{PG_2year.studentSelectedForHigerStudiesCount}}
+                    </div>
+                </td>
+
+
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <button class="btn btn-info mr-1" type="button"><i class="bi-arrow-left-square-fill"> Previous</i></button>
+        <button class="btn btn-default btn-block mr-1" type="button"
+            (click)="getUG_4yearListFromService(); getPG_2yearListFromService();"><i class="bi-arrow-clockwise">
+                Reset</i></button>
+        <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>
+        <button class="btn btn-success mr-1" type="button"><i class="bi-arrow-right-square-fill"> Save &
+                Next</i></button>
+    </div>
+</form>

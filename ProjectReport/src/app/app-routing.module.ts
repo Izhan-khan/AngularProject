@@ -7,8 +7,7 @@ import { ReportOverallComponent } from './components/report-overall/report-overa
 import { InstituteDashboardComponent } from './components/institute-dashboard/institute-dashboard.component';
 import { UniversityDashboardComponent } from './components/university-dashboard/university-dashboard.component';
 import { UniversityComponent } from './components/university/university.component';
-import { TestTabComponent } from './components/test-tab/test-tab.component';
-
+ 
 const routes:Routes = [      
   { path: '', redirectTo: 'login' ,pathMatch: 'full'},
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -17,7 +16,6 @@ const routes:Routes = [
   { path: 'instituteDashboard', component: InstituteDashboardComponent, pathMatch: 'full' },
   { path: 'universityDashboard', component: UniversityDashboardComponent, pathMatch: 'full' },
   { path: 'universityLogin', component: UniversityComponent, pathMatch: 'full' },
-  { path: 'test', component: TestTabComponent, pathMatch: 'full' },
   
 ];
 export  const APP_ROUTER_PROVIDERS = [

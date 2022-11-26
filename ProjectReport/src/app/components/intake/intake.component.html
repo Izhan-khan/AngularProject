@@ -1,9 +1,14 @@
 <form (ngSubmit)="addSanctionIntakeList(sanctionIntakeList) ; addTotalStudentsList(totalStudentsList);">
   <h4 style="text-align: center; color: green;" *ngIf="successMsg">{{successMsg}}</h4>
-  <div class="title mb-3">Saction (Approved) Intake  </div>
+  <div class="title mb-3">Saction (Approved) Intake
+    <!-- <button class="btn btn-dark btn-sm" style="align-items:flex-end" 
+    id="addBtn" type="button">
+      Add new Row
+  </button> -->
+  </div>
+
   <div style="overflow-x:scroll; overflow: auto">
     <table class="table table-hover table-bordered mb-3" cellspacing="0">
-      <!-- <form  (ngSubmit)="addsactionAprvdList()"> -->
       <thead>
         <tr>
           <th class="text-center headerbg">Acedamic Year</th>
@@ -13,11 +18,28 @@
           <th class="text-center headerbg">2017-18</th>
           <th class="text-center headerbg">2016-17</th>
           <th class="text-center headerbg">2015-16</th>
-          <!-- <th class="text-center headerbg">Action</th> -->
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let sanctionIntake of sanctionIntakeList">
+      <tbody id="tbody">
+        <tr>
+          <td>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Academic Year</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let program of programList" [value]="program.programName">
+                  {{program.programName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+        </tr>
+        <tr *ngFor="let sanctionIntake of sanctionIntakeList | paginate: {id:'sactionIntakePagination', itemsPerPage: sactionIntakeItems, currentPage: sactionIntakeCurrentPage }">
           <td>
             <div>
               {{sanctionIntake.programName}}
@@ -102,25 +124,15 @@
               {{sanctionIntake._2015_16_Count}}
             </div>
           </td>
-
-
-          <!-- <td style='white-space: nowrap' class="text-center">
-            <div *ngIf="sanctionIntake.enableEdit">
-              <section>
-                <button class="btn btn-sm btn-success mr-1" (click)="sanctionIntake.enableEdit = false">Update</button>
-                <button class="btn btn-sm btn-danger" (click)="sanctionIntake.enableEdit = false">Cancel</button>
-              </section>
-            </div>
-            <div *ngIf="!sanctionIntake.enableEdit">
-              <button class="btn btn-sm btn-primary" (click)="onSanctionIntakeEdit(sanctionIntake)">Edit</button>
-            </div>
-          </td> -->
-
-
         </tr>
       </tbody>
-      <!-- </form> -->
     </table>
+
+
+  </div>
+  <!--Including the pagination control.-->
+  <div style="text-align:right">
+    <pagination-controls id="sactionIntakePagination" (pageChange)="sactionIntakeCurrentPage = $event"></pagination-controls>
   </div>
 
 
@@ -151,17 +163,40 @@
           <th class="text-center headerbg align-top">
             No of students who are not received full tution fee reimbursement
           </th>
-          <!-- <th class="text-center headerbg align-top">Action</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let totalStudent of totalStudentsList">
+        <tr>
+          <td>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Academic Year</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let program of programList" [value]="program.programName">
+                  {{program.programName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td><input type="number" class="form-control form-control-sm " value=""></td>
+        </tr>
+        <tr *ngFor="let totalStudent of totalStudentsList | paginate: {id:'totalStudentPagination', itemsPerPage: totalStudentsItems, currentPage: totalStudentsCurrentPage }">
           <td>
             <div>
               {{totalStudent.programName}}
             </div>
           </td>
-         
+
           <td (dblclick)="onTotalStudentsEdit(totalStudent,'noOfMaleStudents')">
             <div *ngIf="totalStudent.enableEdit =='noOfMaleStudents'">
               <div class="input-group  ">
@@ -364,19 +399,27 @@
     </table>
   </div>
 
+  <!--Including the pagination control.-->
+  <div style="text-align:right">
+    <pagination-controls id="totalStudentPagination" (pageChange)="totalStudentsCurrentPage = $event"></pagination-controls>
+  </div>
+
+
+
   <div class="title mb-3">Faculty Details </div>
   <table class="table table-responsive table-hover table-bordered mb-3 ">
     <tbody>
       <tr>
-        <td class="col-lg-6">No of Faculty</td>
+        <td class="">No of Faculty</td>
         <td>566</td>
       </tr>
     </tbody>
   </table>
   <div class="text-center">
-    <button class="btn btn-default btn-block mr-1" type="button" (click)="getSactionApprovedListFromService(); 
+    <button class="btn btn-default  mr-1" type="button" (click)="getSactionApprovedListFromService(); 
     getTotalStudentListFromService();"><i class="bi-arrow-clockwise"> Reset</i></button>
     <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>
-    <button class="btn btn-success mr-1" type="button"><i class="bi-arrow-right-square-fill"> Save & Next</i></button>
+    <button class="btn btn-success mr-1" type="button"><i class="bi-arrow-right-square-fill" (click)="saveandnext()">
+        Save & Next</i></button>
   </div>
 </form>

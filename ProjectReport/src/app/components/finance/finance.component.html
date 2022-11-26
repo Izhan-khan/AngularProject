@@ -29,20 +29,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let CapitalExpenditureAmount of CapitalExpenditureAmountList">
-                <td (dblclick)="onCapitalExpenditureAmountEdit(CapitalExpenditureAmount,'financialResources')">
-                    <div *ngIf="CapitalExpenditureAmount.enableEdit =='financialResources'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="CapitalExpenditureAmount.financialResources" name="financialResources"
-                                placeholder="{{CapitalExpenditureAmount.financialResources}}" id="financialResources">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onCapitalExpenditureAmountClose(CapitalExpenditureAmount)"><i
-                                    class="bi bi-check2"></i></button>
-                        </div>
-                    </div>
-                    <div *ngIf="CapitalExpenditureAmount.enableEdit !=='financialResources'">
-                        {{CapitalExpenditureAmount.financialResources}}
-                    </div>
+                <td>
+                    {{CapitalExpenditureAmount.financialResources}}
                 </td>
 
                 <td (dblclick)="onCapitalExpenditureAmountEdit(CapitalExpenditureAmount,'_2020_2021_count')">
@@ -127,20 +115,8 @@
         <tbody>
 
             <tr *ngFor="let OperationExpenditureAmount of OperationExpenditureAmountList">
-                <td (dblclick)="onOperationExpenditureAmountEdit(OperationExpenditureAmount,'financialResources')">
-                    <div *ngIf="OperationExpenditureAmount.enableEdit =='financialResources'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="OperationExpenditureAmount.financialResources" name="financialResources"
-                                placeholder="{{OperationExpenditureAmount.financialResources}}" id="financialResources">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onOperationExpenditureAmountClose(OperationExpenditureAmount)"><i
-                                    class="bi bi-check2"></i></button>
-                        </div>
-                    </div>
-                    <div *ngIf="OperationExpenditureAmount.enableEdit !=='financialResources'">
-                        {{OperationExpenditureAmount.financialResources}}
-                    </div>
+                <td>
+                    {{OperationExpenditureAmount.financialResources}}
                 </td>
 
                 <td (dblclick)="onOperationExpenditureAmountEdit(OperationExpenditureAmount,'_2020_2021_count')">
@@ -218,8 +194,8 @@
     </table>
 
     <div class="text-center">
-        <button class="btn btn-info mr-1" type="button"><i class="bi-arrow-left-square-fill"> Previous</i></button>
-        <button class="btn btn-default btn-block mr-1" type="button"
+        <button class="btn btn-info mr-1" type="button" (click)="previous()"><i class="bi-arrow-left-square-fill"> Previous</i></button>
+        <button class="btn btn-default  mr-1" type="button"
             (click)="getOperationExpenditureAmountListFromService(); getOperationExpenditureAmountListFromService();"><i
                 class="bi-arrow-clockwise"> Reset</i></button>
         <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>

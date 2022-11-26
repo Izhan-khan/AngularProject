@@ -105,6 +105,16 @@ export class FinanceComponent implements OnInit {
 
 
 
+   previous(){
+    $('#finance-tab').removeClass('active');
+    $('#finance-tab-pane').removeClass('active');
+    $('#finance-tab-pane').removeClass('show');
+    $('#pcs-tab').addClass('active');
+    $('#pcs-tab').removeClass('disabled');
+    $('#pcs-tab-pane').addClass('active');
+    $('#pcs-tab-pane').addClass('show');
+  
+  }
 
 
 

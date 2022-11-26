@@ -72,20 +72,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let PhdGraduatedStudent of PhdGraduatedStudentsList">
-                <td (dblclick)="onPhdGraduatedStudentsEdit(PhdGraduatedStudent,'courseType')">
-                    <div *ngIf="PhdGraduatedStudent.enableEdit =='courseType'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="PhdGraduatedStudent.courseType" name="courseType"
-                                placeholder="{{PhdGraduatedStudent.courseType}}" id="courseType">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onPhdPersuingStudentClose(PhdGraduatedStudent)"><i
-                                    class="bi bi-check2"></i></button>
-                        </div>
-                    </div>
-                    <div *ngIf="PhdGraduatedStudent.enableEdit !=='courseType'">
-                        {{PhdGraduatedStudent.programTime}}
-                    </div>
+                <td>
+                    {{PhdGraduatedStudent.programTime}}
                 </td>
                 <td (dblclick)="onPhdGraduatedStudentsEdit(PhdGraduatedStudent,'_2020_2021_count')">
                     <div *ngIf="PhdGraduatedStudent.enableEdit =='_2020_2021_count'">
@@ -136,12 +124,12 @@
         </tbody>
     </table>
     <div class="text-center">
-        <button class="btn btn-info mr-1"><i class="bi-arrow-left-square-fill"> Previous</i></button>
-        <button class="btn btn-default btn-block mr-1" type="button"
+        <button class="btn btn-info mr-1" type="button" (click)="previous()"><i class="bi-arrow-left-square-fill"> Previous</i></button>
+        <button class="btn btn-default mr-1" type="button"
             (click)="getPhdPersuingStudentsListFromService(); getPhdGraduatedStudentsListFromService();"><i
                 class="bi-arrow-clockwise"> Reset</i></button>
         <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>
-        <button class="btn btn-success mr-1" type="button"><i class="bi-arrow-right-square-fill"> Save &
+        <button class="btn btn-success mr-1" type="button" (click)="saveandnext()"><i class="bi-arrow-right-square-fill"> Save &
                 Next</i></button>
     </div>
 </form>

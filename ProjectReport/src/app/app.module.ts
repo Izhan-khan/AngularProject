@@ -38,6 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PhdComponent } from './components/phd/phd.component';
 import { TestTabComponent } from './components/test-tab/test-tab.component';
 import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -72,7 +74,7 @@ import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
     PhdComponent,
     TestTabComponent,
     NumberToWordsPipe,
-    
+     
   ],
   imports: [
     BrowserModule,  
@@ -84,6 +86,9 @@ import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
     MatInputModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
+    MatSelectModule,
+    NgxPaginationModule,
+  
   ],
   providers: [
     {

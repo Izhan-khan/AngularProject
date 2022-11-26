@@ -15,20 +15,28 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let UG_4year of UG_4yearList">
-                <td (dblclick)="onUG_4yearEdit(UG_4year,'AcademicYear')">
-                    <div *ngIf="UG_4year.enableEdit =='AcademicYear'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="UG_4year.AcademicYear" name="AcademicYear"
-                                placeholder="{{UG_4year.AcademicYear}}" id="AcademicYear">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
-                        </div>
-                    </div>
-                    <div *ngIf="UG_4year.enableEdit !=='AcademicYear'">
-                        {{UG_4year.AcademicYear}}
-                    </div>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label>Academic Year</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let academicYear of academicYearList" [value]="academicYear.academicYear">
+                                {{academicYear.academicYear}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+            </tr>
+            <tr *ngFor="let UG_4year of UG_4yearList | paginate: {id:'UG_4yearPagination',  itemsPerPage: UG_4yearItems, currentPage: UG_4yearCurrentPage }">
+                <td>
+                    {{UG_4year.AcademicYear}}
                 </td>
 
 
@@ -155,13 +163,13 @@
                         {{UG_4year.studentSelectedForHigerStudiesCount}}
                     </div>
                 </td>
-
-
-
             </tr>
-
         </tbody>
     </table>
+    <!--Including the pagination control.-->
+    <div style="text-align:right">
+        <pagination-controls id="UG_4yearPagination" (pageChange)="UG_4yearCurrentPage = $event"></pagination-controls>
+    </div>
 
     <div class="title mb-3">PG [2 Years Programm(s)] : Placement and higher studies for Previous 3 years</div>
     <table class="table table-hover table-bordered mb-3">
@@ -178,23 +186,28 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let PG_2year of PG_2yearList">
-                <td (dblclick)="onPG_2yearEdit(PG_2year,'AcademicYear')">
-                    <div *ngIf="PG_2year.enableEdit =='AcademicYear'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="PG_2year.AcademicYear" name="AcademicYear"
-                                placeholder="{{PG_2year.AcademicYear}}" id="AcademicYear">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
-                        </div>
-                    </div>
-                    <div *ngIf="PG_2year.enableEdit !=='AcademicYear'">
-                        {{PG_2year.AcademicYear}}
-                    </div>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label>Academic Year</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let academicYear of academicYearList" [value]="academicYear.academicYear">
+                                {{academicYear.academicYear}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </td>
-
-
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td><input type="number" class="form-control form-control-sm " value=""></td>
+            </tr>
+            <tr *ngFor="let PG_2year of PG_2yearList | paginate: {id:'PG_2yearPagination', itemsPerPage: PG_2yearItems, currentPage: PG_2yearCurrentPage }">
+                <td>
+                    {{PG_2year.AcademicYear}}
+                </td>
                 <td (dblclick)="onPG_2yearEdit(PG_2year,'firstYearStudentIntakeCount')">
                     <div *ngIf="PG_2year.enableEdit =='firstYearStudentIntakeCount'">
                         <div class="input-group">
@@ -209,8 +222,6 @@
                         {{PG_2year.firstYearStudentIntakeCount}}
                     </div>
                 </td>
-
-
                 <td (dblclick)="onPG_2yearEdit(PG_2year,'firstYearStudentAdmitted')">
                     <div *ngIf="PG_2year.enableEdit =='firstYearStudentAdmitted'">
                         <div class="input-group">
@@ -225,9 +236,6 @@
                         {{PG_2year.firstYearStudentAdmitted}}
                     </div>
                 </td>
-
-
-
                 <td (dblclick)="onPG_2yearEdit(PG_2year,'studentGraduatedInMinTimeCount')">
                     <div *ngIf="PG_2year.enableEdit =='studentGraduatedInMinTimeCount'">
                         <div class="input-group">
@@ -244,9 +252,6 @@
                         {{PG_2year.studentGraduatedInMinTimeCount}}
                     </div>
                 </td>
-
-
-
                 <td (dblclick)="onPG_2yearEdit(PG_2year,'studentPlacedCount')">
                     <div *ngIf="PG_2year.enableEdit =='studentPlacedCount'">
                         <div class="input-group">
@@ -261,8 +266,6 @@
                         {{PG_2year.studentPlacedCount}}
                     </div>
                 </td>
-
-
                 <td (dblclick)="onPG_2yearEdit(PG_2year,'  medianSalaryOfPlacedStudentCount')">
                     <div *ngIf="PG_2year.enableEdit =='  medianSalaryOfPlacedStudentCount'">
                         <div class="input-group">
@@ -286,8 +289,6 @@
                         </div>
                     </div>
                 </td>
-
-
                 <td (dblclick)="onPG_2yearEdit(PG_2year,'studentSelectedForHigerStudiesCount')">
                     <div *ngIf="PG_2year.enableEdit =='studentSelectedForHigerStudiesCount'">
                         <div class="input-group">
@@ -304,18 +305,19 @@
                         {{PG_2year.studentSelectedForHigerStudiesCount}}
                     </div>
                 </td>
-
-
         </tbody>
     </table>
+    <div style="text-align:right">
+        <pagination-controls id="PG_2yearPagination" (pageChange)="PG_2yearCurrentPage = $event"></pagination-controls>
+    </div>
 
     <div class="text-center">
-        <button class="btn btn-info mr-1" type="button"><i class="bi-arrow-left-square-fill"> Previous</i></button>
-        <button class="btn btn-default btn-block mr-1" type="button"
+        <button class="btn btn-info mr-1" (click)="previous()" type="button"><i class="bi-arrow-left-square-fill"> Previous</i></button>
+        <button class="btn btn-default mr-1" type="button"
             (click)="getUG_4yearListFromService(); getPG_2yearListFromService();"><i class="bi-arrow-clockwise">
                 Reset</i></button>
         <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>
-        <button class="btn btn-success mr-1" type="button"><i class="bi-arrow-right-square-fill"> Save &
+        <button class="btn btn-success mr-1" (click)="saveandnext()" type="button"><i class="bi-arrow-right-square-fill"> Save &
                 Next</i></button>
     </div>
 </form>

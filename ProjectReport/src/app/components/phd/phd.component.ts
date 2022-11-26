@@ -117,5 +117,26 @@ export class PhdComponent implements OnInit {
    
   }
 
+  previous(){
+    $('#phd-tab').removeClass('active');
+    $('#phd-tab-pane').removeClass('active');
+    $('#phd-tab-pane').removeClass('show');
+    $('#ugpg-tab').addClass('active');
+    $('#ugpg-tab').removeClass('disabled');
+    $('#ugpg-tab-pane').addClass('active');
+    $('#ugpg-tab-pane').addClass('show');
+  
+  }
+  saveandnext() {
+    //alert("click me")
+    $('#phd-tab').removeClass('active');
+    $('#phd-tab-pane').removeClass('active');
+    $('#phd-tab-pane').removeClass('show');
+    $('#research-tab').addClass('active');
+    $('#research-tab').removeClass('disabled');
+    $('#research-tab-pane').addClass('active');
+    $('#research-tab-pane').addClass('show');
+  }
+
 
 }

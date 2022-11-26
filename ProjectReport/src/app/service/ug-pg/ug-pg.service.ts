@@ -13,6 +13,10 @@ export class UgPgService {
     return this.http.get(`${baseUrl}/academicYear/getNameFromId/`+id);;
   }
 
+  public getAcademicYearList() {
+    return this.http.get(`${baseUrl}/academicYear/getList`);
+  }
+
   public getUG_4yearList(){
     return this.http.get(`${baseUrl}/ug_4year/getList`);;
   }

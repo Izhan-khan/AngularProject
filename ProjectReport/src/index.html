@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>ProjectReport</title>
   <!-- Jquery -->
-  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"
+    integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
 
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,20 +16,83 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+  </script>
 
 
+  <script>
+    $('.btnNext').click(function () {
+      $('.nav-pills .active').parent().next('li').find('a').trigger('click');
+    });
 
-  <script> 
-$('.btnNext').click(function() {
-    $('.nav-pills .active').parent().next('li').find('a').trigger('click');
-});
+    $('.btnPrevious').click(function () {
+      $('.nav-pills .active').parent().prev('li').find('a').trigger('click');
+    });
+  </script>
 
-$('.btnPrevious').click(function() {
-    $('.nav-pills .active').parent().prev('li').find('a').trigger('click');
-});
+  <script>
+    $(document).ready(function () {
+      // Denotes total number of rows
+      var rowIdx = 0;
+      // jQuery button click event to add a row
+      $('#addBtn').on('click', function () {
+        // Adding a row inside the tbody.
+        $('#tbody').append(`<tr> 
+          <div class="input-group  ">
+                <td>
+                  <div class="input-group  ">
+                <input type="number" class="form-control form-control-sm" >
+                <button type="button" class="btn btn-sm btn-success mx-2 rounded-circle"">
+                  <i class="bi bi-check2"></i></button>
+              </div>
+            
+                </td>  
+                <td class="text-center">
+                  <button class="btn btn-danger remove btn-sm"
+                    type="button">Remove</button>
+                  </td>
+                </tr>`);
+      });
+      // jQuery button click event to remove a row.
+      $('#tbody').on('click', '.remove', function () {
+        // Getting all the rows next to the row
+        // containing the clicked button
+        var child = $(this).closest('tr').nextAll();
+        // Iterating across all the rows 
+        // obtained to change the index
+        child.each(function () {
+          // Getting <tr> id.
+          var id = $(this).attr('id');
+          // Getting the <p> inside the .row-index class.
+          var idx = $(this).children('.row-index').children('p');
+          // Gets the row number from <tr> id.
+          var dig = parseInt(id.substring(1));
+          // Modifying row index.
+          idx.html(`Row ${dig - 1}`);
+          // Modifying row id.
+          $(this).attr('id', `R${dig - 1}`);
+        });
+        // Removing the current row.
+        $(this).closest('tr').remove();
+        // Decreasing total number of rows by 1.
+        rowIdx--;
+      });
+    });
   </script>
 </head>
+
 <body class="mat-typography">
   <app-root></app-root>
 </body>
+
 </html>

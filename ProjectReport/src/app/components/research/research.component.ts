@@ -119,5 +119,28 @@ export class ResearchComponent implements OnInit {
   
 
 
+  previous(){
+    $('#research-tab').removeClass('active');
+    $('#research-tab-pane').removeClass('active');
+    $('#research-tab-pane').removeClass('show');
+    $('#phd-tab').addClass('active');
+    $('#phd-tab').removeClass('disabled');
+    $('#phd-tab-pane').addClass('active');
+    $('#phd-tab-pane').addClass('show');
+  
+  }
+  saveandnext() {
+    //alert("click me")
+    $('#research-tab').removeClass('active');
+    $('#research-tab-pane').removeClass('active');
+    $('#research-tab-pane').removeClass('show');
+    $('#pcs-tab').addClass('active');
+    $('#pcs-tab').removeClass('disabled');
+    $('#pcs-tab-pane').addClass('active');
+    $('#pcs-tab-pane').addClass('show');
+  }
+
+
+
 
 }

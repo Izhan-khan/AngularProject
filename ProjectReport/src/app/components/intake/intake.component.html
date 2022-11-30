@@ -1,11 +1,18 @@
-<form (ngSubmit)="addSanctionIntakeList(sanctionIntakeList) ; addTotalStudentsList(totalStudentsList);">
+<form 
+(ngSubmit)="addSanctionIntakeList(sanctionIntakeList,sanctionIntakeInput) ;  
+              addTotalStudentsList(totalStudentsList,totalStudentInput)">
+
   <h4 style="text-align: center; color: green;" *ngIf="successMsg">{{successMsg}}</h4>
-  <div class="title mb-3">Saction (Approved) Intake
-    <!-- <button class="btn btn-dark btn-sm" style="align-items:flex-end" 
+  
+  <h4 style="text-align: center;">{{intakeForm.valid}}</h4>
+  <h4 style="text-align: center;"></h4>
+  
+  <div class="title mb-3">Saction (Approved) Intake </div>
+  <!-- <button class="btn btn-dark btn-sm" style="align-items:flex-end" 
     id="addBtn" type="button">
       Add new Row
   </button> -->
-  </div>
+
 
   <div style="overflow-x:scroll; overflow: auto">
     <table class="table table-hover table-bordered mb-3" cellspacing="0">
@@ -25,21 +32,73 @@
           <td>
             <mat-form-field appearance="fill" style="width: 100%;">
               <mat-label>Academic Year</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let program of programList" [value]="program.programName">
+              <mat-select (selectionChange)="onSactionIntake_programId_Change($event)" [(ngModel)]="sanctionIntakeInput.programId" 
+                  name="programId" id="programId"  [formControl]="sactionIntake_programId">
+                <mat-option *ngFor="let program of programList" [value]="program.id">
                   {{program.programName}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td>
+            <input type="text" class="form-control form-control-sm " [(ngModel)]="sanctionIntakeInput._2020_21_Count"
+              name="sanctionIntakeInput._2020_21_Count" id="sanctionIntakeInput._2020_21_Count"
+              [formControl]="sactionIntake_2020_21_Count" >
+            <p *ngIf="sactionIntake_2020_21_Count && sactionIntake_programId.touched 
+                && sactionIntake_2020_21_Count?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm " [(ngModel)]="sanctionIntakeInput._2019_20_Count"
+              name="sanctionIntakeInput._2019_20_Count" id="sanctionIntakeInput._2019_20_Count"
+               [formControl]="sactionIntake_2019_20_Count" >
+              <p *ngIf="sactionIntake_2019_20_Count && sactionIntake_programId.touched 
+                  && sactionIntake_2019_20_Count?.hasError('required') " class="text-danger"
+                style="text-align: left ;">Field is Required
+              </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm " [(ngModel)]="sanctionIntakeInput._2018_19_Count"
+              name="sanctionIntakeInput._2018_19_Count" id="sanctionIntakeInput._2018_19_Count"
+              [formControl]="sactionIntake_2018_19_Count" >
+            <p *ngIf="sactionIntake_2018_19_Count && sactionIntake_programId.touched 
+                && sactionIntake_2018_19_Count?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm " [(ngModel)]="sanctionIntakeInput._2017_18_Count"
+              name="sanctionIntakeInput._2017_18_Count" id="sanctionIntakeInput._2017_18_Count"
+              [formControl]="sactionIntake_2017_18_Count" >
+            <p *ngIf="sactionIntake_2017_18_Count && sactionIntake_programId.touched 
+                && sactionIntake_2017_18_Count?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm " [(ngModel)]="sanctionIntakeInput._2016_17_Count"
+              name="sanctionIntakeInput._2016_17_Count" id="sanctionIntakeInput._2016_17_Count"
+              [formControl]="sactionIntake_2016_17_Count" >
+            <p *ngIf="sactionIntake_2016_17_Count && sactionIntake_programId.touched 
+                && sactionIntake_2016_17_Count?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm " [(ngModel)]="sanctionIntakeInput._2015_16_Count"
+              name="sanctionIntakeInput._2015_16_Count" id="sanctionIntakeInput._2015_16_Count"
+              [formControl]="sactionIntake_2015_16_Count" >
+            <p *ngIf="sactionIntake_2015_16_Count && sactionIntake_programId.touched 
+                && sactionIntake_2015_16_Count?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+
         </tr>
-        <tr *ngFor="let sanctionIntake of sanctionIntakeList | paginate: {id:'sactionIntakePagination', itemsPerPage: sactionIntakeItems, currentPage: sactionIntakeCurrentPage }">
+        <tr
+          *ngFor="let sanctionIntake of sanctionIntakeList | paginate: 
+              {id:'sactionIntakePagination', itemsPerPage: sactionIntakeItems, currentPage: sactionIntakeCurrentPage }">
           <td>
             <div>
               {{sanctionIntake.programName}}
@@ -132,7 +191,8 @@
   </div>
   <!--Including the pagination control.-->
   <div style="text-align:right">
-    <pagination-controls id="sactionIntakePagination" (pageChange)="sactionIntakeCurrentPage = $event"></pagination-controls>
+    <pagination-controls id="sactionIntakePagination" (pageChange)="sactionIntakeCurrentPage = $event">
+    </pagination-controls>
   </div>
 
 
@@ -170,27 +230,132 @@
           <td>
             <mat-form-field appearance="fill" style="width: 100%;">
               <mat-label>Academic Year</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let program of programList" [value]="program.programName">
+              <mat-select (selectionChange)="onTotalStudent_programId_Change($event)" [(ngModel)]="totalStudentInput.programId" name="programId" id="programId"
+              [formControl]="totalStudent_programId">
+                <mat-option *ngFor="let program of programList" [value]="program.id">
                   {{program.programName}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
-          <td><input type="number" class="form-control form-control-sm " value=""></td>
+          <td>
+            <input type="number" class="form-control form-control-sm " [(ngModel)]="totalStudentInput.noOfMaleStudents"
+              name="totalStudentInput.noOfMaleStudents" id="totalStudentInput.noOfMaleStudents"
+              [formControl]="totalStudent_noOfMaleStudents" >
+            <p *ngIf="totalStudent_noOfMaleStudents && totalStudent_programId.touched 
+                && totalStudent_noOfMaleStudents?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm "
+              [(ngModel)]="totalStudentInput.noOfFemaleStudents" name="totalStudentInput.noOfFemaleStudents"
+              id="totalStudentInput.noOfFemaleStudents"
+              [formControl]="totalStudent_noOfFemaleStudents" >
+            <p *ngIf="totalStudent_noOfFemaleStudents && totalStudent_programId.touched 
+                && totalStudent_noOfFemaleStudents?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" [disabled]="true" class="form-control form-control-sm "
+              value="{{totalStudentInput.noOfMaleStudents+totalStudentInput.noOfFemaleStudents}}">
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm " [(ngModel)]="totalStudentInput.withinState"
+              name="totalStudentInput.withinState" id="totalStudentInput.withinState"
+              [formControl]="totalStudent_withinState" >
+            <p *ngIf="totalStudent_withinState && totalStudent_programId.touched 
+                && totalStudent_withinState?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm " [(ngModel)]="totalStudentInput.outsideState"
+              name="totalStudentInput.outsideState" id="totalStudentInput.outsideState"
+              [formControl]="totalStudent_outsideState" >
+            <p *ngIf="totalStudent_outsideState && totalStudent_programId.touched 
+                && totalStudent_outsideState?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+              
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm " [(ngModel)]="totalStudentInput.outsideCountry"
+              name="totalStudentInput.outsideCountry" id="totalStudentInput.outsideCountry"
+              [formControl]="totalStudent_outsideCountry" >
+            <p *ngIf="totalStudent_outsideCountry && totalStudent_programId.touched 
+                && totalStudent_outsideCountry?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm "
+              [(ngModel)]="totalStudentInput.economicallyBackward" name="totalStudentInput.economicallyBackward"
+              id="totalStudentInput.economicallyBackward"
+              [formControl]="totalStudent_economicallyBackward" >
+            <p *ngIf="totalStudent_economicallyBackward && totalStudent_programId.touched 
+                && totalStudent_economicallyBackward?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm "
+              [(ngModel)]="totalStudentInput.sociallyChallenged" name="totalStudentInput.sociallyChallenged"
+              id="totalStudentInput.sociallyChallenged"
+              [formControl]="totalStudent_sociallyChallenged" >
+            <p *ngIf="totalStudent_sociallyChallenged && totalStudent_programId.touched 
+                && totalStudent_sociallyChallenged?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm "
+              [(ngModel)]="totalStudentInput.recievedFeeStateAndCentralGovernment"
+              name="totalStudentInput.recievedFeeStateAndCentralGovernment"
+              id="totalStudentInput.recievedFeeStateAndCentralGovernment"
+              [formControl]="totalStudent_recievedFeeStateAndCentralGovernment" >
+            <p *ngIf="totalStudent_recievedFeeStateAndCentralGovernment && totalStudent_programId.touched 
+                && totalStudent_recievedFeeStateAndCentralGovernment?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm "
+              [(ngModel)]="totalStudentInput.recievedFeeFromInstitutionalFunds"
+              name="totalStudentInput.recievedFeeFromInstitutionalFunds"
+              id="totalStudentInput.recievedFeeFromInstitutionalFunds"
+              [formControl]="totalStudent_recievedFeeFromInstitutionalFunds" >
+            <p *ngIf="totalStudent_recievedFeeFromInstitutionalFunds && totalStudent_programId.touched 
+                && totalStudent_recievedFeeFromInstitutionalFunds?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm "
+              [(ngModel)]="totalStudentInput.recievedFeeFromPrivateBodies"
+              name="totalStudentInput.recievedFeeFromPrivateBodies" id="totalStudentInput.recievedFeeFromPrivateBodies"
+              [formControl]="totalStudent_recievedFeeFromPrivateBodies" >
+            <p *ngIf="totalStudent_recievedFeeFromPrivateBodies && totalStudent_programId.touched 
+                && totalStudent_recievedFeeFromPrivateBodies?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm "
+              [(ngModel)]="totalStudentInput.notRecievedFeeReimbursement"
+              name="totalStudentInput.notRecievedFeeReimbursement" id="totalStudentInput.notRecievedFeeReimbursement"
+              [formControl]="totalStudent_notRecievedFeeReimbursement" >
+            <p *ngIf="totalStudent_notRecievedFeeReimbursement && totalStudent_programId.touched 
+                && totalStudent_notRecievedFeeReimbursement?.hasError('required') " class="text-danger"
+              style="text-align: left ;">Field is Required
+            </p>
+          </td>
         </tr>
-        <tr *ngFor="let totalStudent of totalStudentsList | paginate: {id:'totalStudentPagination', itemsPerPage: totalStudentsItems, currentPage: totalStudentsCurrentPage }">
+
+        <tr
+          *ngFor="let totalStudent of totalStudentsList | paginate: 
+              {id:'totalStudentPagination', itemsPerPage: totalStudentsItems, currentPage: totalStudentsCurrentPage }">
           <td>
             <div>
               {{totalStudent.programName}}
@@ -228,7 +393,7 @@
             </div>
           </td>
           <td>
-            <div>
+            <div name="totalStudents" id="totalStudents">
               {{totalStudent.noOfMaleStudents+totalStudent.noOfFemaleStudents}}
             </div>
           </td>
@@ -401,7 +566,8 @@
 
   <!--Including the pagination control.-->
   <div style="text-align:right">
-    <pagination-controls id="totalStudentPagination" (pageChange)="totalStudentsCurrentPage = $event"></pagination-controls>
+    <pagination-controls id="totalStudentPagination" (pageChange)="totalStudentsCurrentPage = $event">
+    </pagination-controls>
   </div>
 
 

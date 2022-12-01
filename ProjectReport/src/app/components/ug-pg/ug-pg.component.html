@@ -1,4 +1,4 @@
-<form (ngSubmit)="addUG_4yearList(UG_4yearList); addPG_2yearList(PG_2yearList)">
+<form (ngSubmit)="addUG_4yearList(UG_4yearList,UG_4year_Input); addPG_2yearList(PG_2yearList,PG_2year_Input)">
     <div class="title mb-3">UG [4 Years Programm(s)] : Placement and higher studies for Previous 3 years</div>
     <h4 style="text-align: center; color: green;" *ngIf="successMsg">{{successMsg}}</h4>
     <table class="table table-hover table-bordered mb-3">
@@ -8,7 +8,7 @@
                 <th class="text-center headerbg  align-top">No. of first year students intake in the years</th>
                 <th class="text-center headerbg align-top">No. of first year students admitted in the years</th>
                 <th class="text-center headerbg align-top">No. of students admitted through lateral entry</th>
-                <th class="text-center headerbg align-top">No ofStudent graduating in minimum stipulated time </th>
+                <th class="text-center headerbg align-top">No of student graduating in minimum stipulated time </th>
                 <th class="text-center headerbg align-top">No. of students placed</th>
                 <th class="text-center headerbg align-top">Median salary of placed graduates (Amount in Rs.)</th>
                 <th class="text-center headerbg align-top">No. of students selected for higher studies</th>
@@ -19,22 +19,81 @@
                 <td>
                     <mat-form-field appearance="fill" style="width: 100%;">
                         <mat-label>Academic Year</mat-label>
-                        <mat-select>
-                            <mat-option *ngFor="let academicYear of academicYearList" [value]="academicYear.academicYear">
+                        <mat-select [(ngModel)]="UG_4year_Input.AcademicYear"
+                            [formControl]="UG_4year_InputForm_AcademicYear">
+                            <mat-option *ngFor="let academicYear of academicYearList"
+                                [value]="academicYear.academicYear">
                                 {{academicYear.academicYear}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="UG_4year_Input.firstYearStudentIntakeCount" name="UG_4year_Input.firstYearStudentIntakeCount"
+                        id="UG_4year_Input.firstYearStudentIntakeCount" [formControl]="UG_4year_InputForm_firstYearStudentIntakeCount">
+                    <p *ngIf="UG_4year_InputForm_firstYearStudentIntakeCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_firstYearStudentIntakeCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="UG_4year_Input.firstYearStudentAdmittedCount" name="UG_4year_Input.firstYearStudentAdmittedCount"
+                        id="UG_4year_Input.firstYearStudentAdmittedCount" [formControl]="UG_4year_InputForm_firstYearStudentAdmittedCount">
+                    <p *ngIf="UG_4year_InputForm_firstYearStudentAdmittedCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_firstYearStudentAdmittedCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="UG_4year_Input.lateralEntryStudentCount" name="UG_4year_Input.lateralEntryStudentCount"
+                        id="UG_4year_Input.lateralEntryStudentCount" [formControl]="UG_4year_InputForm_lateralEntryStudentCount">
+                    <p *ngIf="UG_4year_InputForm_lateralEntryStudentCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_lateralEntryStudentCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="UG_4year_Input.studentGraduatedInMinTimeCount" name="UG_4year_Input.studentGraduatedInMinTimeCount"
+                        id="UG_4year_Input.studentGraduatedInMinTimeCount" [formControl]="UG_4year_InputForm_studentGraduatedInMinTimeCount">
+                    <p *ngIf="UG_4year_InputForm_studentGraduatedInMinTimeCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_studentGraduatedInMinTimeCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="UG_4year_Input.studentPlacedCount" name="UG_4year_Input.studentPlacedCount"
+                        id="UG_4year_Input.studentPlacedCount" [formControl]="UG_4year_InputForm_studentPlacedCount">
+                    <p *ngIf="UG_4year_InputForm_studentPlacedCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_studentPlacedCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="UG_4year_Input.medianSalaryOfPlacedStudentCount" name="UG_4year_Input.medianSalaryOfPlacedStudentCount"
+                        id="UG_4year_Input.medianSalaryOfPlacedStudentCount" [formControl]="UG_4year_InputForm_medianSalaryOfPlacedStudentCount">
+                    <p *ngIf="UG_4year_InputForm_medianSalaryOfPlacedStudentCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_medianSalaryOfPlacedStudentCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="UG_4year_Input.studentSelectedForHigerStudiesCount" name="UG_4year_Input.studentSelectedForHigerStudiesCount"
+                        id="UG_4year_Input.studentSelectedForHigerStudiesCount" [formControl]="UG_4year_InputForm_studentSelectedForHigerStudiesCount">
+                    <p *ngIf="UG_4year_InputForm_studentSelectedForHigerStudiesCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_studentSelectedForHigerStudiesCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
             </tr>
-            <tr *ngFor="let UG_4year of UG_4yearList | paginate: {id:'UG_4yearPagination',  itemsPerPage: UG_4yearItems, currentPage: UG_4yearCurrentPage }">
+            <tr
+                *ngFor="let UG_4year of UG_4yearList | paginate: {id:'UG_4yearPagination',  itemsPerPage: UG_4yearItems, currentPage: UG_4yearCurrentPage }">
                 <td>
                     {{UG_4year.AcademicYear}}
                 </td>
@@ -190,21 +249,72 @@
                 <td>
                     <mat-form-field appearance="fill" style="width: 100%;">
                         <mat-label>Academic Year</mat-label>
-                        <mat-select>
-                            <mat-option *ngFor="let academicYear of academicYearList" [value]="academicYear.academicYear">
+                        <mat-select [(ngModel)]="PG_2year_Input.AcademicYear"
+                            [formControl]="PG_2year_InputForm_AcademicYear">
+                            <mat-option *ngFor="let academicYear of academicYearList"
+                                [value]="academicYear.academicYear">
                                 {{academicYear.academicYear}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
-                <td><input type="number" class="form-control form-control-sm " value=""></td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PG_2year_Input.firstYearStudentIntakeCount" name="PG_2year_Input.firstYearStudentIntakeCount"
+                        id="PG_2year_Input.firstYearStudentIntakeCount" [formControl]="PG_2year_InputForm_firstYearStudentIntakeCount">
+                    <p *ngIf="PG_2year_InputForm_firstYearStudentIntakeCount && PG_2year_InputForm_AcademicYear.touched 
+                         && PG_2year_InputForm_firstYearStudentIntakeCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PG_2year_Input.firstYearStudentAdmitted" name="PG_2year_Input.firstYearStudentAdmitted"
+                        id="PG_2year_Input.firstYearStudentAdmitted" [formControl]="PG_2year_InputForm_firstYearStudentAdmitted">
+                    <p *ngIf="PG_2year_InputForm_firstYearStudentAdmitted && PG_2year_InputForm_AcademicYear.touched 
+                         && PG_2year_InputForm_firstYearStudentAdmitted ?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PG_2year_Input.studentGraduatedInMinTimeCount" name="PG_2year_Input.studentGraduatedInMinTimeCount"
+                        id="PG_2year_Input.studentGraduatedInMinTimeCount" [formControl]="PG_2year_InputForm_studentGraduatedInMinTimeCount">
+                    <p *ngIf="PG_2year_InputForm_studentGraduatedInMinTimeCount && PG_2year_InputForm_AcademicYear.touched 
+                         && PG_2year_InputForm_studentGraduatedInMinTimeCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PG_2year_Input.studentPlacedCount" name="PG_2year_Input.studentPlacedCount"
+                        id="PG_2year_Input.studentPlacedCount" [formControl]="PG_2year_InputForm_studentPlacedCount">
+                    <p *ngIf="PG_2year_InputForm_studentPlacedCount && PG_2year_InputForm_AcademicYear.touched 
+                         && PG_2year_InputForm_studentPlacedCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PG_2year_Input.medianSalaryOfPlacedStudentCount" name="PG_2year_Input.medianSalaryOfPlacedStudentCount"
+                        id="PG_2year_Input.medianSalaryOfPlacedStudentCount" [formControl]="PG_2year_InputForm_medianSalaryOfPlacedStudentCount">
+                    <p *ngIf="PG_2year_InputForm_medianSalaryOfPlacedStudentCount && PG_2year_InputForm_AcademicYear.touched 
+                         && PG_2year_InputForm_medianSalaryOfPlacedStudentCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PG_2year_Input.studentSelectedForHigerStudiesCount" name="PG_2year_Input.studentSelectedForHigerStudiesCount"
+                        id="UG_4year_Input.studentSelectedForHigerStudiesCount" [formControl]="PG_2year_InputForm_studentSelectedForHigerStudiesCount">
+                    <p *ngIf="PG_2year_InputForm_studentSelectedForHigerStudiesCount && PG_2year_InputForm_AcademicYear.touched 
+                         && PG_2year_InputForm_studentSelectedForHigerStudiesCount?.hasError('required') " class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+                </td>
             </tr>
-            <tr *ngFor="let PG_2year of PG_2yearList | paginate: {id:'PG_2yearPagination', itemsPerPage: PG_2yearItems, currentPage: PG_2yearCurrentPage }">
+            <tr
+                *ngFor="let PG_2year of PG_2yearList | paginate: {id:'PG_2yearPagination', itemsPerPage: PG_2yearItems, currentPage: PG_2yearCurrentPage }">
                 <td>
                     {{PG_2year.AcademicYear}}
                 </td>
@@ -312,12 +422,14 @@
     </div>
 
     <div class="text-center">
-        <button class="btn btn-info mr-1" (click)="previous()" type="button"><i class="bi-arrow-left-square-fill"> Previous</i></button>
+        <button class="btn btn-info mr-1" (click)="previous()" type="button"><i class="bi-arrow-left-square-fill">
+                Previous</i></button>
         <button class="btn btn-default mr-1" type="button"
             (click)="getUG_4yearListFromService(); getPG_2yearListFromService();"><i class="bi-arrow-clockwise">
                 Reset</i></button>
         <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>
-        <button class="btn btn-success mr-1" (click)="saveandnext()" type="button"><i class="bi-arrow-right-square-fill"> Save &
+        <button class="btn btn-success mr-1" (click)="saveandnext()" type="button"><i
+                class="bi-arrow-right-square-fill"> Save &
                 Next</i></button>
     </div>
 </form>

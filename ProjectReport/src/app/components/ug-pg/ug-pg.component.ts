@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { data } from 'jquery';
 import { UgPgService } from 'src/app/service/ug-pg/ug-pg.service';
 
@@ -20,7 +21,51 @@ export class UgPgComponent implements OnInit {
 
   public UG_4yearList: any;
   public PG_2yearList: any;
-  public academicYearList :any;
+  public academicYearList: any;
+
+
+  public UG_4year_Input: any = {
+    AcademicYear: "",
+    firstYearStudentIntakeCount: "",
+    firstYearStudentAdmittedCount: "",
+    lateralEntryStudentCount: "",
+    studentGraduatedInMinTimeCount: "",
+    studentPlacedCount: "",
+    medianSalaryOfPlacedStudentCount: "",
+    studentSelectedForHigerStudiesCount: ""
+  }
+  public PG_2year_Input: any = {
+    AcademicYear: "",
+    firstYearStudentIntakeCount: "",
+    firstYearStudentAdmitted: "",
+    studentGraduatedInMinTimeCount: "",
+    studentPlacedCount: "",
+    medianSalaryOfPlacedStudentCount: "",
+    studentSelectedForHigerStudiesCount: ""
+  }
+
+
+  // Input form control
+  UG_4year_InputForm_AcademicYear = new FormControl()
+  UG_4year_InputForm_firstYearStudentIntakeCount = new FormControl("", [Validators.required])
+  UG_4year_InputForm_firstYearStudentAdmittedCount = new FormControl("", [Validators.required])
+  UG_4year_InputForm_lateralEntryStudentCount = new FormControl("", [Validators.required])
+  UG_4year_InputForm_studentGraduatedInMinTimeCount = new FormControl("", [Validators.required])
+  UG_4year_InputForm_studentPlacedCount = new FormControl("", [Validators.required])
+  UG_4year_InputForm_medianSalaryOfPlacedStudentCount = new FormControl("", [Validators.required])
+  UG_4year_InputForm_studentSelectedForHigerStudiesCount = new FormControl("", [Validators.required])
+
+  PG_2year_InputForm_AcademicYear = new FormControl()
+  PG_2year_InputForm_firstYearStudentIntakeCount = new FormControl("", [Validators.required])
+  PG_2year_InputForm_firstYearStudentAdmitted = new FormControl("", [Validators.required])
+  PG_2year_InputForm_studentGraduatedInMinTimeCount = new FormControl("", [Validators.required])
+  PG_2year_InputForm_studentPlacedCount = new FormControl("", [Validators.required])
+  PG_2year_InputForm_medianSalaryOfPlacedStudentCount = new FormControl("", [Validators.required])
+  PG_2year_InputForm_studentSelectedForHigerStudiesCount = new FormControl("", [Validators.required])
+
+
+
+
 
   constructor(private ugPgService: UgPgService) { }
 
@@ -33,14 +78,14 @@ export class UgPgComponent implements OnInit {
   public getAcademicYear(id: number) {
     return this.ugPgService.getAcademicYearById(id);
   }
-  
+
   public getAcademicYearList() {
     return this.ugPgService.getAcademicYearList().subscribe(
-      (data)=>{
-        this.academicYearList=data;
+      (data) => {
+        this.academicYearList = data;
         console.log(data);
-        
-      },(error)=>{
+
+      }, (error) => {
         console.log(error);
       }
     );
@@ -67,15 +112,44 @@ export class UgPgComponent implements OnInit {
     )
   }
 
-  addUG_4yearList(UG_4yearList: any) {
-    this.ugPgService.addUG_4yearList(UG_4yearList).subscribe(
-      (data) => {
-        this.successMsg = "Data Inserted"
-        this.getUG_4yearListFromService();
-      }, (error) => {
-        console.log(error);
-        this.errorMsg = "Something is wrong"
-      });
+  addUG_4yearList(UG_4yearList: any, UG_4year_Input: any) {
+
+    if (UG_4year_Input.AcademicYear != "" && UG_4year_Input.firstYearStudentIntakeCount != ""
+      && UG_4year_Input.firstYearStudentAdmittedCount != "" && UG_4year_Input.lateralEntryStudentCount != ""
+      && UG_4year_Input.studentGraduatedInMinTimeCount != "" && UG_4year_Input.studentPlacedCount != ""
+      && UG_4year_Input.medianSalaryOfPlacedStudentCount != "" && UG_4year_Input.studentSelectedForHigerStudiesCount != "") {
+
+      this.UG_4yearList.push(UG_4year_Input);
+      this.ugPgService.addUG_4yearList(UG_4yearList).subscribe(
+        (data) => {
+          console.warn("UG 4 year Adding : ", UG_4yearList);
+          this.successMsg = "Data Inserted"
+          setTimeout(() => { this.successMsg = ""; }, 7000);
+          this.UG_4yearList = UG_4yearList;
+          this.getUG_4yearListFromService();
+        }, (error) => {
+          console.log(error);
+          this.errorMsg = "Something is wrong"
+        });
+    }
+
+    if (UG_4year_Input.AcademicYear == "" && UG_4year_Input.firstYearStudentIntakeCount == ""
+      && UG_4year_Input.firstYearStudentAdmittedCount == "" && UG_4year_Input.lateralEntryStudentCount == ""
+      && UG_4year_Input.studentGraduatedInMinTimeCount == "" && UG_4year_Input.studentPlacedCount == ""
+      && UG_4year_Input.medianSalaryOfPlacedStudentCount == "" && UG_4year_Input.studentSelectedForHigerStudiesCount == "") {
+
+      this.ugPgService.addUG_4yearList(UG_4yearList).subscribe(
+        (data) => {
+          console.warn("UG 4 year Adding : ", UG_4yearList);
+          this.successMsg = "Data Inserted"
+          setTimeout(() => { this.successMsg = ""; }, 7000);
+          this.UG_4yearList = UG_4yearList;
+          this.getUG_4yearListFromService();
+        }, (error) => {
+          console.log(error);
+          this.errorMsg = "Something is wrong"
+        });
+    }
   }
 
   onUG_4yearEdit(item: any, attribute: any) {
@@ -113,15 +187,44 @@ export class UgPgComponent implements OnInit {
     )
   }
 
-  addPG_2yearList(PG_2yearList: any) {
-    this.ugPgService.addPG_2yearList(PG_2yearList).subscribe(
-      (data) => {
-        this.successMsg = "Data Inserted"
-        this.getPG_2yearListFromService();
-      }, (error) => {
-        console.log(error);
-        this.errorMsg = "Something is wrong"
-      });
+  addPG_2yearList(PG_2yearList: any,PG_2year_Input:any) {
+    
+      if (PG_2year_Input.AcademicYear != "" && PG_2year_Input.firstYearStudentIntakeCount != ""
+      && PG_2year_Input.firstYearStudentAdmittedCount != ""  && PG_2year_Input.studentGraduatedInMinTimeCount != "" 
+      && PG_2year_Input.studentPlacedCount != "" && PG_2year_Input.medianSalaryOfPlacedStudentCount != ""
+       && PG_2year_Input.studentSelectedForHigerStudiesCount != "") {
+
+      this.PG_2yearList.push(PG_2year_Input);
+      this.ugPgService.addPG_2yearList(PG_2yearList).subscribe(
+        (data) => {
+          console.warn("UG 4 year Adding : ", PG_2yearList);
+          this.successMsg = "Data Inserted"
+          setTimeout(() => { this.successMsg = ""; }, 7000);
+          this.PG_2yearList = PG_2yearList;
+          this.getPG_2yearListFromService();
+        }, (error) => {
+          console.log(error);
+          this.errorMsg = "Something is wrong"
+        });
+    }
+
+    if (PG_2year_Input.AcademicYear == "" && PG_2year_Input.firstYearStudentIntakeCount == ""
+      && PG_2year_Input.firstYearStudentAdmittedCount == "" && PG_2year_Input.studentGraduatedInMinTimeCount == "" 
+      && PG_2year_Input.studentPlacedCount == ""  && PG_2year_Input.medianSalaryOfPlacedStudentCount == ""
+       && PG_2year_Input.studentSelectedForHigerStudiesCount == "") {
+
+      this.ugPgService.addPG_2yearList(PG_2yearList).subscribe(
+        (data) => {
+          console.warn("UG 4 year Adding : ", PG_2yearList);
+          this.successMsg = "Data Inserted"
+          setTimeout(() => { this.successMsg = ""; }, 7000);
+          this.PG_2yearList = PG_2yearList;
+          this.getPG_2yearListFromService();
+        }, (error) => {
+          console.log(error);
+          this.errorMsg = "Something is wrong"
+        });
+    }
   }
 
   onPG_2yearEdit(item: any, attribute: any) {
@@ -135,7 +238,7 @@ export class UgPgComponent implements OnInit {
     item.enableEdit = "";
   }
 
-  previous(){
+  previous() {
     $('#ugpg-tab').removeClass('active');
     $('#ugpg-tab-pane').removeClass('active');
     $('#ugpg-tab-pane').removeClass('show');
@@ -143,7 +246,7 @@ export class UgPgComponent implements OnInit {
     $('#intake-tab').removeClass('disabled');
     $('#intake-tab-pane').addClass('active');
     $('#intake-tab-pane').addClass('show');
-  
+
   }
   saveandnext() {
     //alert("click me")

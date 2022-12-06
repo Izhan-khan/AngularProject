@@ -19,10 +19,10 @@
           </div>
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <select class="form-control form-control-lg"  [(ngModel)]="university.name" name="name" id="name" 
-              formControlName="name"  required>
+            <select class="form-control form-control-lg"  [(ngModel)]="university.uId" name="uId" id="uId" 
+              formControlName="uId"  required>
               <option value="" selected disabled>Choose University</option>
-              <option  *ngFor="let university of universityNameList">
+              <option  *ngFor="let university of universityNameList" [value]="university[0]">
                 {{university[1]}}
              </option>
             </select>

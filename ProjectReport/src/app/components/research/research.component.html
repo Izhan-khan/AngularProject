@@ -21,9 +21,9 @@
 
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let SponsoredResearchDetails of SponsoredResearchDetailsList let i = index">
 
-            <tr *ngFor="let SponsoredResearchDetails of SponsoredResearchDetailsList">
+            <tr>
                 
                 <td id="tdId">{{SponsoredResearchDetails.researchDetails}}</td>
                 <td (dblclick)="onSponsoredResearchDetailsListEdit(SponsoredResearchDetails,'_2020_2021_count')">
@@ -71,10 +71,14 @@
                         {{SponsoredResearchDetails._2018_2019_count}}
                     </div>
                 </td>
+    
 
             </tr>
             <tr>
-                <td>Amount received in words</td>
+                <td *ngIf="i==2">Amount received in words</td>
+                <td *ngIf="i==2">{{SponsoredResearchDetails._2020_2021_count|numberToWords}}</td>
+                <td *ngIf="i==2">{{SponsoredResearchDetails._2019_2020_count|numberToWords}}</td>
+                <td *ngIf="i==2">{{SponsoredResearchDetails._2018_2019_count|numberToWords}}</td>
             </tr>
 
         </tbody>
@@ -91,8 +95,8 @@
 
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let ConsultingProjectDetails of ConsultingProjectDetailsList">
+        <tbody *ngFor="let ConsultingProjectDetails of ConsultingProjectDetailsList let i = index">
+            <tr>
                 <td>{{ConsultingProjectDetails.researchDetails}}</td>
                 <td (dblclick)="onConsultingProjectDetailsListEdit(ConsultingProjectDetails,'_2020_2021_count')">
                     <div *ngIf="ConsultingProjectDetails.enableEdit =='_2020_2021_count'">
@@ -141,7 +145,10 @@
                 </td>
             </tr>
             <tr>
-                <td>Amount received in words</td>
+                <td *ngIf="i==2">Amount received in words</td>
+                <td *ngIf="i==2">{{ConsultingProjectDetails._2020_2021_count|numberToWords}}</td>
+                <td *ngIf="i==2">{{ConsultingProjectDetails._2019_2020_count|numberToWords}}</td>
+                <td *ngIf="i==2">{{ConsultingProjectDetails._2018_2019_count|numberToWords}}</td>
             </tr>
         </tbody>
     </table>

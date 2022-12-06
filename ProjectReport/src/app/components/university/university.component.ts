@@ -12,7 +12,7 @@ import { UniversityService } from 'src/app/service/university/university.service
 export class UniversityComponent implements OnInit {
 
   public university: any = {
-    name: "",
+    uId: "",
     password: "",
     token:""
   }
@@ -29,15 +29,15 @@ export class UniversityComponent implements OnInit {
     this.getUniversityNames();
 
     this.universityLoginForm = new FormGroup({
-      'name': new FormControl("", [Validators.required]),
+      'uId': new FormControl("", [Validators.required]),
       'password': new FormControl("", [Validators.required])
     })
 
     sessionStorage.setItem("token",this.university.token)
   }
 
-  get name() {
-    return this.universityLoginForm.get('username');
+  get uId() {
+    return this.universityLoginForm.get('uId');
   }
   get password() {
     return this.universityLoginForm.get('password');
@@ -61,10 +61,11 @@ export class UniversityComponent implements OnInit {
 
     console.log(this.university)
     
-    if (this.university.name != "" || this.university.password != "") {
+    if (this.university.uId != "" || this.university.password != "") {
       if (this.universityLoginForm.valid) {
         this.universityService.authenticate(this.university).subscribe(
           (data) => {
+            console.log(data);
             this.university = data;
             sessionStorage.setItem("token","Bearer "+this.university.token)
             console.log("TOKEN -->"+sessionStorage.getItem("token"));

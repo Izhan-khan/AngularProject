@@ -23,6 +23,29 @@
             </tr>
         </thead>
         <tbody>
+
+            <!-- <tr>
+
+                <td>
+                    <input type="text" class="form-control form-control-sm "
+                        [(ngModel)]="PhdPersuingStudentInput.programTime" name="PhdPersuingStudentInput.programTime"
+                        id="PhdPersuingStudentInput.programTime"
+                        [formControl]="PhdPersuingStudentInputForm_programTime">
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PhdPersuingStudentInput.totalStudentsCount"
+                        name="PhdPersuingStudentInput.totalStudentsCount"
+                        id="PhdPersuingStudentInput.totalStudentsCount"
+                        [formControl]="PhdPersuingStudentInputForm_totalStudentsCount">
+                    <p *ngIf="PhdPersuingStudentInputForm_programTime.value != ''" class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+
+                </td>
+
+            </tr> -->
+
             <tr *ngFor="let PhdPersuingStudent of PhdPersuingStudentsList">
                 <td>{{PhdPersuingStudent.programTime}}</td>
                 <td (dblclick)="onPhdPersuingStudentEdit(PhdPersuingStudent,'totalStudentsCount')">
@@ -46,6 +69,7 @@
     </table>
     <table class="table table-hover table-bordered ">
         <thead>
+
             <tr>
                 <th class="text-center headerbg" colspan="4">
                     No. of Ph.D student graduated (including integrated Ph.D)
@@ -71,6 +95,51 @@
             </tr>
         </thead>
         <tbody>
+
+
+            
+            <!-- <tr>
+                <td>
+                    <input type="text" class="form-control form-control-sm "
+                        [(ngModel)]="PhdGraduatedStudentInput.programTime" name="PhdGraduatedStudentInput.programTime"
+                        id="PhdGraduatedStudentInput.programTime"
+                        [formControl]="PhdGraduatedStudentInputForm_programTime">
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PhdGraduatedStudentInput._2018_19_Count"
+                        name="PhdGraduatedStudentInput._2018_19_Count" id="PhdGraduatedStudentInput._2018_19_Count"
+                        [formControl]="PhdGraduatedStudentInputForm_2018_19_Count">
+                    <p *ngIf="PhdGraduatedStudentInputForm_programTime.value != ''" class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PhdGraduatedStudentInput._2019_20_Count"
+                        name="PhdGraduatedStudentInput._2019_20_Count"
+                        id="PhdGraduatedStudentInput._2019_20_Count"
+                        [formControl]="PhdGraduatedStudentInputForm_2019_20_Count">
+                    <p *ngIf="PhdGraduatedStudentInputForm_programTime.value != ''" class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+
+                </td>
+                <td>
+                    <input type="number" class="form-control form-control-sm "
+                        [(ngModel)]="PhdGraduatedStudentInput._2020_21_Count"
+                        name="PhdGraduatedStudentInput._2020_21_Count"
+                        id="PhdGraduatedStudentInput._2020_21_Count"
+                        [formControl]="PhdGraduatedStudentInputForm_2020_21_Count">
+                    <p *ngIf="PhdGraduatedStudentInputForm_programTime.value != ''" class="text-danger"
+                        style="text-align: left ;">Field is Required
+                    </p>
+
+                </td>
+            </tr> -->
+
+
+
             <tr *ngFor="let PhdGraduatedStudent of PhdGraduatedStudentsList">
                 <td>
                     {{PhdGraduatedStudent.programTime}}
@@ -124,12 +193,14 @@
         </tbody>
     </table>
     <div class="text-center">
-        <button class="btn btn-info mr-1" type="button" (click)="previous()"><i class="bi-arrow-left-square-fill"> Previous</i></button>
+        <button class="btn btn-info mr-1" type="button" (click)="previous()"><i class="bi-arrow-left-square-fill">
+                Previous</i></button>
         <button class="btn btn-default mr-1" type="button"
             (click)="getPhdPersuingStudentsListFromService(); getPhdGraduatedStudentsListFromService();"><i
                 class="bi-arrow-clockwise"> Reset</i></button>
         <button class="btn btn-primary mr-1" type="submit"><i class="bi-save-fill"> Save</i></button>
-        <button class="btn btn-success mr-1" type="button" (click)="saveandnext()"><i class="bi-arrow-right-square-fill"> Save &
+        <button class="btn btn-success mr-1" type="button" (click)="saveandnext()"><i
+                class="bi-arrow-right-square-fill"> Save &
                 Next</i></button>
     </div>
 </form>

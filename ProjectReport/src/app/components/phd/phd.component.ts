@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { error } from 'jquery';
 import { PhdService } from 'src/app/service/phd/phd.service';
 
@@ -15,6 +16,28 @@ export class PhdComponent implements OnInit {
   public PhdGraduatedStudentsList :any;
   public PhdPersuingStudentsList :any;
   
+
+  public PhdPersuingStudentInput: any = {
+    programTime: "",
+    programTimeId: "",
+    totalStudentsCount: ""
+  }
+  public PhdGraduatedStudentInput: any = {
+    programTime: "",
+    programTimeId: "",
+    _2018_19_Count: "",
+    _2019_20_Count: "",
+    _2020_21_Count: ""
+  }
+
+   // Input form control
+   PhdPersuingStudentInputForm_programTime = new FormControl()
+   PhdPersuingStudentInputForm_totalStudentsCount = new FormControl("", [Validators.required])
+
+   PhdGraduatedStudentInputForm_programTime = new FormControl()
+   PhdGraduatedStudentInputForm_2018_19_Count = new FormControl("", [Validators.required])
+   PhdGraduatedStudentInputForm_2019_20_Count = new FormControl("", [Validators.required])
+   PhdGraduatedStudentInputForm_2020_21_Count = new FormControl("", [Validators.required])
 
 
   constructor(private phdService:PhdService) { }
@@ -93,7 +116,8 @@ export class PhdComponent implements OnInit {
     item.enableEdit = "";
   }
 
-  addPhdPersuingStudentList(PhdPersuingStudentsList: any) {
+  addPhdPersuingStudentList(PhdPersuingStudentsList: any) {  
+    console.log(PhdPersuingStudentsList);
     this.phdService.addPhdPersuingStudentsList(PhdPersuingStudentsList).subscribe(
       (data) => {
         this.successMsg = "Data Inserted"

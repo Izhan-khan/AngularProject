@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import baseUrl from '../helper';
+import helper from '../helper';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +11,23 @@ export class ResearchService {
 
 
   public getResearchDetailsById(id:number){
-    return this.http.get(`${baseUrl}/researchDetails/getNameFromId/`+id);;
+    return this.http.get(`${helper.loginUrl}/researchDetails/getNameFromId/`+id);;
   }
 
   public getSponsoredResearchDetailsList(){
-    return this.http.get(`${baseUrl}/sponsoredResearchDetails/getList`);;
+    return this.http.get(`${helper.loginUrl}/sponsoredResearchDetails/getList`);;
   }
 
   public addSponsoredResearchDetailsList(SponsoredResearchDetailsList:any){
-    return this.http.post(`${baseUrl}/sponsoredResearchDetails/addList`,SponsoredResearchDetailsList);;
+    return this.http.post(`${helper.loginUrl}/sponsoredResearchDetails/addList`,SponsoredResearchDetailsList);;
   }
 
   
   public getConsultingProjectDetailsList(){
-    return this.http.get(`${baseUrl}/consultingProjectDetails/getList`);;
+    return this.http.get(`${helper.loginUrl}/consultingProjectDetails/getList`);;
   }
 
   public addConsultingProjectDetailsList(ConsultingProjectDetailsList:any){
-    return this.http.post(`${baseUrl}/consultingProjectDetails/addList`,ConsultingProjectDetailsList);;
+    return this.http.post(`${helper.loginUrl}/consultingProjectDetails/addList`,ConsultingProjectDetailsList);;
   }
 }

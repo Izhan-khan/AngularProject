@@ -10,8 +10,10 @@
         <img src="assets/img/draw2.webp" style="width:100%" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <h3 *ngIf="errorMsg" class="text-danger" style="text-align: center ;">{{errorMsg}}</h3>
-
+        <h4 *ngIf="errorMsg" class="text-danger" style="text-align: center ;">{{errorMsg}}
+        </h4>
+        <h4 *ngIf="errorMsg" class="text-success" style="text-align: center ;">{{logoutMsg}}
+        </h4>
              
         <form [formGroup]="universityLoginForm" (ngSubmit)="universityLogin()" >
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">

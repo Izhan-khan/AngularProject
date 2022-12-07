@@ -18,6 +18,7 @@ export class UniversityComponent implements OnInit {
   }
 
   errorMsg = new String();  
+  logoutMsg = new String();  
 
   universityLoginForm: any;
   universityNameList:any;
@@ -34,6 +35,7 @@ export class UniversityComponent implements OnInit {
     })
 
     sessionStorage.setItem("token",this.university.token)
+    this.logoutMsg =sessionStorage.getItem("logoutMessage")!;
   }
 
   get uId() {
@@ -48,8 +50,6 @@ export class UniversityComponent implements OnInit {
     this.universityService.getUniversityNamesList().subscribe(
       (data) => {
         this.universityNameList = data;
-        console.log(this.universityNameList);
-        
       }, (error) => {
         console.log(error);
       }
@@ -59,22 +59,21 @@ export class UniversityComponent implements OnInit {
 
   public universityLogin() {
 
-    console.log(this.university)
-    
     if (this.university.uId != "" || this.university.password != "") {
       if (this.universityLoginForm.valid) {
         this.universityService.authenticate(this.university).subscribe(
           (data) => {
-            console.log(data);
             this.university = data;
-            sessionStorage.setItem("token","Bearer "+this.university.token)
-            console.log("TOKEN -->"+sessionStorage.getItem("token"));
+            sessionStorage.setItem("universityToken","Bearer "+this.university.token)
+            sessionStorage.setItem("uId",this.university.responseString)
+            console.log(this.university);
+            console.log("TOKEN -->"+sessionStorage.getItem("universityToken"));
             this.router.navigate(['universityDashboard']);
           },
           (error) => {
             // user not in database or password mismatch --> 401 
             console.error(error);
-            this.errorMsg="Please recheck your email & password";
+            this.errorMsg="Please recheck your details";
           }
         );
       }

@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     })
 
     sessionStorage.setItem("token",this.user.token)
-     this.logoutMsg =sessionStorage.getItem("logoutMessage")!;
+    this.logoutMsg =sessionStorage.getItem("logoutMessage")!;
 
   }
 

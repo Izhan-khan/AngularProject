@@ -2,6 +2,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
+import helper from '../helper';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +10,25 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 export class AuthInterceptorService implements HttpInterceptor {
   authenticationService: any;
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    let errorMsg="";
-    let bearerToken= "";
+    let errorMsg = "";
+    let bearerToken = "";
 
-    if(sessionStorage.getItem("token") !=null){
-       bearerToken =""+sessionStorage.getItem("token");
+    if (sessionStorage.getItem("token") != null) {
+      bearerToken = "" + sessionStorage.getItem("token");
       //  console.warn(bearerToken);
-       
     }
-
+    if(sessionStorage.getItem("universityToken") != null){
+     bearerToken = "" + sessionStorage.getItem("universityToken");
+    }
+   
+    
     let jwtToken = req.clone({
-      setHeaders:{
+      setHeaders: {
         Authorization: bearerToken
       }
     })
@@ -39,7 +43,12 @@ export class AuthInterceptorService implements HttpInterceptor {
           _: Observable<HttpEvent<any>>
         ) => {
           if (httpErrorResponse.status === HttpStatusCode.Unauthorized) {
-            this.router.navigateByUrl("/login");
+
+            if (httpErrorResponse.url?.substring(0, 32) == `${helper.universityUrl}`) {
+              this.router.navigateByUrl("/universityLogin");
+            } else {
+              this.router.navigateByUrl("/login");
+            }
           }
           return throwError(httpErrorResponse);
         }

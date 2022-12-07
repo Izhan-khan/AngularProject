@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import baseUrl from '../helper';
+import helper from '../helper';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class LoginService {
 
   public authenticate(user:any){
     // console.log(user)
-    return this.http.post(`${baseUrl}/authenticate`,user);
+    return this.http.post(`${helper.loginUrl}/authenticate`,user);
 }
 
 

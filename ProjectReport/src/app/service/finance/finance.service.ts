@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import baseUrl from '../helper';
+import helper from '../helper';
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +10,20 @@ export class FinanceService {
   constructor(private http:HttpClient) { }
 
   public getCapitalExpenditureAmountList(){
-    return this.http.get(`${baseUrl}/capitalExpenditureAmount/getList`);;
+    return this.http.get(`${helper.loginUrl}/capitalExpenditureAmount/getList`);;
   }
 
   public addCapitalExpenditureAmountList(capitalExpenditureAmountList:any){
-    return this.http.post(`${baseUrl}/capitalExpenditureAmount/addList`,capitalExpenditureAmountList);;
+    return this.http.post(`${helper.loginUrl}/capitalExpenditureAmount/addList`,capitalExpenditureAmountList);;
   }
   
 
   public getOperationExpenditureAmountList(){
-    return this.http.get(`${baseUrl}/operationExpenditureAmount/getList`);;
+    return this.http.get(`${helper.loginUrl}/operationExpenditureAmount/getList`);;
   }
 
   public addOperationExpenditureAmountList(operationExpenditureAmountList:any){
-    return this.http.post(`${baseUrl}/operationExpenditureAmount/addList`,operationExpenditureAmountList);;
+    return this.http.post(`${helper.loginUrl}/operationExpenditureAmount/addList`,operationExpenditureAmountList);;
   }
   
 }

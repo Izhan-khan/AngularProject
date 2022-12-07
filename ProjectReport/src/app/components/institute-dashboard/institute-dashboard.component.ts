@@ -32,6 +32,7 @@ export class InstituteDashboardComponent implements OnInit {
 
   public logout() {
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("userName");
     sessionStorage.setItem("logoutMessage",this.logoutMsg="Successfully Logout");
     this.router.navigate(['login']); 
 

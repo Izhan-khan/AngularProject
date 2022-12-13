@@ -1,422 +1,452 @@
 <form (ngSubmit)="addUG_4yearList(UG_4yearList,UG_4year_Input); addPG_2yearList(PG_2yearList,PG_2year_Input)">
-    <div class="title mb-3">UG [4 Years Programm(s)] : Placement and higher studies for Previous 3 years</div>
+    <div class="title mb-3">UG [4 Years Program(s)] : Placement & higher studies for Previous 3 years</div>
     <h4 style="text-align: center; color: green;" *ngIf="successMsg">{{successMsg}}</h4>
-    <table class="table table-hover table-bordered mb-3">
-        <thead>
-            <tr>
-                <th class="text-center headerbg  align-top">Acedamic Year</th>
-                <th class="text-center headerbg  align-top">No. of first year students intake in the years</th>
-                <th class="text-center headerbg align-top">No. of first year students admitted in the years</th>
-                <th class="text-center headerbg align-top">No. of students admitted through lateral entry</th>
-                <th class="text-center headerbg align-top">No of student graduating in minimum stipulated time </th>
-                <th class="text-center headerbg align-top">No. of students placed</th>
-                <th class="text-center headerbg align-top">Median salary of placed graduates (Amount in Rs.)</th>
-                <th class="text-center headerbg align-top">No. of students selected for higher studies</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <mat-form-field appearance="fill" style="width: 100%;">
-                        <mat-label>Academic Year</mat-label>
-                        <mat-select [(ngModel)]="UG_4year_Input.AcademicYear"
-                            [formControl]="UG_4year_InputForm_AcademicYear">
-                            <mat-option *ngFor="let academicYear of academicYearList"
-                                [value]="academicYear.academicYear">
-                                {{academicYear.academicYear}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="UG_4year_Input.firstYearStudentIntakeCount" name="UG_4year_Input.firstYearStudentIntakeCount"
-                        id="UG_4year_Input.firstYearStudentIntakeCount" [formControl]="UG_4year_InputForm_firstYearStudentIntakeCount">
-                    <p *ngIf="UG_4year_InputForm_firstYearStudentIntakeCount && UG_4year_InputForm_AcademicYear.touched 
+    <div style="overflow-x:scroll; overflow: auto">
+        <table class="table  table-hover table-bordered mb-3" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="text-center headerbg  align-top">Acedamic Year</th>
+                    <th class="text-center headerbg  align-top">No. of first year students intake in the years</th>
+                    <th class="text-center headerbg align-top">No. of first year students admitted in the years</th>
+                    <th class="text-center headerbg align-top">No. of students admitted through lateral entry</th>
+                    <th class="text-center headerbg align-top">No of student graduating in minimum stipulated time </th>
+                    <th class="text-center headerbg align-top">No. of students placed</th>
+                    <th class="text-center headerbg align-top">Median salary of placed graduates (Amount in Rs.)</th>
+                    <th class="text-center headerbg align-top">No. of students selected for higher studies</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill" style="width: 100%;">
+                            <mat-label>Academic Year</mat-label>
+                            <mat-select [(ngModel)]="UG_4year_Input.AcademicYear"
+                                [formControl]="UG_4year_InputForm_AcademicYear">
+                                <mat-option *ngFor="let academicYear of academicYearList"
+                                    [value]="academicYear.academicYear">
+                                    {{academicYear.academicYear}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="UG_4year_Input.firstYearStudentIntakeCount"
+                            name="UG_4year_Input.firstYearStudentIntakeCount"
+                            id="UG_4year_Input.firstYearStudentIntakeCount"
+                            [formControl]="UG_4year_InputForm_firstYearStudentIntakeCount">
+                        <p *ngIf="UG_4year_InputForm_firstYearStudentIntakeCount && UG_4year_InputForm_AcademicYear.touched 
                          && UG_4year_InputForm_firstYearStudentIntakeCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="UG_4year_Input.firstYearStudentAdmittedCount" name="UG_4year_Input.firstYearStudentAdmittedCount"
-                        id="UG_4year_Input.firstYearStudentAdmittedCount" [formControl]="UG_4year_InputForm_firstYearStudentAdmittedCount">
-                    <p *ngIf="UG_4year_InputForm_firstYearStudentAdmittedCount && UG_4year_InputForm_AcademicYear.touched 
-                         && UG_4year_InputForm_firstYearStudentAdmittedCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="UG_4year_Input.lateralEntryStudentCount" name="UG_4year_Input.lateralEntryStudentCount"
-                        id="UG_4year_Input.lateralEntryStudentCount" [formControl]="UG_4year_InputForm_lateralEntryStudentCount">
-                    <p *ngIf="UG_4year_InputForm_lateralEntryStudentCount && UG_4year_InputForm_AcademicYear.touched 
+                            style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="UG_4year_Input.firstYearStudentAdmittedCount"
+                            name="UG_4year_Input.firstYearStudentAdmittedCount"
+                            id="UG_4year_Input.firstYearStudentAdmittedCount"
+                            [formControl]="UG_4year_InputForm_firstYearStudentAdmittedCount">
+                        <p *ngIf="UG_4year_InputForm_firstYearStudentAdmittedCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_firstYearStudentAdmittedCount?.hasError('required') "
+                            class="text-danger" style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="UG_4year_Input.lateralEntryStudentCount"
+                            name="UG_4year_Input.lateralEntryStudentCount" id="UG_4year_Input.lateralEntryStudentCount"
+                            [formControl]="UG_4year_InputForm_lateralEntryStudentCount">
+                        <p *ngIf="UG_4year_InputForm_lateralEntryStudentCount && UG_4year_InputForm_AcademicYear.touched 
                          && UG_4year_InputForm_lateralEntryStudentCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="UG_4year_Input.studentGraduatedInMinTimeCount" name="UG_4year_Input.studentGraduatedInMinTimeCount"
-                        id="UG_4year_Input.studentGraduatedInMinTimeCount" [formControl]="UG_4year_InputForm_studentGraduatedInMinTimeCount">
-                    <p *ngIf="UG_4year_InputForm_studentGraduatedInMinTimeCount && UG_4year_InputForm_AcademicYear.touched 
-                         && UG_4year_InputForm_studentGraduatedInMinTimeCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="UG_4year_Input.studentPlacedCount" name="UG_4year_Input.studentPlacedCount"
-                        id="UG_4year_Input.studentPlacedCount" [formControl]="UG_4year_InputForm_studentPlacedCount">
-                    <p *ngIf="UG_4year_InputForm_studentPlacedCount && UG_4year_InputForm_AcademicYear.touched 
+                            style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="UG_4year_Input.studentGraduatedInMinTimeCount"
+                            name="UG_4year_Input.studentGraduatedInMinTimeCount"
+                            id="UG_4year_Input.studentGraduatedInMinTimeCount"
+                            [formControl]="UG_4year_InputForm_studentGraduatedInMinTimeCount">
+                        <p *ngIf="UG_4year_InputForm_studentGraduatedInMinTimeCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_studentGraduatedInMinTimeCount?.hasError('required') "
+                            class="text-danger" style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="UG_4year_Input.studentPlacedCount" name="UG_4year_Input.studentPlacedCount"
+                            id="UG_4year_Input.studentPlacedCount"
+                            [formControl]="UG_4year_InputForm_studentPlacedCount">
+                        <p *ngIf="UG_4year_InputForm_studentPlacedCount && UG_4year_InputForm_AcademicYear.touched 
                          && UG_4year_InputForm_studentPlacedCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="UG_4year_Input.medianSalaryOfPlacedStudentCount" name="UG_4year_Input.medianSalaryOfPlacedStudentCount"
-                        id="UG_4year_Input.medianSalaryOfPlacedStudentCount" [formControl]="UG_4year_InputForm_medianSalaryOfPlacedStudentCount">
-                    <p *ngIf="UG_4year_InputForm_medianSalaryOfPlacedStudentCount && UG_4year_InputForm_AcademicYear.touched 
-                         && UG_4year_InputForm_medianSalaryOfPlacedStudentCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="UG_4year_Input.studentSelectedForHigerStudiesCount" name="UG_4year_Input.studentSelectedForHigerStudiesCount"
-                        id="UG_4year_Input.studentSelectedForHigerStudiesCount" [formControl]="UG_4year_InputForm_studentSelectedForHigerStudiesCount">
-                    <p *ngIf="UG_4year_InputForm_studentSelectedForHigerStudiesCount && UG_4year_InputForm_AcademicYear.touched 
-                         && UG_4year_InputForm_studentSelectedForHigerStudiesCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-            </tr>
-            <tr
-                *ngFor="let UG_4year of UG_4yearList | paginate: {id:'UG_4yearPagination',  itemsPerPage: UG_4yearItems, currentPage: UG_4yearCurrentPage }">
-                <td>
-                    {{UG_4year.AcademicYear}}
-                </td>
+                            style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="UG_4year_Input.medianSalaryOfPlacedStudentCount"
+                            name="UG_4year_Input.medianSalaryOfPlacedStudentCount"
+                            id="UG_4year_Input.medianSalaryOfPlacedStudentCount"
+                            [formControl]="UG_4year_InputForm_medianSalaryOfPlacedStudentCount">
+                        <p *ngIf="UG_4year_InputForm_medianSalaryOfPlacedStudentCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_medianSalaryOfPlacedStudentCount?.hasError('required') "
+                            class="text-danger" style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="UG_4year_Input.studentSelectedForHigerStudiesCount"
+                            name="UG_4year_Input.studentSelectedForHigerStudiesCount"
+                            id="UG_4year_Input.studentSelectedForHigerStudiesCount"
+                            [formControl]="UG_4year_InputForm_studentSelectedForHigerStudiesCount">
+                        <p *ngIf="UG_4year_InputForm_studentSelectedForHigerStudiesCount && UG_4year_InputForm_AcademicYear.touched 
+                         && UG_4year_InputForm_studentSelectedForHigerStudiesCount?.hasError('required') "
+                            class="text-danger" style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                </tr>
+                <tr
+                    *ngFor="let UG_4year of UG_4yearList | paginate: {id:'UG_4yearPagination',  itemsPerPage: UG_4yearItems, currentPage: UG_4yearCurrentPage }">
+                    <td>
+                        {{UG_4year.AcademicYear}}
+                    </td>
 
 
-                <td (dblclick)="onUG_4yearEdit(UG_4year,'firstYearStudentIntakeCount')">
-                    <div *ngIf="UG_4year.enableEdit =='firstYearStudentIntakeCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="UG_4year.firstYearStudentIntakeCount" name="firstYearStudentIntakeCount"
-                                placeholder="{{UG_4year.firstYearStudentIntakeCount}}" id="firstYearStudentIntakeCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                    <td (dblclick)="onUG_4yearEdit(UG_4year,'firstYearStudentIntakeCount')">
+                        <div *ngIf="UG_4year.enableEdit =='firstYearStudentIntakeCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="UG_4year.firstYearStudentIntakeCount"
+                                    name="firstYearStudentIntakeCount"
+                                    placeholder="{{UG_4year.firstYearStudentIntakeCount}}"
+                                    id="firstYearStudentIntakeCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div *ngIf="UG_4year.enableEdit !=='firstYearStudentIntakeCount'">
-                        {{UG_4year.firstYearStudentIntakeCount}}
-                    </div>
-                </td>
-
-
-                <td (dblclick)="onUG_4yearEdit(UG_4year,'firstYearStudentAdmittedCount')">
-                    <div *ngIf="UG_4year.enableEdit =='firstYearStudentAdmittedCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="UG_4year.firstYearStudentAdmittedCount"
-                                name="firstYearStudentAdmittedCount"
-                                placeholder="{{UG_4year.firstYearStudentAdmittedCount}}"
-                                id="firstYearStudentAdmittedCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        <div *ngIf="UG_4year.enableEdit !=='firstYearStudentIntakeCount'">
+                            {{UG_4year.firstYearStudentIntakeCount}}
                         </div>
-                    </div>
-                    <div *ngIf="UG_4year.enableEdit !=='firstYearStudentAdmittedCount'">
-                        {{UG_4year.firstYearStudentAdmittedCount}}
-                    </div>
-                </td>
+                    </td>
 
 
-                <td (dblclick)="onUG_4yearEdit(UG_4year,'lateralEntryStudentCount')">
-                    <div *ngIf="UG_4year.enableEdit =='lateralEntryStudentCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="UG_4year.lateralEntryStudentCount" name="lateralEntryStudentCount"
-                                placeholder="{{UG_4year.lateralEntryStudentCount}}" id="lateralEntryStudentCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                    <td (dblclick)="onUG_4yearEdit(UG_4year,'firstYearStudentAdmittedCount')">
+                        <div *ngIf="UG_4year.enableEdit =='firstYearStudentAdmittedCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="UG_4year.firstYearStudentAdmittedCount"
+                                    name="firstYearStudentAdmittedCount"
+                                    placeholder="{{UG_4year.firstYearStudentAdmittedCount}}"
+                                    id="firstYearStudentAdmittedCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div *ngIf="UG_4year.enableEdit !=='lateralEntryStudentCount'">
-                        {{UG_4year.lateralEntryStudentCount}}
-                    </div>
-                </td>
-
-                <td (dblclick)="onUG_4yearEdit(UG_4year,'studentGraduatedInMinTimeCount')">
-                    <div *ngIf="UG_4year.enableEdit =='studentGraduatedInMinTimeCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="UG_4year.studentGraduatedInMinTimeCount"
-                                name="studentGraduatedInMinTimeCount"
-                                placeholder="{{UG_4year.studentGraduatedInMinTimeCount}}"
-                                id="studentGraduatedInMinTimeCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                        <div *ngIf="UG_4year.enableEdit !=='firstYearStudentAdmittedCount'">
+                            {{UG_4year.firstYearStudentAdmittedCount}}
                         </div>
-                    </div>
-                    <div *ngIf="UG_4year.enableEdit !=='studentGraduatedInMinTimeCount'">
-                        {{UG_4year.studentGraduatedInMinTimeCount}}
-                    </div>
-                </td>
+                    </td>
 
 
-                <td (dblclick)="onUG_4yearEdit(UG_4year,'studentPlacedCount')">
-                    <div *ngIf="UG_4year.enableEdit =='studentPlacedCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="UG_4year.studentPlacedCount" name="studentPlacedCount"
-                                placeholder="{{UG_4year.studentPlacedCount}}" id="studentPlacedCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                    <td (dblclick)="onUG_4yearEdit(UG_4year,'lateralEntryStudentCount')">
+                        <div *ngIf="UG_4year.enableEdit =='lateralEntryStudentCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="UG_4year.lateralEntryStudentCount" name="lateralEntryStudentCount"
+                                    placeholder="{{UG_4year.lateralEntryStudentCount}}" id="lateralEntryStudentCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div *ngIf="UG_4year.enableEdit !=='studentPlacedCount'">
-                        {{UG_4year.studentPlacedCount}}
-                    </div>
-                </td>
+                        <div *ngIf="UG_4year.enableEdit !=='lateralEntryStudentCount'">
+                            {{UG_4year.lateralEntryStudentCount}}
+                        </div>
+                    </td>
+
+                    <td (dblclick)="onUG_4yearEdit(UG_4year,'studentGraduatedInMinTimeCount')">
+                        <div *ngIf="UG_4year.enableEdit =='studentGraduatedInMinTimeCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="UG_4year.studentGraduatedInMinTimeCount"
+                                    name="studentGraduatedInMinTimeCount"
+                                    placeholder="{{UG_4year.studentGraduatedInMinTimeCount}}"
+                                    id="studentGraduatedInMinTimeCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                            </div>
+                        </div>
+                        <div *ngIf="UG_4year.enableEdit !=='studentGraduatedInMinTimeCount'">
+                            {{UG_4year.studentGraduatedInMinTimeCount}}
+                        </div>
+                    </td>
 
 
-                <td (dblclick)="onUG_4yearEdit(UG_4year,'medianSalaryOfPlacedStudentCount')">
-                    <div *ngIf="UG_4year.enableEdit =='medianSalaryOfPlacedStudentCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="UG_4year.medianSalaryOfPlacedStudentCount"
-                                name="medianSalaryOfPlacedStudentCount"
-                                placeholder="{{UG_4year.medianSalaryOfPlacedStudentCount}}"
-                                id="medianSalaryOfPlacedStudentCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                    <td (dblclick)="onUG_4yearEdit(UG_4year,'studentPlacedCount')">
+                        <div *ngIf="UG_4year.enableEdit =='studentPlacedCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="UG_4year.studentPlacedCount" name="studentPlacedCount"
+                                    placeholder="{{UG_4year.studentPlacedCount}}" id="studentPlacedCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div *ngIf="UG_4year.enableEdit !=='medianSalaryOfPlacedStudentCount'">
-                        <div *ngIf="UG_4year.medianSalaryOfPlacedStudentCount !=0">
-                            {{UG_4year.medianSalaryOfPlacedStudentCount}}
-                            ({{UG_4year.medianSalaryOfPlacedStudentCount|numberToWords}})
+                        <div *ngIf="UG_4year.enableEdit !=='studentPlacedCount'">
+                            {{UG_4year.studentPlacedCount}}
                         </div>
-                        <div *ngIf="UG_4year.medianSalaryOfPlacedStudentCount ==0">
-                            {{UG_4year.medianSalaryOfPlacedStudentCount}}
-                            (zero)
-                        </div>
-                    </div>
-                </td>
+                    </td>
 
-                <td (dblclick)="onUG_4yearEdit(UG_4year,'studentSelectedForHigerStudiesCount')">
-                    <div *ngIf="UG_4year.enableEdit =='studentSelectedForHigerStudiesCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="UG_4year.studentSelectedForHigerStudiesCount"
-                                name="studentSelectedForHigerStudiesCount"
-                                placeholder="{{UG_4year.studentSelectedForHigerStudiesCount}}"
-                                id="studentSelectedForHigerStudiesCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+
+                    <td (dblclick)="onUG_4yearEdit(UG_4year,'medianSalaryOfPlacedStudentCount')">
+                        <div *ngIf="UG_4year.enableEdit =='medianSalaryOfPlacedStudentCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="UG_4year.medianSalaryOfPlacedStudentCount"
+                                    name="medianSalaryOfPlacedStudentCount"
+                                    placeholder="{{UG_4year.medianSalaryOfPlacedStudentCount}}"
+                                    id="medianSalaryOfPlacedStudentCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div *ngIf="UG_4year.enableEdit !=='studentSelectedForHigerStudiesCount'">
-                        {{UG_4year.studentSelectedForHigerStudiesCount}}
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                        <div *ngIf="UG_4year.enableEdit !=='medianSalaryOfPlacedStudentCount'">
+                            <div *ngIf="UG_4year.medianSalaryOfPlacedStudentCount !=0">
+                                {{UG_4year.medianSalaryOfPlacedStudentCount}}
+                                ({{UG_4year.medianSalaryOfPlacedStudentCount|numberToWords}})
+                            </div>
+                            <div *ngIf="UG_4year.medianSalaryOfPlacedStudentCount ==0">
+                                {{UG_4year.medianSalaryOfPlacedStudentCount}}
+                                (zero)
+                            </div>
+                        </div>
+                    </td>
+
+                    <td (dblclick)="onUG_4yearEdit(UG_4year,'studentSelectedForHigerStudiesCount')">
+                        <div *ngIf="UG_4year.enableEdit =='studentSelectedForHigerStudiesCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="UG_4year.studentSelectedForHigerStudiesCount"
+                                    name="studentSelectedForHigerStudiesCount"
+                                    placeholder="{{UG_4year.studentSelectedForHigerStudiesCount}}"
+                                    id="studentSelectedForHigerStudiesCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onUG_4yearClose(UG_4year)"><i class="bi bi-check2"></i></button>
+                            </div>
+                        </div>
+                        <div *ngIf="UG_4year.enableEdit !=='studentSelectedForHigerStudiesCount'">
+                            {{UG_4year.studentSelectedForHigerStudiesCount}}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <!--Including the pagination control.-->
     <div style="text-align:right">
         <pagination-controls id="UG_4yearPagination" (pageChange)="UG_4yearCurrentPage = $event"></pagination-controls>
     </div>
 
-    <div class="title mb-3">PG [2 Years Programm(s)] : Placement and higher studies for Previous 3 years</div>
-    <table class="table table-hover table-bordered mb-3">
-        <thead>
-            <tr>
-                <th class="text-center headerbg  align-top">Acedamic Year</th>
-                <th class="text-center headerbg  align-top">No. of first year students intake in the years</th>
-                <th class="text-center headerbg align-top">No. of first year students admitted in the years</th>
+    <div class="title mb-3">PG [2 Years Program(s)] : Placement & higher studies for previous 3 years</div>
+    <div style="overflow-x:scroll; overflow: auto">
+        <table class="table  table-hover table-bordered mb-3" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="text-center headerbg  align-top">Acedamic Year</th>
+                    <th class="text-center headerbg  align-top">No. of first year students intake in the years</th>
+                    <th class="text-center headerbg align-top">No. of first year students admitted in the years</th>
 
-                <th class="text-center headerbg align-top">No ofStudent graduating in minimum stipulated time </th>
-                <th class="text-center headerbg align-top">No. of students placed</th>
-                <th class="text-center headerbg align-top">Median salary of placed graduates (Amount in Rs.)</th>
-                <th class="text-center headerbg align-top">No. of students selected for higher studies</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <mat-form-field appearance="fill" style="width: 100%;">
-                        <mat-label>Academic Year</mat-label>
-                        <mat-select [(ngModel)]="PG_2year_Input.AcademicYear"
-                            [formControl]="PG_2year_InputForm_AcademicYear">
-                            <mat-option *ngFor="let academicYear of academicYearList"
-                                [value]="academicYear.academicYear">
-                                {{academicYear.academicYear}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="PG_2year_Input.firstYearStudentIntakeCount" name="PG_2year_Input.firstYearStudentIntakeCount"
-                        id="PG_2year_Input.firstYearStudentIntakeCount" [formControl]="PG_2year_InputForm_firstYearStudentIntakeCount">
-                    <p *ngIf="PG_2year_InputForm_firstYearStudentIntakeCount && PG_2year_InputForm_AcademicYear.touched 
+                    <th class="text-center headerbg align-top">No ofStudent graduating in minimum stipulated time </th>
+                    <th class="text-center headerbg align-top">No. of students placed</th>
+                    <th class="text-center headerbg align-top">Median salary of placed graduates (Amount in Rs.)</th>
+                    <th class="text-center headerbg align-top">No. of students selected for higher studies</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill" style="width: 100%;">
+                            <mat-label>Academic Year</mat-label>
+                            <mat-select [(ngModel)]="PG_2year_Input.AcademicYear"
+                                [formControl]="PG_2year_InputForm_AcademicYear">
+                                <mat-option *ngFor="let academicYear of academicYearList"
+                                    [value]="academicYear.academicYear">
+                                    {{academicYear.academicYear}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="PG_2year_Input.firstYearStudentIntakeCount"
+                            name="PG_2year_Input.firstYearStudentIntakeCount"
+                            id="PG_2year_Input.firstYearStudentIntakeCount"
+                            [formControl]="PG_2year_InputForm_firstYearStudentIntakeCount">
+                        <p *ngIf="PG_2year_InputForm_firstYearStudentIntakeCount && PG_2year_InputForm_AcademicYear.touched 
                          && PG_2year_InputForm_firstYearStudentIntakeCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="PG_2year_Input.firstYearStudentAdmitted" name="PG_2year_Input.firstYearStudentAdmitted"
-                        id="PG_2year_Input.firstYearStudentAdmitted" [formControl]="PG_2year_InputForm_firstYearStudentAdmitted">
-                    <p *ngIf="PG_2year_InputForm_firstYearStudentAdmitted && PG_2year_InputForm_AcademicYear.touched 
+                            style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="PG_2year_Input.firstYearStudentAdmitted"
+                            name="PG_2year_Input.firstYearStudentAdmitted" id="PG_2year_Input.firstYearStudentAdmitted"
+                            [formControl]="PG_2year_InputForm_firstYearStudentAdmitted">
+                        <p *ngIf="PG_2year_InputForm_firstYearStudentAdmitted && PG_2year_InputForm_AcademicYear.touched 
                          && PG_2year_InputForm_firstYearStudentAdmitted ?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="PG_2year_Input.studentGraduatedInMinTimeCount" name="PG_2year_Input.studentGraduatedInMinTimeCount"
-                        id="PG_2year_Input.studentGraduatedInMinTimeCount" [formControl]="PG_2year_InputForm_studentGraduatedInMinTimeCount">
-                    <p *ngIf="PG_2year_InputForm_studentGraduatedInMinTimeCount && PG_2year_InputForm_AcademicYear.touched 
-                         && PG_2year_InputForm_studentGraduatedInMinTimeCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="PG_2year_Input.studentPlacedCount" name="PG_2year_Input.studentPlacedCount"
-                        id="PG_2year_Input.studentPlacedCount" [formControl]="PG_2year_InputForm_studentPlacedCount">
-                    <p *ngIf="PG_2year_InputForm_studentPlacedCount && PG_2year_InputForm_AcademicYear.touched 
+                            style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="PG_2year_Input.studentGraduatedInMinTimeCount"
+                            name="PG_2year_Input.studentGraduatedInMinTimeCount"
+                            id="PG_2year_Input.studentGraduatedInMinTimeCount"
+                            [formControl]="PG_2year_InputForm_studentGraduatedInMinTimeCount">
+                        <p *ngIf="PG_2year_InputForm_studentGraduatedInMinTimeCount && PG_2year_InputForm_AcademicYear.touched 
+                         && PG_2year_InputForm_studentGraduatedInMinTimeCount?.hasError('required') "
+                            class="text-danger" style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="PG_2year_Input.studentPlacedCount" name="PG_2year_Input.studentPlacedCount"
+                            id="PG_2year_Input.studentPlacedCount"
+                            [formControl]="PG_2year_InputForm_studentPlacedCount">
+                        <p *ngIf="PG_2year_InputForm_studentPlacedCount && PG_2year_InputForm_AcademicYear.touched 
                          && PG_2year_InputForm_studentPlacedCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="PG_2year_Input.medianSalaryOfPlacedStudentCount" name="PG_2year_Input.medianSalaryOfPlacedStudentCount"
-                        id="PG_2year_Input.medianSalaryOfPlacedStudentCount" [formControl]="PG_2year_InputForm_medianSalaryOfPlacedStudentCount">
-                    <p *ngIf="PG_2year_InputForm_medianSalaryOfPlacedStudentCount && PG_2year_InputForm_AcademicYear.touched 
-                         && PG_2year_InputForm_medianSalaryOfPlacedStudentCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-                <td>
-                    <input type="number" class="form-control form-control-sm "
-                        [(ngModel)]="PG_2year_Input.studentSelectedForHigerStudiesCount" name="PG_2year_Input.studentSelectedForHigerStudiesCount"
-                        id="UG_4year_Input.studentSelectedForHigerStudiesCount" [formControl]="PG_2year_InputForm_studentSelectedForHigerStudiesCount">
-                    <p *ngIf="PG_2year_InputForm_studentSelectedForHigerStudiesCount && PG_2year_InputForm_AcademicYear.touched 
-                         && PG_2year_InputForm_studentSelectedForHigerStudiesCount?.hasError('required') " class="text-danger"
-                        style="text-align: left ;">Field is Required
-                    </p>
-                </td>
-            </tr>
-            <tr
-                *ngFor="let PG_2year of PG_2yearList | paginate: {id:'PG_2yearPagination', itemsPerPage: PG_2yearItems, currentPage: PG_2yearCurrentPage }">
-                <td>
-                    {{PG_2year.AcademicYear}}
-                </td>
-                <td (dblclick)="onPG_2yearEdit(PG_2year,'firstYearStudentIntakeCount')">
-                    <div *ngIf="PG_2year.enableEdit =='firstYearStudentIntakeCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="PG_2year.firstYearStudentIntakeCount" name="firstYearStudentIntakeCount"
-                                placeholder="{{PG_2year.firstYearStudentIntakeCount}}" id="firstYearStudentIntakeCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                            style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="PG_2year_Input.medianSalaryOfPlacedStudentCount"
+                            name="PG_2year_Input.medianSalaryOfPlacedStudentCount"
+                            id="PG_2year_Input.medianSalaryOfPlacedStudentCount"
+                            [formControl]="PG_2year_InputForm_medianSalaryOfPlacedStudentCount">
+                        <p *ngIf="PG_2year_InputForm_medianSalaryOfPlacedStudentCount && PG_2year_InputForm_AcademicYear.touched 
+                         && PG_2year_InputForm_medianSalaryOfPlacedStudentCount?.hasError('required') "
+                            class="text-danger" style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm "
+                            [(ngModel)]="PG_2year_Input.studentSelectedForHigerStudiesCount"
+                            name="PG_2year_Input.studentSelectedForHigerStudiesCount"
+                            id="UG_4year_Input.studentSelectedForHigerStudiesCount"
+                            [formControl]="PG_2year_InputForm_studentSelectedForHigerStudiesCount">
+                        <p *ngIf="PG_2year_InputForm_studentSelectedForHigerStudiesCount && PG_2year_InputForm_AcademicYear.touched 
+                         && PG_2year_InputForm_studentSelectedForHigerStudiesCount?.hasError('required') "
+                            class="text-danger" style="text-align: left ;">Field is Required
+                        </p>
+                    </td>
+                </tr>
+                <tr
+                    *ngFor="let PG_2year of PG_2yearList | paginate: {id:'PG_2yearPagination', itemsPerPage: PG_2yearItems, currentPage: PG_2yearCurrentPage }">
+                    <td>
+                        {{PG_2year.AcademicYear}}
+                    </td>
+                    <td (dblclick)="onPG_2yearEdit(PG_2year,'firstYearStudentIntakeCount')">
+                        <div *ngIf="PG_2year.enableEdit =='firstYearStudentIntakeCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="PG_2year.firstYearStudentIntakeCount"
+                                    name="firstYearStudentIntakeCount"
+                                    placeholder="{{PG_2year.firstYearStudentIntakeCount}}"
+                                    id="firstYearStudentIntakeCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div *ngIf="PG_2year.enableEdit !=='firstYearStudentIntakeCount'">
-                        {{PG_2year.firstYearStudentIntakeCount}}
-                    </div>
-                </td>
-                <td (dblclick)="onPG_2yearEdit(PG_2year,'firstYearStudentAdmitted')">
-                    <div *ngIf="PG_2year.enableEdit =='firstYearStudentAdmitted'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="PG_2year.firstYearStudentAdmitted" name="firstYearStudentAdmitted"
-                                placeholder="{{PG_2year.firstYearStudentAdmitted}}" id="firstYearStudentAdmitted">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        <div *ngIf="PG_2year.enableEdit !=='firstYearStudentIntakeCount'">
+                            {{PG_2year.firstYearStudentIntakeCount}}
                         </div>
-                    </div>
-                    <div *ngIf="PG_2year.enableEdit !=='firstYearStudentAdmitted'">
-                        {{PG_2year.firstYearStudentAdmitted}}
-                    </div>
-                </td>
-                <td (dblclick)="onPG_2yearEdit(PG_2year,'studentGraduatedInMinTimeCount')">
-                    <div *ngIf="PG_2year.enableEdit =='studentGraduatedInMinTimeCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="PG_2year.studentGraduatedInMinTimeCount"
-                                name="studentGraduatedInMinTimeCount"
-                                placeholder="{{PG_2year.studentGraduatedInMinTimeCount}}"
-                                id="studentGraduatedInMinTimeCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                    </td>
+                    <td (dblclick)="onPG_2yearEdit(PG_2year,'firstYearStudentAdmitted')">
+                        <div *ngIf="PG_2year.enableEdit =='firstYearStudentAdmitted'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="PG_2year.firstYearStudentAdmitted" name="firstYearStudentAdmitted"
+                                    placeholder="{{PG_2year.firstYearStudentAdmitted}}" id="firstYearStudentAdmitted">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div *ngIf="PG_2year.enableEdit !=='studentGraduatedInMinTimeCount'">
-                        {{PG_2year.studentGraduatedInMinTimeCount}}
-                    </div>
-                </td>
-                <td (dblclick)="onPG_2yearEdit(PG_2year,'studentPlacedCount')">
-                    <div *ngIf="PG_2year.enableEdit =='studentPlacedCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="PG_2year.studentPlacedCount" name="studentPlacedCount"
-                                placeholder="{{PG_2year.studentPlacedCount}}" id="studentPlacedCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        <div *ngIf="PG_2year.enableEdit !=='firstYearStudentAdmitted'">
+                            {{PG_2year.firstYearStudentAdmitted}}
                         </div>
-                    </div>
-                    <div *ngIf="PG_2year.enableEdit !=='studentPlacedCount'">
-                        {{PG_2year.studentPlacedCount}}
-                    </div>
-                </td>
-                <td (dblclick)="onPG_2yearEdit(PG_2year,'  medianSalaryOfPlacedStudentCount')">
-                    <div *ngIf="PG_2year.enableEdit =='  medianSalaryOfPlacedStudentCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="PG_2year.  medianSalaryOfPlacedStudentCount"
-                                name="  medianSalaryOfPlacedStudentCount"
-                                placeholder="{{PG_2year.  medianSalaryOfPlacedStudentCount}}"
-                                id="  medianSalaryOfPlacedStudentCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                    </td>
+                    <td (dblclick)="onPG_2yearEdit(PG_2year,'studentGraduatedInMinTimeCount')">
+                        <div *ngIf="PG_2year.enableEdit =='studentGraduatedInMinTimeCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="PG_2year.studentGraduatedInMinTimeCount"
+                                    name="studentGraduatedInMinTimeCount"
+                                    placeholder="{{PG_2year.studentGraduatedInMinTimeCount}}"
+                                    id="studentGraduatedInMinTimeCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                            </div>
                         </div>
-                    </div>
-                    <div *ngIf="PG_2year.enableEdit !=='  medianSalaryOfPlacedStudentCount'">
-                        <div *ngIf="PG_2year.medianSalaryOfPlacedStudentCount !=0">
-                            {{PG_2year.medianSalaryOfPlacedStudentCount}}
-                            ({{PG_2year.medianSalaryOfPlacedStudentCount|numberToWords}})
+                        <div *ngIf="PG_2year.enableEdit !=='studentGraduatedInMinTimeCount'">
+                            {{PG_2year.studentGraduatedInMinTimeCount}}
                         </div>
-                        <div *ngIf="PG_2year.medianSalaryOfPlacedStudentCount ==0">
-                            {{PG_2year.medianSalaryOfPlacedStudentCount}}
-                            (zero)
+                    </td>
+                    <td (dblclick)="onPG_2yearEdit(PG_2year,'studentPlacedCount')">
+                        <div *ngIf="PG_2year.enableEdit =='studentPlacedCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="PG_2year.studentPlacedCount" name="studentPlacedCount"
+                                    placeholder="{{PG_2year.studentPlacedCount}}" id="studentPlacedCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td (dblclick)="onPG_2yearEdit(PG_2year,'studentSelectedForHigerStudiesCount')">
-                    <div *ngIf="PG_2year.enableEdit =='studentSelectedForHigerStudiesCount'">
-                        <div class="input-group">
-                            <input type="number" class="form-control form-control-sm"
-                                [(ngModel)]="PG_2year.studentSelectedForHigerStudiesCount"
-                                name="studentSelectedForHigerStudiesCount"
-                                placeholder="{{PG_2year.studentSelectedForHigerStudiesCount}}"
-                                id="studentSelectedForHigerStudiesCount">
-                            <button type="button" class="btn btn-sm btn-success rounded-circle"
-                                (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                        <div *ngIf="PG_2year.enableEdit !=='studentPlacedCount'">
+                            {{PG_2year.studentPlacedCount}}
                         </div>
-                    </div>
-                    <div *ngIf="PG_2year.enableEdit !=='studentSelectedForHigerStudiesCount'">
-                        {{PG_2year.studentSelectedForHigerStudiesCount}}
-                    </div>
-                </td>
-        </tbody>
-    </table>
+                    </td>
+                    <td (dblclick)="onPG_2yearEdit(PG_2year,'  medianSalaryOfPlacedStudentCount')">
+                        <div *ngIf="PG_2year.enableEdit =='  medianSalaryOfPlacedStudentCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="PG_2year.  medianSalaryOfPlacedStudentCount"
+                                    name="  medianSalaryOfPlacedStudentCount"
+                                    placeholder="{{PG_2year.  medianSalaryOfPlacedStudentCount}}"
+                                    id="  medianSalaryOfPlacedStudentCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                            </div>
+                        </div>
+                        <div *ngIf="PG_2year.enableEdit !=='  medianSalaryOfPlacedStudentCount'">
+                            <div *ngIf="PG_2year.medianSalaryOfPlacedStudentCount !=0">
+                                {{PG_2year.medianSalaryOfPlacedStudentCount}}
+                                ({{PG_2year.medianSalaryOfPlacedStudentCount|numberToWords}})
+                            </div>
+                            <div *ngIf="PG_2year.medianSalaryOfPlacedStudentCount ==0">
+                                {{PG_2year.medianSalaryOfPlacedStudentCount}}
+                                (zero)
+                            </div>
+                        </div>
+                    </td>
+                    <td (dblclick)="onPG_2yearEdit(PG_2year,'studentSelectedForHigerStudiesCount')">
+                        <div *ngIf="PG_2year.enableEdit =='studentSelectedForHigerStudiesCount'">
+                            <div class="input-group">
+                                <input type="number" class="form-control form-control-sm"
+                                    [(ngModel)]="PG_2year.studentSelectedForHigerStudiesCount"
+                                    name="studentSelectedForHigerStudiesCount"
+                                    placeholder="{{PG_2year.studentSelectedForHigerStudiesCount}}"
+                                    id="studentSelectedForHigerStudiesCount">
+                                <button type="button" class="btn btn-sm btn-success rounded-circle"
+                                    (click)="onPG_2yearClose(PG_2year)"><i class="bi bi-check2"></i></button>
+                            </div>
+                        </div>
+                        <div *ngIf="PG_2year.enableEdit !=='studentSelectedForHigerStudiesCount'">
+                            {{PG_2year.studentSelectedForHigerStudiesCount}}
+                        </div>
+                    </td>
+            </tbody>
+        </table>
+    </div>
     <div style="text-align:right">
         <pagination-controls id="PG_2yearPagination" (pageChange)="PG_2yearCurrentPage = $event"></pagination-controls>
     </div>

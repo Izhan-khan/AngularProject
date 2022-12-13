@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UniversityService } from 'src/app/service/university/university.service';
 
 @Component({
   selector: 'app-university-overall',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UniversityOverallComponent implements OnInit {
 
-  constructor() { }
+  university :any;
+
+  constructor(private universityService:UniversityService) { }
 
   ngOnInit(): void {
+    this.getUniversityFromuId(sessionStorage.getItem('uId')!)
+  }
+
+  public getUniversityFromuId(uId:any){
+    this.universityService.getUniversityFromUid(uId).subscribe(
+      (data)=>{
+        console.log("data : " ,data);
+        this.university = data;
+      },
+      (error)=>{
+        console.error(error);
+      }
+    )
   }
 
 }

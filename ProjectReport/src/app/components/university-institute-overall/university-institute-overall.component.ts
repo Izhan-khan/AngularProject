@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UniversityService } from 'src/app/service/university/university.service';
 
 @Component({
   selector: 'app-university-institute-overall',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UniversityInstituteOverallComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  public college: any = {
+    cId: "",
+    collegeName: ""
   }
 
+  collegeNameList: any;
+  university: any;
+  constructor(private universityService : UniversityService) { }
+
+  ngOnInit(): void {
+    this.university=JSON.parse(sessionStorage.getItem('universityObj')!);
+    this.getUniversityNames();
+  }
+
+
+  getUniversityNames(){
+    this.universityService.getCollegeNameList(this.university.universityId).subscribe(
+      (data) => {
+        this.collegeNameList = data;
+      }, (error) => {
+        console.log(error);
+      }
+    )
+  }
 }

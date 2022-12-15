@@ -50,6 +50,7 @@ export class UniversityComponent implements OnInit {
     this.universityService.getUniversityNamesList().subscribe(
       (data) => {
         this.universityNameList = data;
+        console.log(this.universityNameList);
       }, (error) => {
         console.log(error);
       }

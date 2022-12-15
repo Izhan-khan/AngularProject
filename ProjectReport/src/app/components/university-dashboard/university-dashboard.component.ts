@@ -12,11 +12,12 @@ export class UniversityDashboardComponent implements OnInit {
   logoutMsg :String ="";
   university :any;
   
-  constructor(private router :Router,private universityService:UniversityService) { }
-
-  ngOnInit(): void {
+  constructor(private router :Router,private universityService:UniversityService) {
     this.getUniversityFromuId(sessionStorage.getItem('uId')!)
     this.logoutMsg =sessionStorage.getItem("logoutMessage")!;
+   }
+
+  ngOnInit(): void {
   }
 
   public getUniversityFromuId(uId:any){
@@ -24,6 +25,7 @@ export class UniversityDashboardComponent implements OnInit {
       (data)=>{
         console.log("data : " ,data);
         this.university = data;
+        sessionStorage.setItem('universityObj',JSON.stringify(this.university));
       },
       (error)=>{
         console.error(error);

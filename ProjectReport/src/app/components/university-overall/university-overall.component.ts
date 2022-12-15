@@ -13,19 +13,10 @@ export class UniversityOverallComponent implements OnInit {
   constructor(private universityService:UniversityService) { }
 
   ngOnInit(): void {
-    this.getUniversityFromuId(sessionStorage.getItem('uId')!)
+    this.university=JSON.parse(sessionStorage.getItem('universityObj')!);
+    // console.log(this.university);
   }
 
-  public getUniversityFromuId(uId:any){
-    this.universityService.getUniversityFromUid(uId).subscribe(
-      (data)=>{
-        console.log("data : " ,data);
-        this.university = data;
-      },
-      (error)=>{
-        console.error(error);
-      }
-    )
-  }
+
 
 }

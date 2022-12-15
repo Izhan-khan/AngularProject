@@ -10,6 +10,7 @@ export class UniversityService {
   constructor( private http:HttpClient) { }
 
   public authenticate(university:any){
+    console.log("university : ",university);
     return this.http.post(`${helper.universityUrl}/authenticate`,university);
   }
 
@@ -20,6 +21,10 @@ export class UniversityService {
   public getUniversityFromUid(Uid:number){
     return this.http.get(`${helper.universityUrl}/getUniversityById/`+Uid);
   }
+
+  public getCollegeNameList(university_id:string) {
+		return this.http.get(`${helper.universityUrl}/college/getListWithName/`+university_id);		
+	}
 
 
 

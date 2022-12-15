@@ -1,37 +1,44 @@
 <div class="row">
-    <div class="col-lg-7">
-        <h5>Vesveswaraiah Technological University, Belgaum 
-            <span class="caption"><em>ID : U-0249</em></span> </h5>
-    </div>
-    <div class="col-lg-3">
-        <select class="form-control">
-            <option value="">Choose Institute</option>
-        </select>
-    </div>
-</div>
-  <div class="row mt-2">
-    <div class="col-lg-7">
-        <h6>Angadi Institute of Technology & Mgmt, BELAGAVI  
-            <span class="caption"><em>ID : C-1423</em></span> </h6>
-    </div>
-    <div class="col-lg-2">
-        <div class="title mb-3 float-right pr-1">Legend </div>
-    </div>
-    <div class="col-lg-3">
-      <table class = "table table-bordered table-responsive mb-3 float-right ">
-        <tbody>
-          <tr>
-            
-            <td class="hover-effect text-center">Good</td>
-            <td class="hover-effect text-center">Ok</td>
-            <td class="hover-effect text-center">Not So Good</td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="col-lg-7">
+    <h5>{{university?.universityName}}</h5>
+  </div>
+  <div class="col-lg-5">
+    <div class="form-outline mb-4">
+      <select class="form-control form-control-lg"  [(ngModel)]="university.uId" name="uId" id="uId" 
+        formControlName="uId"  required>
+        <option value="" selected disabled>Choose Institute </option>
+        <option  *ngFor="let institute of collegeNameList" [value]="institute">
+          {{institute}}
+       </option>
+      </select>
+      <label class="form-label" for="form3Example3">Institute</label>
     </div>
   </div>
-            
-  <table class = "table table-responsive table-hover table-bordered mb-3 ">
+</div>
+<div class="row mt-2">
+  <div class="col-lg-7">
+    <h6>Angadi Institute of Technology & Mgmt, BELAGAVI
+      <span class="caption"><em>ID : C-1423</em></span>
+    </h6>
+  </div>
+  <div class="col-lg-2">
+    <div class="title mb-3 float-right pr-1">Legend </div>
+  </div>
+  <div class="col-lg-3">
+    <table class="table table-bordered float-right ">
+      <tbody>
+        <tr>
+          <td colspan="2" class="hover-effect text-center">Good</td>
+          <td colspan="2" class="hover-effect text-center">Ok</td>
+          <td colspan="2" class="hover-effect text-center">Not So Good</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="overflow-x:scroll; overflow: auto">
+  <table class="table table-hover table-bordered" cellspacing="0">
     <thead>
       <tr>
         <th class="text-center headerbg">Teaching Learning & Resource</th>
@@ -42,7 +49,7 @@
     </thead>
     <tbody>
       <tr>
-        <td  class="text-center">Faculty Student Ration</td>
+        <td class="text-center">Faculty Student Ration</td>
         <td class="text-center">Citation Count / Faculty Count</td>
         <td class="text-center">Average UG passing %</td>
         <td class="text-center">Region Diversity %</td>
@@ -60,4 +67,5 @@
         <td class="text-center">Economically & Social Challen</td>
       </tr>
     </tbody>
-  </table>  
+  </table>
+</div>

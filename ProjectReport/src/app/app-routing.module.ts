@@ -21,7 +21,7 @@ const routes:Routes = [
 export  const APP_ROUTER_PROVIDERS = [
   provideRouter(routes)];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ useHash: true })],
   exports: [RouterModule]
 })
 

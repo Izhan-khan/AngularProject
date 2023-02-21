@@ -40,6 +40,7 @@ import { TestTabComponent } from './components/test-tab/test-tab.component';
 import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatSelectModule} from '@angular/material/select';
+import { UniversityComparisionComponent } from './components/university-comparision/university-comparision.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import {MatSelectModule} from '@angular/material/select';
     PhdComponent,
     TestTabComponent,
     NumberToWordsPipe,
+    UniversityComparisionComponent,
      
   ],
   imports: [

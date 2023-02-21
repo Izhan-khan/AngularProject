@@ -22,10 +22,10 @@ export class UniversityService {
     return this.http.get(`${helper.universityUrl}/getUniversityById/`+Uid);
   }
 
-  public getCollegeNameList(university_id:string) {
+  public getCollegeNameListByUniversityId(university_id:string) {
 		return this.http.get(`${helper.universityUrl}/college/getListWithName/`+university_id);		
 	}
 
-
+  
 
 }

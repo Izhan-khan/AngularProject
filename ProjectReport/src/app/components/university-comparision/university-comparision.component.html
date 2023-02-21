@@ -1,0 +1,26 @@
+<div class="container">
+
+    <div class="form-outline mb-4  row ">
+        <div class="col-lg-7">
+            <label class="form-label">University</label>
+            <select class="form-control form-control" [(ngModel)]="university.uId" name="uId" id="uId"
+                formControlName="uId" required>
+                <option value="" selected disabled>Choose University</option>
+                <option *ngFor="let university of universityList" [value]="university[0]">
+                    {{university[1]}}
+                </option>
+            </select>
+        </div>
+        <div class="col-lg-5">
+            <label class="form-label ">Institute</label>
+            <select class="form-control form-control" [(ngModel)]="university.uId" name="uId" id="uId"
+                formControlName="uId" required>
+                <option value="" selected disabled>Choose Institute </option>
+                <option *ngFor="let institute of collegeList" [value]="institute">
+                    {{institute}}
+                </option>
+            </select>
+
+        </div>
+    </div>
+</div>

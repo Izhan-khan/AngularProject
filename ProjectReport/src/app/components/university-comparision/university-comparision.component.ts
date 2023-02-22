@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UniversityService } from 'src/app/service/university/university.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-university-comparision',
@@ -18,14 +19,12 @@ export class UniversityComparisionComponent implements OnInit {
   collegeList:any;
 
   constructor(private universityService : UniversityService) { 
-    this.university=JSON.parse(sessionStorage.getItem('universityObj')!);
   }
 
 
   ngOnInit(): void {
 
     this.getUniversityNames();
-    this.getCollegeNames();
   }
 
   getUniversityNames(){
@@ -38,8 +37,9 @@ export class UniversityComparisionComponent implements OnInit {
       }
     )
   }
-  getCollegeNames(){
-    this.universityService.getCollegeNameListByUniversityId(this.university.universityId).subscribe(
+  getCollegeNames(university_id:string){
+    // console.log(university_id);
+    this.universityService.getCollegeNameListByUniversityId(university_id).subscribe(
       (data) => {
         this.collegeList = data;
         console.log(this.collegeList);

@@ -41,6 +41,9 @@ import { NumberToWordsPipe } from './pipe/numberToWords/number-to-words.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatSelectModule} from '@angular/material/select';
 import { UniversityComparisionComponent } from './components/university-comparision/university-comparision.component';
+import { UniversityEstimatedRankingComponent } from './university-estimated-ranking/university-estimated-ranking.component';
+import { UniversityPerceptionComponent } from './university-perception/university-perception.component';
+import { UniversitySuggestionComponent } from './university-suggestion/university-suggestion.component';
 
 
 @NgModule({
@@ -76,6 +79,9 @@ import { UniversityComparisionComponent } from './components/university-comparis
     TestTabComponent,
     NumberToWordsPipe,
     UniversityComparisionComponent,
+    UniversityEstimatedRankingComponent,
+    UniversityPerceptionComponent,
+    UniversitySuggestionComponent,
      
   ],
   imports: [

@@ -37,6 +37,21 @@
               role="tab" aria-controls="comparision-tab-pane" aria-selected="false"><i class="bi-mortarboard-fill"></i>
               Comparision</button>
           </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="estimated-ranking-tab" data-bs-toggle="tab" data-bs-target="#estimated-ranking-tab-pane" type="button"
+              role="tab" aria-controls="estimated-ranking-tab-pane" aria-selected="false"><i class="bi-mortarboard-fill"></i>
+              Estimated Ranking</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="perception-tab" data-bs-toggle="tab" data-bs-target="#perception-tab-pane" type="button"
+              role="tab" aria-controls="perception-tab-pane" aria-selected="false"><i class="bi-mortarboard-fill"></i>
+              Perception</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="suggestion-tab" data-bs-toggle="tab" data-bs-target="#suggestion-tab-pane" type="button"
+              role="tab" aria-controls="suggestion-tab-pane" aria-selected="false"><i class="bi-mortarboard-fill"></i>
+              Suggestion</button>
+          </li>
 
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -117,6 +132,15 @@
 
           <div class="tab-pane fade" id="comparision-tab-pane" role="tabpanel" aria-labelledby="comparision-tab" tabindex="0">
             <app-university-comparision></app-university-comparision>
+          </div>
+          <div class="tab-pane fade" id="estimated-ranking-tab-pane" role="tabpanel" aria-labelledby="estimated-ranking-tab" tabindex="0">
+            <app-university-estimated-ranking></app-university-estimated-ranking>
+          </div>
+          <div class="tab-pane fade" id="perception-tab-pane" role="tabpanel" aria-labelledby="perception-tab" tabindex="0">
+            <app-university-perception></app-university-perception>
+          </div>
+          <div class="tab-pane fade" id="suggestion-tab-pane" role="tabpanel" aria-labelledby="suggestion-tab" tabindex="0">
+            <app-university-suggestion></app-university-suggestion>
           </div>
 
           <div class="text-center" style="display:block;width:100%;border:0px solid #000;text-align:center">

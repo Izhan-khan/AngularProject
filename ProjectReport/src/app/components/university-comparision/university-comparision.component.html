@@ -1,26 +1,34 @@
 <div class="container">
 
     <div class="form-outline mb-4  row ">
-        <div class="col-lg-7">
-            <label class="form-label">University</label>
-            <select class="form-control form-control" [(ngModel)]="university.uId" name="uId" id="uId"
-                formControlName="uId" required>
+        <div class="col-lg">
+            <h3>University</h3>
+            <select class="form-control form-select" (change)="getCollegeNames($any($event.target).value)"
+                [(ngModel)]="university.uId" name="uId" id="uId" formControlName="uId" required>
                 <option value="" selected disabled>Choose University</option>
-                <option *ngFor="let university of universityList" [value]="university[0]">
+                <option *ngFor="let university of universityList" [value]="university[2]">
                     {{university[1]}}
                 </option>
             </select>
         </div>
-        <div class="col-lg-5">
-            <label class="form-label ">Institute</label>
-            <select class="form-control form-control" [(ngModel)]="university.uId" name="uId" id="uId"
+    </div>
+    <div class="form-outline mb-4  row ">
+        <div class="col-lg">
+            <h3>Institute</h3>
+            <mat-select class="form-control " [(ngModel)]="university.uId" name="uId" id="uId"
                 formControlName="uId" required>
-                <option value="" selected disabled>Choose Institute </option>
-                <option *ngFor="let institute of collegeList" [value]="institute">
-                    {{institute}}
-                </option>
-            </select>
-
+                <div *ngIf="collegeList!=''">
+                    <mat-option value="" selected disabled>Choose Institute </mat-option>
+                    <mat-option *ngFor="let institute of collegeList" [value]="institute">
+                        {{institute}}
+                    </mat-option>
+                </div>
+                <div *ngIf="collegeList==''">
+                    <mat-option disabled="true">
+                        No Record Found
+                    </mat-option>
+                </div>
+            </mat-select>
         </div>
     </div>
 </div>

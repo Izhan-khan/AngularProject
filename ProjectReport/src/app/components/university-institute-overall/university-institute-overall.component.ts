@@ -24,7 +24,7 @@ export class UniversityInstituteOverallComponent implements OnInit {
 
 
   getUniversityNames(){
-    this.universityService.getCollegeNameListByUniversityId(this.university.universityId).subscribe(
+    this.universityService.getCollegeListByUniversityId(this.university.universityId).subscribe(
       (data) => {
         this.collegeNameList = data;
       }, (error) => {

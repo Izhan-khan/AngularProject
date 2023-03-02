@@ -5,8 +5,7 @@
   <div class="col-lg-5">
     <div class="form-outline mb-4">
       <label class="form-label mb-0">Institute</label>
-      <select class="form-control form-control"  [(ngModel)]="university.uId" name="uId" id="uId" 
-        formControlName="uId"  required>
+      <select class="form-control form-control"  [(ngModel)]="university.uId" name="uId" id="uId"   required>
         <option value="" selected disabled>Choose Institute </option>
         <option  *ngFor="let institute of collegeNameList" [value]="institute">
           {{institute}}
@@ -16,15 +15,11 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-7">
-    <h6>Angadi Institute of Technology & Mgmt, BELAGAVI
-      <span class="caption"><em>ID : C-1423</em></span>
-    </h6>
-  </div>
-  <div class="col-lg-2">
+  
+  <div class="col-lg-8">
     <div class="title  float-right pr-1">Legend </div>
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-4">
     <table class="table table-bordered float-right ">
       <tbody>
         <tr>

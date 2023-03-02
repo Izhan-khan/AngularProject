@@ -1,34 +1,104 @@
-<div class="container">
+<form
+    (ngSubmit)="compareInstituteByUniversity(comparisionData)">
+    <div class="container row ">
 
-    <div class="form-outline mb-4  row ">
-        <div class="col-lg">
-            <h3>University</h3>
-            <select class="form-control form-select" (change)="getCollegeNames($any($event.target).value)"
-                [(ngModel)]="university.uId" name="uId" id="uId" formControlName="uId" required>
-                <option value="" selected disabled>Choose University</option>
-                <option *ngFor="let university of universityList" [value]="university[2]">
-                    {{university[1]}}
-                </option>
-            </select>
+        <div class="form-outline mb-4 col ">
+            <div class="col-lg">
+                <h3>University</h3>
+                <select class="form-select" [(ngModel)]="comparisionData.loginUniversity" name="loginUniversity"
+                    id="loginUniversity" disabled>
+                    <option [value]="comparisionData.loginUniversity" selected>
+                        {{comparisionData.loginUniversity.universityName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-outline mb-4 col ">
+            <div class="col-lg">
+                <h3>Institute</h3>
+                <mat-select class="form-control" [(ngModel)]="comparisionData.loginInstitute" name="loginInstitute"
+                    id="loginInstitute">
+                    <div *ngIf="loginCollegeList!=''">
+                        <mat-option value="" selected disabled>Choose Institute </mat-option>
+                        <mat-option *ngFor="let loginInstitute of loginCollegeList" [value]="loginInstitute[0]">
+                            {{loginInstitute[1]}}
+                        </mat-option>
+                    </div>
+                    <div *ngIf="loginCollegeList==''">
+                        <mat-option disabled="true">
+                            No Record Found
+                        </mat-option>
+                    </div>
+                </mat-select>
+            </div>
         </div>
     </div>
-    <div class="form-outline mb-4  row ">
-        <div class="col-lg">
-            <h3>Institute</h3>
-            <mat-select class="form-control " [(ngModel)]="university.uId" name="uId" id="uId"
-                formControlName="uId" required>
-                <div *ngIf="collegeList!=''">
-                    <mat-option value="" selected disabled>Choose Institute </mat-option>
-                    <mat-option *ngFor="let institute of collegeList" [value]="institute">
-                        {{institute}}
-                    </mat-option>
-                </div>
-                <div *ngIf="collegeList==''">
-                    <mat-option disabled="true">
-                        No Record Found
-                    </mat-option>
-                </div>
-            </mat-select>
+
+    <div class="container row ">
+
+        <div class="form-outline mb-4 col ">
+            <div class="col-lg">
+                <h3>University</h3>
+                <select class="form-select" (change)="getCollegeNames($any($event.target).value)"
+                    [(ngModel)]="comparisionData.university" name="university" id="university">
+                    <option value="" selected disabled>Choose University</option>
+                    <option *ngFor="let university of universityList" [value]="university[2]">
+                        {{university[1]}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-outline mb-4 col ">
+            <div class="col-lg">
+                <h3>Institute</h3>
+                <mat-select class="form-control" [(ngModel)]="comparisionData.institute" name="institute"
+                    id="institute">
+                    <div *ngIf="collegeList!=''">
+                        <mat-option value="" selected disabled>Choose Institute </mat-option>
+                        <mat-option *ngFor="let institute of collegeList" [value]="institute[0]">
+                            {{institute[1]}}
+                        </mat-option>
+                    </div>
+                    <div *ngIf="collegeList==''">
+                        <mat-option disabled="true">
+                            No Record Found
+                        </mat-option>
+                    </div>
+                </mat-select>
+            </div>
         </div>
     </div>
-</div>
+    <div class="container row ">
+
+        <div class=" m-2 text-center col-lg">
+            
+                <div class="btn-group ">
+                    <input type="radio" class="btn-check " name="programId" id="ug_4_year" [value]="1" [(ngModel)]="comparisionData.programId" >
+                    <label class="btn btn-outline-success" for="ug_4_year">UG (4 Year program)</label>
+
+                    <input type="radio" class="btn-check " name="programId" id="ug_5_year" [value]="2" [(ngModel)]="comparisionData.programId">
+                    <label class="btn btn-outline-success" for="ug_5_year">UG (5 Year program)</label>
+
+                    <input type="radio" class="btn-check " name="programId" id="pg_2_year" [value]="3" [(ngModel)]="comparisionData.programId">
+                    <label class="btn btn-outline-success" for="pg_2_year">PG (2 Year program)</label>
+
+                    <input type="radio" class="btn-check " name="programId" id="pg_3_year" [value]="4" [(ngModel)]="comparisionData.programId">
+                    <label class="btn btn-outline-success" for="pg_3_year">PG (3 Year program)</label>
+                </div>
+        </div>
+    </div>
+    <div class="container row ">
+
+        <div class="form-outline mb-4 col ">
+            <div class="col-lg">
+                <button type="submit" class="btn btn-primary w-100 my-4">Compare</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container row" [hidden]="hideChart">
+
+        <canvas id="comparisionChart">{{ chart }}</canvas>
+
+    </div>
+</form>

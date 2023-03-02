@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UniversityService } from 'src/app/service/university/university.service';
-import { FormsModule } from '@angular/forms';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-university-comparision',
@@ -12,41 +12,134 @@ export class UniversityComparisionComponent implements OnInit {
   public university: any = {
     uId: "",
     password: "",
-    token:""
+    token: ""
   }
 
-  universityList:any;
-  collegeList:any;
+  public comparisionData: any = {
+    loginUniversity: "",
+    loginInstitute: "",
+    university: "",
+    institute: "",
+    programId: ""
+  }
 
-  constructor(private universityService : UniversityService) { 
+  chart: any;
+  hideChart = true;
+  universityList: any;
+  collegeList: any;
+  loginCollegeList: any;
+  comparingInstituteList: any;
+
+
+
+  constructor(private universityService: UniversityService) {
   }
 
 
   ngOnInit(): void {
-
+    this.comparisionData.loginUniversity = JSON.parse(sessionStorage.getItem('universityObj')!);
+    // console.log("university Obj ", this.comparisionData.loginUniversity);
     this.getUniversityNames();
+    this.getLoginCollege();
   }
 
-  getUniversityNames(){
+  getUniversityNames() {
     this.universityService.getUniversityNamesList().subscribe(
       (data) => {
         this.universityList = data;
-        console.log(this.universityList);
+        // console.log(this.universityList);
       }, (error) => {
         console.log(error);
       }
     )
   }
-  getCollegeNames(university_id:string){
+  getCollegeNames(university_id: string) {
     // console.log(university_id);
-    this.universityService.getCollegeNameListByUniversityId(university_id).subscribe(
+    this.universityService.getCollegeListByUniversityId(university_id).subscribe(
       (data) => {
         this.collegeList = data;
-        console.log(this.collegeList);
+        // console.log(this.collegeList);
       }, (error) => {
         console.log(error);
       }
     )
   }
+  getLoginCollege() {
+    // console.log(university_id);
+    this.universityService.getCollegeListByUniversityId(this.comparisionData.loginUniversity.universityId).subscribe(
+      (data) => {
+        this.loginCollegeList = data;
+        // console.log(this.loginCollegeList);
+      }, (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+  compareInstituteByUniversity(comparisionData: any) {
+
+    this.universityService.compareInstituteByUniversity(
+      comparisionData.loginUniversity.universityId,
+      comparisionData.loginInstitute,
+      comparisionData.university,
+      comparisionData.institute,
+      comparisionData.programId)
+      .subscribe(
+        (data) => {
+          this.comparingInstituteList = data;
+          console.log('comparing institute data : ', this.comparingInstituteList);
+          this.generateChart(this.comparingInstituteList);
+        }, (error) => {
+          console.log(error);
+        }
+      )
+  }
+
+  generateChart(comparingInstituteList: any) {
+
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    this.hideChart = false;
+
+    let xValues = ['2015-16 count', '2016-17 count', '2017-18 count', '2018-19 count', '2019-20 count', '2020-21 count'];
+
+    let loginCollegeData = new Array;
+    for (let i = 1; i < comparingInstituteList[0][0].length - 2; i++) {
+      loginCollegeData.push(comparingInstituteList[0][0][i]);
+    }
+    // console.log('login college data: ',loginCollegeData);
+
+    let comparingCollegeData = new Array;
+    for (let i = 1; i < comparingInstituteList[1][0].length - 2; i++) {
+      comparingCollegeData.push(comparingInstituteList[1][0][i]);
+    }
+    // console.log('comparing college data : ',comparingCollegeData);
+
+    this.chart = new Chart("comparisionChart", {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [
+          {
+            label: comparingInstituteList[0][0][7],
+            data: loginCollegeData,
+            backgroundColor: '#EC7063',
+            borderColor: "#78281F",
+          }, {
+            label: comparingInstituteList[1][0][7],
+            data: comparingCollegeData,
+            backgroundColor: '#3498DB',
+            borderColor: "#1B4F72"
+          }
+        ]
+      },
+      options: {
+
+
+      }
+    });
+  }
+
 
 }

@@ -1,5 +1,5 @@
 <form
-    (ngSubmit)="compareInstituteByUniversity(comparisionData)">
+    (ngSubmit)="compareInstitute(comparisionData)">
     <div class="container row ">
 
         <div class="form-outline mb-4 col ">
@@ -69,9 +69,30 @@
     </div>
     <div class="container row ">
 
+        <div class="form-outline mb-4 col ">
+            <div class="col-lg">
+                <h3>Component</h3>
+                <select class="form-select" [(ngModel)]="comparisionData.component" name="component" id="component" (change)="changeModule($any($event.target).value)">
+                    <option value="" selected disabled>Choose Component </option>
+                    <option *ngFor="let objects of componentsAndModules" [value]="objects.component">{{objects.component}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-outline mb-4 col ">
+            <div class="col-lg">
+                <h3>Module</h3>
+                <mat-select class="form-control" [(ngModel)]="comparisionData.module" name="module" id="module" >
+                    <mat-option value="" selected disabled>Choose Module </mat-option>
+                    <mat-option [value]="module" *ngFor="let module of moduleList" >{{module}}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+    <div class="container row ">
+
         <div class=" m-2 text-center col-lg">
             
-                <div class="btn-group ">
+                <div class="btn-group"*ngIf="comparisionData.component=='Intake'">
                     <input type="radio" class="btn-check " name="programId" id="ug_4_year" [value]="1" [(ngModel)]="comparisionData.programId" >
                     <label class="btn btn-outline-success" for="ug_4_year">UG (4 Year program)</label>
 
@@ -83,6 +104,25 @@
 
                     <input type="radio" class="btn-check " name="programId" id="pg_3_year" [value]="4" [(ngModel)]="comparisionData.programId">
                     <label class="btn btn-outline-success" for="pg_3_year">PG (3 Year program)</label>
+                </div>
+
+                <div class="btn-group"*ngIf="comparisionData.component=='Ph.D'">
+                    <input type="radio" class="btn-check " name="programTimeId" id="full_time" [value]="1" [(ngModel)]="comparisionData.programTimeId" >
+                    <label class="btn btn-outline-success" for="full_time">Full Time</label>
+
+                    <input type="radio" class="btn-check " name="programTimeId" id="part_time" [value]="2" [(ngModel)]="comparisionData.programTimeId">
+                    <label class="btn btn-outline-success" for="part_time">Part Time</label>
+                </div>
+
+                <div class="btn-group"*ngIf="comparisionData.component=='Research'">
+                    <input type="radio" class="btn-check " name="researchDetailsId" id="sponsored_project" [value]="1" [(ngModel)]="comparisionData.researchDetailsId" >
+                    <label class="btn btn-outline-success" for="sponsored_project" >Sponsored Project</label>
+
+                    <input type="radio" class="btn-check " name="researchDetailsId" id="funding_agencies" [value]="2" [(ngModel)]="comparisionData.researchDetailsId">
+                    <label class="btn btn-outline-success" for="funding_agencies" >Funding Agencies</label>
+
+                    <input type="radio" class="btn-check " name="researchDetailsId" id="amount_received" [value]="3" [(ngModel)]="comparisionData.researchDetailsId">
+                    <label class="btn btn-outline-success" for="amount_received" >Amount Received</label>
                 </div>
         </div>
     </div>

@@ -27,7 +27,7 @@ export class UniversityService {
 	}
 
 
-  public compareInstituteByUniversity(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,programId:any) {
+  public compareInstituteByIntake(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,programId:any) {
 		
     var params = new HttpParams()
     .set('loginUniversity', loginUniversity)
@@ -37,10 +37,77 @@ export class UniversityService {
     .set('programId', programId);
   
 
-    return this.http.post(`${helper.universityUrl}/compareColleges/`,params);		
+    return this.http.post(`${helper.universityUrl}/compareColleges/intake/`,params);		
 	}
 
+  public compareInstituteByTotalStudents(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,programId:any) {
+		
+    var params = new HttpParams()
+    .set('loginUniversity', loginUniversity)
+    .set('loginInstitute', loginInstitute)
+    .set('comparingUniversity', comparingUniversity)
+    .set('comparingInstitute', comparingInstitute)
+    .set('programId', programId);
+  
 
+    return this.http.post(`${helper.universityUrl}/compareColleges/totalStudents/`,params);		
+	}
+
+  public compareInstituteByPhdPersuing(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,programTimeId:any) {
+		
+    var params = new HttpParams()
+    .set('loginUniversity', loginUniversity)
+    .set('loginInstitute', loginInstitute)
+    .set('comparingUniversity', comparingUniversity)
+    .set('comparingInstitute', comparingInstitute)
+    .set('programTimeId', programTimeId);
+  
+
+    return this.http.post(`${helper.universityUrl}/compareColleges/phdPersuing/`,params);		
+	}
+
+  
+  public compareInstituteByPhdGraduated(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,programTimeId:any) {
+		
+    var params = new HttpParams()
+    .set('loginUniversity', loginUniversity)
+    .set('loginInstitute', loginInstitute)
+    .set('comparingUniversity', comparingUniversity)
+    .set('comparingInstitute', comparingInstitute)
+    .set('programTimeId', programTimeId);
+  
+
+    return this.http.post(`${helper.universityUrl}/compareColleges/phdGraduated/`,params);		
+	}
+  
+  
+  public compareInstituteBySponsoredResearch(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,researchDetailsId:any) {
+		
+    var params = new HttpParams()
+    .set('loginUniversity', loginUniversity)
+    .set('loginInstitute', loginInstitute)
+    .set('comparingUniversity', comparingUniversity)
+    .set('comparingInstitute', comparingInstitute)
+    .set('researchDetailsId', researchDetailsId);
+  
+
+    return this.http.post(`${helper.universityUrl}/compareColleges/sponsoredResearch/`,params);		
+	}
+
+  
+  public compareInstituteByConsultingProjectResearch(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,researchDetailsId:any) {
+		
+    var params = new HttpParams()
+    .set('loginUniversity', loginUniversity)
+    .set('loginInstitute', loginInstitute)
+    .set('comparingUniversity', comparingUniversity)
+    .set('comparingInstitute', comparingInstitute)
+    .set('researchDetailsId', researchDetailsId);
+  
+
+    return this.http.post(`${helper.universityUrl}/compareColleges/consultingProjectResearch/`,params);		
+	}
+  
   
 
 }

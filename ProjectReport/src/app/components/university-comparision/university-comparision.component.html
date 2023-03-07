@@ -106,6 +106,17 @@
                     <label class="btn btn-outline-success" for="pg_3_year">PG (3 Year program)</label>
                 </div>
 
+                <div class="btn-group"*ngIf="comparisionData.component=='U.G & P.G'">
+                    <input type="radio" class="btn-check " name="academicYearId" id="2015-16" [value]="1" [(ngModel)]="comparisionData.academicYearId" >
+                    <label class="btn btn-outline-success" for="2015-16">2015-16</label>
+
+                    <input type="radio" class="btn-check " name="academicYearId" id="2016-17" [value]="2" [(ngModel)]="comparisionData.academicYearId">
+                    <label class="btn btn-outline-success" for="2016-17">2016-17</label>
+
+                    <input type="radio" class="btn-check " name="academicYearId" id="2018-19" [value]="3" [(ngModel)]="comparisionData.academicYearId">
+                    <label class="btn btn-outline-success" for="2018-19">2018-19</label>
+                 </div>
+
                 <div class="btn-group"*ngIf="comparisionData.component=='Ph.D'">
                     <input type="radio" class="btn-check " name="programTimeId" id="full_time" [value]="1" [(ngModel)]="comparisionData.programTimeId" >
                     <label class="btn btn-outline-success" for="full_time">Full Time</label>

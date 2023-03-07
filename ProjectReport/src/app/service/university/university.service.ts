@@ -109,5 +109,33 @@ export class UniversityService {
 	}
   
   
+  
+  public getUG_4_YearByCollegeAndUniversity(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,academicYearId:any) {
+		
+    var params = new HttpParams()
+    .set('loginUniversity', loginUniversity)
+    .set('loginInstitute', loginInstitute)
+    .set('comparingUniversity', comparingUniversity)
+    .set('comparingInstitute', comparingInstitute)
+    .set('academicYearId', academicYearId);
+  
+
+    return this.http.post(`${helper.universityUrl}/compareColleges/ug/`,params);		
+	}
+
+  
+  public getPG_2_YearByCollegeAndUniversity(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,academicYearId:any) {
+		
+    var params = new HttpParams()
+    .set('loginUniversity', loginUniversity)
+    .set('loginInstitute', loginInstitute)
+    .set('comparingUniversity', comparingUniversity)
+    .set('comparingInstitute', comparingInstitute)
+    .set('academicYearId', academicYearId);
+  
+
+    return this.http.post(`${helper.universityUrl}/compareColleges/pg/`,params);		
+	}
+  
 
 }

@@ -18,6 +18,8 @@ export class UniversityComparisionComponent implements OnInit {
   public comparisionData: any = {
     //login university and institute
     loginUniversity: "",loginInstitute: "",
+    // UG and PG
+    academicYearId:"",
     //Comparing university and institute
     university: "",institute: "",
     // Intake programId
@@ -219,6 +221,50 @@ export class UniversityComparisionComponent implements OnInit {
                 console.log('comparing institute data : ', this.comparingInstituteList);
                 // console.warn(this.comparingInstituteList[0][0].length);
                 let xValues = ['2018-19 count', '2019-20 count', '2020-21 count'];
+                this.generateChart(this.comparingInstituteList,xValues);
+              }, (error) => {
+                console.log(error);
+              }
+            )}
+
+        // UG module
+        if(comparisionData.module== 'U.G'){
+      
+          this.universityService.getUG_4_YearByCollegeAndUniversity(
+          comparisionData.loginUniversity.universityId,
+          comparisionData.loginInstitute,
+          comparisionData.university,
+          comparisionData.institute,
+          comparisionData.academicYearId)
+          .subscribe(
+            (data) => {
+              this.comparingInstituteList = data;
+              console.log('comparing institute data : ', this.comparingInstituteList);
+              // console.warn(this.comparingInstituteList[0][0].length);
+              let xValues = ['First year student admitted count','First year student intake count','Lateral entry student count','Median salary of placed student count',
+                'Student graduated in min time count','Student placed count','Student selected for higer studies count'];
+              this.generateChart(this.comparingInstituteList,xValues);
+            }, (error) => {
+              console.log(error);
+            }
+          )}
+    
+          //  PG module
+          if(comparisionData.module== 'P.G'){
+          
+            this.universityService.getPG_2_YearByCollegeAndUniversity(
+            comparisionData.loginUniversity.universityId,
+            comparisionData.loginInstitute,
+            comparisionData.university,
+            comparisionData.institute,
+            comparisionData.academicYearId)
+            .subscribe(
+              (data) => {
+                this.comparingInstituteList = data;
+                console.log('comparing institute data : ', this.comparingInstituteList);
+                // console.warn(this.comparingInstituteList[0][0].length);
+                let xValues = ['First year student_admitted count','First year student intake count','Median salary of placed student count',
+                  'Student graduated in min time count','Student placed count','Student selected for higer studies count'];
                 this.generateChart(this.comparingInstituteList,xValues);
               }, (error) => {
                 console.log(error);

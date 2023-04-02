@@ -13,12 +13,12 @@ export class PhdService {
     return this.http.get(`${helper.loginUrl}/programTime/getNameFromId/`+id);;
   }
 
-  public getPhdGraduatedStudentsList(){
-    return this.http.get(`${helper.loginUrl}/phdGraduated/getList`);;
+  public getPhdGraduatedStudentsList(instituteId:any){
+    return this.http.get(`${helper.loginUrl}/phdGraduated/getList/`+instituteId);;
   }
 
-  public getPhdPersuingStudentsList(){
-    return this.http.get(`${helper.loginUrl}/phdPersuing/getList`);;
+  public getPhdPersuingStudentsList(instituteId:any){
+    return this.http.get(`${helper.loginUrl}/phdPersuing/getList/`+instituteId);;
   }
 
   public addPhdGraduatedStudentsList(PhdGraduatedStudentsList:any){

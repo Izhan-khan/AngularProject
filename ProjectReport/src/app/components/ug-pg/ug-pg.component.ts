@@ -18,7 +18,7 @@ export class UgPgComponent implements OnInit {
   PG_2yearCurrentPage: number = 1;
   PG_2yearItems: number = 3;
 
-
+  public institute:any;
   public UG_4yearList: any;
   public PG_2yearList: any;
   public academicYearList: any;
@@ -67,7 +67,9 @@ export class UgPgComponent implements OnInit {
 
 
 
-  constructor(private ugPgService: UgPgService) { }
+  constructor(private ugPgService: UgPgService) {
+    this.institute= JSON.parse(sessionStorage.getItem('instituteObj')!);
+   }
 
   ngOnInit(): void {
     this.getUG_4yearListFromService();
@@ -83,7 +85,7 @@ export class UgPgComponent implements OnInit {
     return this.ugPgService.getAcademicYearList().subscribe(
       (data) => {
         this.academicYearList = data;
-        console.log(data);
+        // console.log(data);
 
       }, (error) => {
         console.log(error);
@@ -92,7 +94,7 @@ export class UgPgComponent implements OnInit {
   }
 
   public getUG_4yearListFromService() {
-    this.ugPgService.getUG_4yearList().subscribe(
+    this.ugPgService.getUG_4yearList(this.institute.collegeId).subscribe(
       (data) => {
         this.UG_4yearList = data;
         this.UG_4yearList.forEach((element: any) => {
@@ -167,7 +169,7 @@ export class UgPgComponent implements OnInit {
 
 
   public getPG_2yearListFromService() {
-    this.ugPgService.getPG_2yearList().subscribe(
+    this.ugPgService.getPG_2yearList(this.institute.collegeId).subscribe(
       (data) => {
         this.PG_2yearList = data;
         this.PG_2yearList.forEach((element: any) => {

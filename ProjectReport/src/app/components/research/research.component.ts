@@ -12,11 +12,14 @@ export class ResearchComponent implements OnInit {
   successMsg = new String();
   errorMsg = new String();
 
+  public institute:any
   public SponsoredResearchDetailsList :any;
   public ConsultingProjectDetailsList :any;
   
 
-  constructor(private researchService:ResearchService) { }
+  constructor(private researchService:ResearchService) { 
+    this.institute=JSON.parse(sessionStorage.getItem('instituteObj')!);
+  }
 
   ngOnInit(): void {
     this.getSponsoredResearchDetailsListFromService();
@@ -28,7 +31,7 @@ export class ResearchComponent implements OnInit {
   }
 
   public getSponsoredResearchDetailsListFromService(){
-    this.researchService.getSponsoredResearchDetailsList().subscribe(
+    this.researchService.getSponsoredResearchDetailsList(this.institute.collegeId).subscribe(
       (data)=>{
         this.SponsoredResearchDetailsList=data;
         this.SponsoredResearchDetailsList.forEach((element: any) => {
@@ -74,7 +77,7 @@ export class ResearchComponent implements OnInit {
 
 
   public getConsultingProjectDetailsListFromService(){
-    this.researchService.getConsultingProjectDetailsList().subscribe(
+    this.researchService.getConsultingProjectDetailsList(this.institute.collegeId).subscribe(
       (data)=>{
         this.ConsultingProjectDetailsList=data;
         this.ConsultingProjectDetailsList.forEach((element: any) => {

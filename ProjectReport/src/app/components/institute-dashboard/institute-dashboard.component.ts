@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FinanceComponent } from '../finance/finance.component';
+import { LoginService } from 'src/app/service/login/login.service';
 
 @Component({
   selector: 'app-institute-dashboard',
@@ -12,6 +13,7 @@ export class InstituteDashboardComponent implements OnInit {
    userName:any ="";
    logoutMsg="";
    disabledReport :boolean= true;
+   college:any;
 
   //  @ViewChild('financeComponent')
   // financeComponent!: FinanceComponent;
@@ -19,10 +21,24 @@ export class InstituteDashboardComponent implements OnInit {
   // activateReport=this.financeComponent.activateReport|| false;
   
   ngOnInit(): void {
-    this.userName = sessionStorage.getItem("userName");
   }
 
-  constructor(private router: Router) { 
+  constructor(private router: Router,private loginService:LoginService) { 
+    this.userName = sessionStorage.getItem("userName");
+    this.getInstituteDetailsByCollegeId(this.userName);
+  }
+
+  public getInstituteDetailsByCollegeId(collegeId:any){
+    this.loginService.getInstituteDetailsByCollegeId(collegeId).subscribe(
+      (data)=>{
+        this.college = data;
+        sessionStorage.setItem('instituteObj',JSON.stringify(this.college));
+        console.log("institute Obj : ", JSON.parse(sessionStorage.getItem('instituteObj')|| '{}'));
+      },
+      (error)=>{
+        console.error(error);
+      }
+    )
   }
 
   onMessageReceived(message: boolean) {

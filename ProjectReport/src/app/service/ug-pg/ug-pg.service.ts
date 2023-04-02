@@ -17,16 +17,16 @@ export class UgPgService {
     return this.http.get(`${helper.loginUrl}/academicYear/getList`);
   }
 
-  public getUG_4yearList(){
-    return this.http.get(`${helper.loginUrl}/ug_4year/getList`);;
+  public getUG_4yearList(instituteId:any){
+    return this.http.get(`${helper.loginUrl}/ug_4year/getList/`+instituteId);;
   }
 
   public addUG_4yearList(UG_4yearList:any){
     return this.http.post(`${helper.loginUrl}/ug_4year/addList`,UG_4yearList);;
   }
 
-  public getPG_2yearList(){
-    return this.http.get(`${helper.loginUrl}/pg_2year/getList`);;
+  public getPG_2yearList(instituteId:any){
+    return this.http.get(`${helper.loginUrl}/pg_2year/getList/`+instituteId);;
   }
 
   public addPG_2yearList(PG_2yearList:any){

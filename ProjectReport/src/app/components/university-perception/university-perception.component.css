@@ -1,0 +1,14 @@
+.my-custom-scrollbar {
+    position: relative;
+    max-height: 230px;
+    overflow: auto;
+}
+thead{
+    position: sticky;
+    top: 0; 
+    z-index: 1;
+    background-color: white;
+}
+.table-wrapper-scroll-y {
+    display: block;
+}

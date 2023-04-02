@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { UniversityService } from 'src/app/service/university/university.service';
 import { Chart } from 'chart.js';
+import { LoginService } from 'src/app/service/login/login.service';
 
 @Component({
-  selector: 'app-university-comparision',
-  templateUrl: './university-comparision.component.html',
-  styleUrls: ['./university-comparision.component.css']
+  selector: 'app-comparision',
+  templateUrl: './comparision.component.html',
+  styleUrls: ['./comparision.component.css']
 })
-export class UniversityComparisionComponent implements OnInit {
+export class ComparisionComponent implements OnInit {
 
-  public university: any = {
-    uId: "",
-    password: "",
-    token: ""
-  }
+  public university: any;
 
   public comparisionData: any = {
     //login university and institute
@@ -40,7 +37,7 @@ export class UniversityComparisionComponent implements OnInit {
   universityList: any;
   collegeList: any;
   moduleList:any;
-  loginCollegeList: any;
+  loginUniversityList: any;
   comparingInstituteList: any;
 
   componentsAndModules: Array<any> = [
@@ -51,11 +48,11 @@ export class UniversityComparisionComponent implements OnInit {
 		{ component: 'Finance', module: [ 'Capital expenditure','Operation expenditure']},
 	];
 
-  constructor(private universityService: UniversityService) {
-    this.comparisionData.loginUniversity = JSON.parse(sessionStorage.getItem('universityObj')!);
+  constructor(private universityService: UniversityService,private loginService:LoginService) {
+    this.comparisionData.loginInstitute = JSON.parse(sessionStorage.getItem('instituteObj')!);
     // console.log("university Obj ", this.comparisionData.loginUniversity);
     this.getUniversityNames();
-    this.getLoginCollege();
+    this.getLoginUniversity();
   }
 
 
@@ -89,11 +86,11 @@ export class UniversityComparisionComponent implements OnInit {
       }
     )
   }
-  getLoginCollege() {
+  getLoginUniversity() {
     // console.log(university_id);
-    this.universityService.getCollegeListByUniversityId(this.comparisionData.loginUniversity.universityId).subscribe(
+    this.loginService.getUniversityListByCollegeId(this.comparisionData.loginInstitute.collegeId).subscribe(
       (data) => {
-        this.loginCollegeList = data;
+        this.loginUniversityList = data;
         // console.log(this.loginCollegeList);
       }, (error) => {
         console.log(error);
@@ -109,8 +106,8 @@ export class UniversityComparisionComponent implements OnInit {
     if(comparisionData.module== 'Saction Intake'){
       
       this.universityService.compareInstituteByIntake(
-      comparisionData.loginUniversity.universityId,
-      comparisionData.loginInstitute,
+      comparisionData.loginUniversity,
+      comparisionData.loginInstitute.collegeId,
       comparisionData.university,
       comparisionData.institute,
       comparisionData.programId)
@@ -130,8 +127,8 @@ export class UniversityComparisionComponent implements OnInit {
       if(comparisionData.module== 'Total Students'){
       
         this.universityService.compareInstituteByTotalStudents(
-        comparisionData.loginUniversity.universityId,
-        comparisionData.loginInstitute,
+        comparisionData.loginUniversity,
+        comparisionData.loginInstitute.collegeId,
         comparisionData.university,
         comparisionData.institute,
         comparisionData.programId)
@@ -150,8 +147,8 @@ export class UniversityComparisionComponent implements OnInit {
         if(comparisionData.module== 'Persuing'){
       
           this.universityService.compareInstituteByPhdPersuing(
-          comparisionData.loginUniversity.universityId,
-          comparisionData.loginInstitute,
+          comparisionData.loginUniversity,
+          comparisionData.loginInstitute.collegeId,
           comparisionData.university,
           comparisionData.institute,
           comparisionData.programTimeId)
@@ -171,8 +168,8 @@ export class UniversityComparisionComponent implements OnInit {
           if(comparisionData.module== 'Graduated'){
           
             this.universityService.compareInstituteByPhdGraduated(
-            comparisionData.loginUniversity.universityId,
-            comparisionData.loginInstitute,
+            comparisionData.loginUniversity,
+            comparisionData.loginInstitute.collegeId,
             comparisionData.university,
             comparisionData.institute,
             comparisionData.programTimeId)
@@ -192,8 +189,8 @@ export class UniversityComparisionComponent implements OnInit {
         if(comparisionData.module== 'Sponsored Research'){
       
           this.universityService.compareInstituteBySponsoredResearch(
-          comparisionData.loginUniversity.universityId,
-          comparisionData.loginInstitute,
+          comparisionData.loginUniversity,
+          comparisionData.loginInstitute.collegeId,
           comparisionData.university,
           comparisionData.institute,
           comparisionData.researchDetailsId)
@@ -213,8 +210,8 @@ export class UniversityComparisionComponent implements OnInit {
           if(comparisionData.module== 'Consultancy Project'){
           
             this.universityService.compareInstituteByConsultingProjectResearch(
-            comparisionData.loginUniversity.universityId,
-            comparisionData.loginInstitute,
+            comparisionData.loginUniversity,
+            comparisionData.loginInstitute.collegeId,
             comparisionData.university,
             comparisionData.institute,
             comparisionData.researchDetailsId)
@@ -234,8 +231,8 @@ export class UniversityComparisionComponent implements OnInit {
         if(comparisionData.module== 'U.G'){
       
           this.universityService.getUG_4_YearByCollegeAndUniversity(
-          comparisionData.loginUniversity.universityId,
-          comparisionData.loginInstitute,
+          comparisionData.loginUniversity,
+          comparisionData.loginInstitute.collegeId,
           comparisionData.university,
           comparisionData.institute,
           comparisionData.academicYearId)
@@ -256,8 +253,8 @@ export class UniversityComparisionComponent implements OnInit {
           if(comparisionData.module== 'P.G'){
           
             this.universityService.getPG_2_YearByCollegeAndUniversity(
-            comparisionData.loginUniversity.universityId,
-            comparisionData.loginInstitute,
+            comparisionData.loginUniversity,
+            comparisionData.loginInstitute.collegeId,
             comparisionData.university,
             comparisionData.institute,
             comparisionData.academicYearId)
@@ -279,8 +276,8 @@ export class UniversityComparisionComponent implements OnInit {
         if(comparisionData.module== 'Capital expenditure'){
       
           this.universityService.getFinanceCapitalExpenditureByCollegeAndUniversity(
-          comparisionData.loginUniversity.universityId,
-          comparisionData.loginInstitute,
+          comparisionData.loginUniversity,
+          comparisionData.loginInstitute.collegeId,
           comparisionData.university,
           comparisionData.institute,
           comparisionData.capitalExpenditureResourceId)
@@ -301,8 +298,8 @@ export class UniversityComparisionComponent implements OnInit {
         if(comparisionData.module== 'Operation expenditure'){
           
           this.universityService.getFinanceOprationExpenditureByCollegeAndUniversity(
-          comparisionData.loginUniversity.universityId,
-          comparisionData.loginInstitute,
+          comparisionData.loginUniversity,
+          comparisionData.loginInstitute.collegeId,
           comparisionData.university,
           comparisionData.institute,
           comparisionData.operationExpenditureResourceId)

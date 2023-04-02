@@ -9,8 +9,19 @@ export class FinanceService {
 
   constructor(private http:HttpClient) { }
 
-  public getCapitalExpenditureAmountList(){
-    return this.http.get(`${helper.loginUrl}/capitalExpenditureAmount/getList`);;
+
+ 
+  public getCapitalExpenditureResources(id:any){
+    return this.http.get(`${helper.loginUrl}/capitalExpenditureRescources/`+id);;
+  }
+
+  public getOperationExpenditureRescources(id:any){
+    return this.http.get(`${helper.loginUrl}/operationExpenditureRescources/`+id);;
+  }
+
+  
+  public getCapitalExpenditureAmountList(instituteId:any){
+    return this.http.get(`${helper.loginUrl}/capitalExpenditureAmount/getList/`+instituteId);;
   }
 
   public addCapitalExpenditureAmountList(capitalExpenditureAmountList:any){
@@ -18,8 +29,8 @@ export class FinanceService {
   }
   
 
-  public getOperationExpenditureAmountList(){
-    return this.http.get(`${helper.loginUrl}/operationExpenditureAmount/getList`);;
+  public getOperationExpenditureAmountList(instituteId:any){
+    return this.http.get(`${helper.loginUrl}/operationExpenditureAmount/getList/`+instituteId);;
   }
 
   public addOperationExpenditureAmountList(operationExpenditureAmountList:any){

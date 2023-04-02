@@ -11,16 +11,16 @@ export class IntakeService {
 
   constructor(private http :HttpClient) { }
 
-  public getSactionApprovedList(){
-    return this.http.get(`${helper.loginUrl}/sactionApprovedIntake/getList`);;
+  public getSactionApprovedList(instituteId:any){
+    return this.http.get(`${helper.loginUrl}/sactionApprovedIntake/getList/`+instituteId);;
   }
 
   public addSactionApprovedList(sactionApprovedList:any) {
     return this.http.post(`${helper.loginUrl}/sactionApprovedIntake/addList`,sactionApprovedList);;
   }
 
-  public getTotalStudentList() {
-    return this.http.get(`${helper.loginUrl}/totalStudentStrength/getList`);;
+  public getTotalStudentList(instituteId:any) {
+    return this.http.get(`${helper.loginUrl}/totalStudentStrength/getList/`+instituteId);;
   }
 
   public addTotalStudentList(totalStudentsList:any) {

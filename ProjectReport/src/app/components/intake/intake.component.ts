@@ -16,6 +16,7 @@ export class IntakeComponent implements OnInit {
   successMsg = new String();
   errorMsg = new String();
   
+  public institute:any;
   public sanctionIntakeList: any;
   public totalStudentsList: any;
   public programList: any;
@@ -77,7 +78,9 @@ export class IntakeComponent implements OnInit {
 
 
 
-  constructor(private intakeService: IntakeService, private programService: ProgramService) { }
+  constructor(private intakeService: IntakeService, private programService: ProgramService) {
+    this.institute= JSON.parse(sessionStorage.getItem('instituteObj')!);
+   }
 
 
 
@@ -112,7 +115,7 @@ export class IntakeComponent implements OnInit {
 
 
   public getSactionApprovedListFromService() {
-    this.intakeService.getSactionApprovedList().subscribe(
+    this.intakeService.getSactionApprovedList(this.institute.collegeId).subscribe(
       (data: any) => {
 
         this.sanctionIntakeList = data;
@@ -137,7 +140,7 @@ export class IntakeComponent implements OnInit {
 
 
   public getTotalStudentListFromService() {
-    this.intakeService.getTotalStudentList().subscribe(
+    this.intakeService.getTotalStudentList(this.institute.collegeId).subscribe(
       (data) => {
         this.totalStudentsList = data;
 

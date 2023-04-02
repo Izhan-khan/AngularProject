@@ -13,6 +13,7 @@ export class PhdComponent implements OnInit {
   successMsg = new String();
   errorMsg = new String();
 
+  public institute:any;
   public PhdGraduatedStudentsList :any;
   public PhdPersuingStudentsList :any;
   
@@ -40,7 +41,9 @@ export class PhdComponent implements OnInit {
    PhdGraduatedStudentInputForm_2020_21_Count = new FormControl("", [Validators.required])
 
 
-  constructor(private phdService:PhdService) { }
+  constructor(private phdService:PhdService) {
+    this.institute=JSON.parse(sessionStorage.getItem('instituteObj')!);
+   }
     
 
   ngOnInit(): void {
@@ -54,7 +57,7 @@ export class PhdComponent implements OnInit {
   }  
 
   public getPhdGraduatedStudentsListFromService(){
-    this.phdService.getPhdGraduatedStudentsList().subscribe(
+    this.phdService.getPhdGraduatedStudentsList(this.institute.collegeId).subscribe(
       (data)=>{
         this.PhdGraduatedStudentsList=data;
         this.PhdGraduatedStudentsList.forEach((element: any) => {
@@ -74,7 +77,7 @@ export class PhdComponent implements OnInit {
     )    
   }
   public getPhdPersuingStudentsListFromService(){
-    this.phdService.getPhdPersuingStudentsList().subscribe(
+    this.phdService.getPhdPersuingStudentsList(this.institute.collegeId).subscribe(
       (data)=>{
         this.PhdPersuingStudentsList=data;
         this.PhdPersuingStudentsList.forEach((element: any) => {

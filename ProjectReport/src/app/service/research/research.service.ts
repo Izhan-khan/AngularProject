@@ -14,8 +14,8 @@ export class ResearchService {
     return this.http.get(`${helper.loginUrl}/researchDetails/getNameFromId/`+id);;
   }
 
-  public getSponsoredResearchDetailsList(){
-    return this.http.get(`${helper.loginUrl}/sponsoredResearchDetails/getList`);;
+  public getSponsoredResearchDetailsList(instituteId:any){
+    return this.http.get(`${helper.loginUrl}/sponsoredResearchDetails/getList/`+instituteId);;
   }
 
   public addSponsoredResearchDetailsList(SponsoredResearchDetailsList:any){
@@ -23,8 +23,8 @@ export class ResearchService {
   }
 
   
-  public getConsultingProjectDetailsList(){
-    return this.http.get(`${helper.loginUrl}/consultingProjectDetails/getList`);;
+  public getConsultingProjectDetailsList(instituteId:any){
+    return this.http.get(`${helper.loginUrl}/consultingProjectDetails/getList/`+instituteId);;
   }
 
   public addConsultingProjectDetailsList(ConsultingProjectDetailsList:any){

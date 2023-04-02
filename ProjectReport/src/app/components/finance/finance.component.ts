@@ -17,11 +17,13 @@ export class FinanceComponent implements OnInit {
   successMsg = new String();
   errorMsg = new String();
 
+  public institute:any;
   public CapitalExpenditureAmountList :any;
   public OperationExpenditureAmountList :any;
   
   
   constructor(private financeService:FinanceService) { 
+    this.institute=JSON.parse(sessionStorage.getItem('instituteObj')!);
   }
 
   ngOnInit(): void {
@@ -30,11 +32,26 @@ export class FinanceComponent implements OnInit {
     this.getOperationExpenditureAmountListFromService();
   
   }
+
+  public getCapitalExpenditureResources(id: number) {
+    return this.financeService.getCapitalExpenditureResources(id);
+  }
  
   public getCapitalExpenditureAmountListFromService(){
-    this.financeService.getCapitalExpenditureAmountList().subscribe(
+    this.financeService.getCapitalExpenditureAmountList(this.institute.collegeId).subscribe(
       (data)=>{
         this.CapitalExpenditureAmountList=data;
+        
+        this.CapitalExpenditureAmountList.forEach((element: any) => {
+          this.getCapitalExpenditureResources(element.financialResources).subscribe(
+            (data: any) => {
+              element.financialResources = data.name;
+            }, (error) => {
+              console.log(error);
+            }
+          );
+        })
+        
         console.log("Capital Expenditure Amount List: ", this.CapitalExpenditureAmountList);
       },(error)=>{
         console.log(error);
@@ -62,10 +79,27 @@ export class FinanceComponent implements OnInit {
       });
   }
 
+
+  
+  public getOperationExpenditureRescources(id: number) {
+    return this.financeService.getOperationExpenditureRescources(id);
+  }
+
   public getOperationExpenditureAmountListFromService(){
-    this.financeService.getOperationExpenditureAmountList().subscribe(
+    this.financeService.getOperationExpenditureAmountList(this.institute.collegeId).subscribe(
       (data)=>{
         this.OperationExpenditureAmountList=data;
+
+        this.OperationExpenditureAmountList.forEach((element: any) => {
+          this.getOperationExpenditureRescources(element.financialResources).subscribe(
+            (data: any) => {
+              element.financialResources = data.name;
+            }, (error) => {
+              console.log(error);
+            }
+          );
+        })
+
         console.log("Operation Expenditure Amount List: ", this.OperationExpenditureAmountList);
       },(error)=>{
         console.log(error);

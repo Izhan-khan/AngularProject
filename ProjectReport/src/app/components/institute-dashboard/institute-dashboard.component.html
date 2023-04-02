@@ -26,9 +26,7 @@
   <!-- Header End -->
   <div class="row">
     <div class="col-lg-12">
-      <h4>Angadi Institute of Technology & Mgmt, BELAGAVI
-        <span class="caption"><em>ID : C-1423</em></span>
-      </h4>
+      <h4>{{college.collegeName}}</h4>
     </div>
   </div>
   <div class="row">
@@ -68,6 +66,11 @@
               type="button" role="tab" [disabled]="disabledReport"  aria-controls="report-tab-pane" aria-selected="false"> <i
                 class="bi-bar-chart"></i> Reports </button>
           </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="comparision-tab" data-bs-toggle="tab" data-bs-target="#comparision-tab-pane"
+              type="button" role="tab" aria-controls="comparision-tab-pane" aria-selected="false"><i
+                class="bi-calculator-fill"></i> Comparision </button>
+          </li>
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="intake-tab-pane" role="tabpanel" aria-labelledby="intake-tab"
@@ -92,6 +95,10 @@
           <div class="tab-pane fade " id="report-tab-pane" role="tabpanel" aria-labelledby="report-tab" tabindex="0" dis>
             <app-reports></app-reports>
           </div>
+          <div class="tab-pane fade" id="comparision-tab-pane" role="tabpanel" aria-labelledby="comparision-tab" tabindex="0">
+            <app-comparision></app-comparision>
+          </div>
+          
         </div>
       </div>
     </div>

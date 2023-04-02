@@ -135,7 +135,38 @@ export class UniversityService {
   
 
     return this.http.post(`${helper.universityUrl}/compareColleges/pg/`,params);		
+	}  
+  public getFinanceCapitalExpenditureByCollegeAndUniversity(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,capitalExpenditureResourceId:any) {
+		
+    var params = new HttpParams()
+    .set('loginUniversity', loginUniversity)
+    .set('loginInstitute', loginInstitute)
+    .set('comparingUniversity', comparingUniversity)
+    .set('comparingInstitute', comparingInstitute)
+    .set('capitalExpenditureResourceId', capitalExpenditureResourceId);
+  
+
+    return this.http.post(`${helper.universityUrl}/finance/capitalExpenditure/`,params);		
 	}
+
+  
+  public getFinanceOprationExpenditureByCollegeAndUniversity(loginUniversity:string,loginInstitute:string,comparingUniversity:string,comparingInstitute :string,operationExpenditureResourceId:any) {
+		
+    var params = new HttpParams()
+    .set('loginUniversity', loginUniversity)
+    .set('loginInstitute', loginInstitute)
+    .set('comparingUniversity', comparingUniversity)
+    .set('comparingInstitute', comparingInstitute)
+    .set('operationExpenditureResourceId', operationExpenditureResourceId);
+  
+
+    return this.http.post(`${helper.universityUrl}/finance/operationExpenditure/`,params);		
+	}
+  
+  
+
+  
+  
   
 
 }

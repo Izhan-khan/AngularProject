@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { data, error } from 'jquery';
+import { UniversityPerceptionService } from 'src/app/service/university-perception/university-perception.service';
 
 @Component({
   selector: 'app-university-perception-personal-info',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UniversityPerceptionPersonalInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private universityPerceptionService:UniversityPerceptionService ) { }
 
   ngOnInit(): void {
   }
@@ -21,15 +23,21 @@ export class UniversityPerceptionPersonalInfoComponent implements OnInit {
     mobile:"",
     interest:"",
     interestDescription:"",
-    research:"",
-    teaching:"",
-    administration:"",
-    others:"",
+    researchTime:"",
+    teachingTime:"",
+    administrationTime:"",
+    othersTime:"",
   }
 
   public submit(input:any){
     this.personalInfo=input;
-    console.log(this.personalInfo); 
+    console.log("personalInfo: "+this.personalInfo);
+    this.universityPerceptionService.addPersonal_Info(this.personalInfo).subscribe(
+      (data)=>{
+      },(error)=>{
+        console.log("Error: ",error);
+      }
+    );
   }
 
 

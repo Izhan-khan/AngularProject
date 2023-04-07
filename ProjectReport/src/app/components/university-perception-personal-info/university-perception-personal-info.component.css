@@ -1,12 +1,21 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
 hr {
     height: 0.2px;
-    color: #333;  /* old IE */
-    background-color: #333;  /* Modern Browsers */
-  }
+    color: #333;
+    /* old IE */
+    background-color: #333;
+    /* Modern Browsers */
+}
 
 span {
     color: red;
-}  
+}
 
 label {
     margin-right: 2em;

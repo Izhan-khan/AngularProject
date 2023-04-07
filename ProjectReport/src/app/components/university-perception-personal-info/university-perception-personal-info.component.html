@@ -22,8 +22,10 @@
                     <label for="personalInfo.state">State <span>* </span> :</label>
                     <select class="form-control" [(ngModel)]="personalInfo.state" name="personalInfo.state"
                         id="personalInfo.state">
-                        <option disabled selected>Select State...</option>
-                        <option>...</option>
+                        <option value="" disabled selected>Select State</option>
+                        <option value="1">...1</option>
+                        <option value="2">...2</option>
+                        <option value="3">...3</option>
                     </select>
                 </div>
                 <div class="form-group col-6">
@@ -164,28 +166,28 @@
             <h5>What percentage of your time do you spend on each of the following ? </h5>
             <div class="form-row row">
                 <div class="form-group col">
-                    <label for="personalInfo.research">Research (%) :</label>
-                    <input type="text" class="form-control" [(ngModel)]="personalInfo.research" id="personalInfo.research"
-                    name="personalInfo.research" placeholder="0">
+                    <label for="personalInfo.researchTime">Research (%) :</label>
+                    <input type="number" class="form-control" [(ngModel)]="personalInfo.researchTime" id="personalInfo.researchTime"
+                    name="personalInfo.researchTime" placeholder="0">
                 </div>
                 <div class="form-group col">
-                    <label for="personalInfo.teaching">Teaching (%) :</label>
-                    <input type="text" class="form-control" [(ngModel)]="personalInfo.teaching" id="personalInfo.teaching"
-                    name="personalInfo.teaching" placeholder="0">
+                    <label for="personalInfo.teachingTime">Teaching (%) :</label>
+                    <input type="number" class="form-control" [(ngModel)]="personalInfo.teachingTime" id="personalInfo.teachingTime"
+                    name="personalInfo.teachingTime" placeholder="0">
                 </div>
                 <div class="form-group col">
-                    <label for="administration">Administration (%) :</label>
-                    <input type="text" class="form-control" [(ngModel)]="personalInfo.administration" id="personalInfo.administration"
-                    name="personalInfo.administration" placeholder="0">
+                    <label for="administrationTime">Administration (%) :</label>
+                    <input type="number" class="form-control" [(ngModel)]="personalInfo.administrationTime" id="personalInfo.administrationTime"
+                    name="personalInfo.administrationTime" placeholder="0">
                 </div>
                 <div class="form-group col">
-                    <label for="others">Others (%) :</label>
-                    <input type="text" class="form-control" [(ngModel)]="personalInfo.others" id="personalInfo.others"
-                    name="personalInfo.others" placeholder="0">
+                    <label for="othersTime">Others (%) :</label>
+                    <input type="number" class="form-control" [(ngModel)]="personalInfo.othersTime" id="personalInfo.othersTime"
+                    name="personalInfo.othersTime" placeholder="0">
                 </div>
                 <div class="form-group col">
                     <label for="Total">Total (%) :</label>
-                    <input type="text" class="form-control" id="Total" value="adkadjlkasdj" disabled placeholder="0">
+                    <input type="number" class="form-control" id="Total" value="{{ personalInfo.research+personalInfo.teaching+personalInfo.administration+personalInfo.others }}" disabled placeholder="0">
                 </div>
             </div>
         </div>

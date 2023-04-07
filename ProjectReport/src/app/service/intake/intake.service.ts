@@ -11,6 +11,14 @@ export class IntakeService {
 
   constructor(private http :HttpClient) { }
 
+  public getProgramFromId(id: number) {
+    return this.http.get(`${helper.loginUrl}/program/getNameFromId/` + id);
+  }
+
+  public getProgramNameList() {
+    return this.http.get(`${helper.loginUrl}/program/getList`);
+  }
+
   public getSactionApprovedList(instituteId:any){
     return this.http.get(`${helper.loginUrl}/sactionApprovedIntake/getList/`+instituteId);;
   }

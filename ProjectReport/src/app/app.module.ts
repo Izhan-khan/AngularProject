@@ -45,6 +45,7 @@ import { UniversityEstimatedRankingComponent } from './components/university-est
 import { UniversityPerceptionComponent } from './components/university-perception/university-perception.component';
 import { UniversitySuggestionComponent } from './components/university-suggestion/university-suggestion.component';
 import { ComparisionComponent } from './components/comparision/comparision.component';
+import { UniversityPerceptionPersonalInfoComponent } from './components/university-perception-personal-info/university-perception-personal-info.component';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { ComparisionComponent } from './components/comparision/comparision.compo
     UniversityPerceptionComponent,
     UniversitySuggestionComponent,
     ComparisionComponent,
+    UniversityPerceptionPersonalInfoComponent,
      
   ],
   imports: [

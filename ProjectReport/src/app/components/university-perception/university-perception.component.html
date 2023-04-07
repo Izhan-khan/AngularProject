@@ -1,87 +1,49 @@
-<div class="table-wrapper-scroll-y my-custom-scrollbar">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-    <table class="table table-bordered table-striped ">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr><tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-      </tbody>
-    </table>
-  
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 ">
+      <nav>
+        <div class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
+          <button class="nav-link active " id="personalInformation-tab" data-bs-toggle="tab" data-bs-target="#personalInformation-tab-pane"
+            type="button" role="tab" aria-controls="personalInformation-tab-pane" aria-selected="true">Personal Information </button>
+
+          <button class="nav-link " id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+            type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+
+          <button class="nav-link " id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
+            type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+
+          <button class="nav-link " id="about-tab" data-bs-toggle="tab" data-bs-target="#about-tab-pane" type="button"
+            role="tab" aria-controls="about-tab-pane" aria-selected="false">About</button>
+        </div>
+      </nav>
+      <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="personalInformation-tab-pane" role="tabpanel" aria-labelledby="personalInformation-tab"
+          tabindex="0">
+        <app-university-perception-personal-info></app-university-perception-personal-info>
+        </div>
+        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab">
+          HI
+        </div>
+        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste harum ipsum totam distinctio perspiciatis hic
+          cupiditate magnam est voluptate error, quas repellendus nihil voluptatum explicabo aliquid at corporis odio
+          placeat?
+        </div>
+        <div class="tab-pane fade" id="about-tab-pane" role="tabpanel" aria-labelledby="about-tab">
+          Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.
+          Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure
+          adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet
+          duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit
+          sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
+          occaecat ex.
+        </div>
+      </div>
+
+    </div>
   </div>
+</div>

@@ -3,12 +3,28 @@
     max-height: 230px;
     overflow: auto;
 }
-thead{
+
+thead {
     position: sticky;
-    top: 0; 
+    top: 0;
     z-index: 1;
     background-color: white;
 }
+
 .table-wrapper-scroll-y {
     display: block;
+}
+
+
+/* Navbar style */
+
+.nav-pills .nav-link.active {
+    border-radius: 0 !important;
+    background-color: #272e38 !important;
+}
+
+
+.tab-content {
+    border-top: 5px solid #272e38;
+    border-bottom: 5px solid #272e38;
 }

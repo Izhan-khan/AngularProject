@@ -1,0 +1,13 @@
+hr {
+    height: 0.2px;
+    color: #333;  /* old IE */
+    background-color: #333;  /* Modern Browsers */
+  }
+
+span {
+    color: red;
+}  
+
+label {
+    margin-right: 2em;
+}

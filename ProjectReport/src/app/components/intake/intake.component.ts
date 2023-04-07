@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IntakeService } from 'src/app/service/intake/intake.service';
-import { ProgramService } from 'src/app/service/program/program.service';
-import { MatSelectChange } from "@angular/material/select";
 
 
 
@@ -78,7 +76,7 @@ export class IntakeComponent implements OnInit {
 
 
 
-  constructor(private intakeService: IntakeService, private programService: ProgramService) {
+  constructor(private intakeService: IntakeService) {
     this.institute= JSON.parse(sessionStorage.getItem('instituteObj')!);
    }
 
@@ -99,11 +97,11 @@ export class IntakeComponent implements OnInit {
   // }
 
   public getProgramFromId(id: number) {
-    return this.programService.getProgramFromId(id);
+    return this.intakeService.getProgramFromId(id);
   }
 
   public getProgramList() {
-    return this.programService.getProgramNameList().subscribe(
+    return this.intakeService.getProgramNameList().subscribe(
       (data) => {
         // console.log(data);
         this.programList = data;

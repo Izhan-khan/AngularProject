@@ -1,0 +1,198 @@
+<div class="container">
+    <form (ngSubmit)="submit(personalInfo)">
+
+
+        <div class="container mb-4">
+            <h2 class="text-uppercase mb-0">Personal Information </h2>
+            <hr class="mt-0">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="personalInfo.name">Name <span>* </span> :</label>
+                    <input type="text" class="form-control" [(ngModel)]="personalInfo.name" id="personalInfo.name"
+                        name="personalInfo.name" placeholder="Enter Name">
+                </div>
+                <div class="form-group col-6">
+                    <label for="personalInfo.subjectArea">Subject Area <span>* </span> :</label>
+                    <input type="text" class="form-control" [(ngModel)]="personalInfo.subjectArea"
+                        id="personalInfo.subjectArea" name="personalInfo.subjectArea" placeholder="Enter Designation">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="personalInfo.state">State <span>* </span> :</label>
+                    <select class="form-control" [(ngModel)]="personalInfo.state" name="personalInfo.state"
+                        id="personalInfo.state">
+                        <option disabled selected>Select State...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="form-group col-6">
+                    <label for="personalInfo.email">Email Address <span>* </span> :</label>
+                    <input type="email" class="form-control" [(ngModel)]="personalInfo.email" id="personalInfo.email"
+                        name="personalInfo.email" placeholder="Enter Email Address">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="personalInfo.city">City <span>* </span> :</label>
+                    <input type="text" class="form-control" [(ngModel)]="personalInfo.city" id="personalInfo.city"
+                        name="personalInfo.city" placeholder="Enter City/Town">
+                </div>
+                <div class="form-group col-6">
+                    <label for="personalInfo.mobile">Mobile No. :</label>
+                    <input type="email" class="form-control" [(ngModel)]="personalInfo.mobile" id="personalInfo.mobile"
+                        name="personalInfo.mobile" placeholder="Enter Mobile No.">
+                </div>
+            </div>
+            <div class="form-row">
+                <span>(Items marked with an * are mandatory) </span>
+            </div>
+        </div>
+
+
+        <div class="container mb-4">
+            <h2 class="text-uppercase mb-0">Interest </h2>
+            <hr class="mt-0">
+            <h5>You are interested in providing your input as a :</h5>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label class="form-check-label radio-inline" for="personalInfo.interest">Student : </label>
+                    <input class="form-check-input" (click)="setRadio('Student')" type="radio"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="Student">
+                    <input *ngIf="activateInput()=='Student'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+                <div class="form-group col-4">
+                    <label class="form-check-label radio-inline" for="personalInfo.interest">Parent/Gaurdian : </label>
+                    <input class="form-check-input" (click)="setRadio('Parent/Gaurdian')" type="radio"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="Parent/Gaurdian">
+                    <input *ngIf="activateInput()=='Parent/Gaurdian'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+                <div class="form-group col-4">
+                    <label class="form-check-label" for="personalInfo.interest">Faculty Member : </label>
+                    <input class="form-check-input" (click)="setRadio('Faculty')" type="radio"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="Faculty">
+                    <input *ngIf="activateInput()=='Faculty'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label class="form-check-label" for="personalInfo.interest">Alumi : </label>
+                    <input class="form-check-input" type="radio" (click)="setRadio('Alumi')"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="Alumi">
+                    <input *ngIf="activateInput()=='Alumi'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+                <div class="form-group col-4">
+                    <label class="form-check-label" for="personalInfo.interest">Academy Administrator : </label>
+                    <input class="form-check-input" type="radio" (click)="setRadio('Administrator')"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="Administrator">
+                    <input *ngIf="activateInput()=='Administrator'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+                <div class="form-group col-4">
+                    <label class="form-check-label" for="personalInfo.interest">NGO : </label>
+                    <input class="form-check-input" type="radio" (click)="setRadio('NGO')"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="NGO">
+                    <input *ngIf="activateInput()=='NGO'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label class="form-check-label" for="personalInfo.interest">Funding Agency : </label>
+                    <input class="form-check-input" type="radio" (click)="setRadio('Funding Agency')"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="Funding Agency">
+                    <input *ngIf="activateInput()=='Funding Agency'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+                <div class="form-group col-4">
+                    <label class="form-check-label" for="personalInfo.interest">Social Worker : </label>
+                    <input class="form-check-input" type="radio" (click)="setRadio('Social Worker')"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="Social Worker">
+                    <input *ngIf="activateInput()=='Social Worker'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+                <div class="form-group col-4">
+                    <label class="form-check-label" for="personalInfo.interest">HR Head : </label>
+                    <input class="form-check-input" type="radio" (click)="setRadio('HR Head')"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="HR Head">
+                    <input *ngIf="activateInput()=='HR Head'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label class="form-check-label" for="personalInfo.interest">Other : </label>
+                    <input class="form-check-input" type="radio" (click)="setRadio('Other')"
+                        [(ngModel)]="personalInfo.interest" id="personalInfo.interest" name="personalInfo.interest"
+                        value="Other">
+                    <input *ngIf="activateInput()=='Other'" type="text" class="form-control"
+                        [(ngModel)]="personalInfo.interestDescription" id="personalInfo.interestDescription"
+                        name="personalInfo.interestDescription" placeholder="Enter Description">
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container mb-4">
+            <h2 class="text-uppercase mb-0">Percentage of your time </h2>
+            <hr class="mt-0">
+            <h5>Percentage of your time </h5>
+            <h5>What percentage of your time do you spend on each of the following ? </h5>
+            <div class="form-row row">
+                <div class="form-group col">
+                    <label for="personalInfo.research">Research (%) :</label>
+                    <input type="text" class="form-control" [(ngModel)]="personalInfo.research" id="personalInfo.research"
+                    name="personalInfo.research" placeholder="0">
+                </div>
+                <div class="form-group col">
+                    <label for="personalInfo.teaching">Teaching (%) :</label>
+                    <input type="text" class="form-control" [(ngModel)]="personalInfo.teaching" id="personalInfo.teaching"
+                    name="personalInfo.teaching" placeholder="0">
+                </div>
+                <div class="form-group col">
+                    <label for="administration">Administration (%) :</label>
+                    <input type="text" class="form-control" [(ngModel)]="personalInfo.administration" id="personalInfo.administration"
+                    name="personalInfo.administration" placeholder="0">
+                </div>
+                <div class="form-group col">
+                    <label for="others">Others (%) :</label>
+                    <input type="text" class="form-control" [(ngModel)]="personalInfo.others" id="personalInfo.others"
+                    name="personalInfo.others" placeholder="0">
+                </div>
+                <div class="form-group col">
+                    <label for="Total">Total (%) :</label>
+                    <input type="text" class="form-control" id="Total" value="adkadjlkasdj" disabled placeholder="0">
+                </div>
+            </div>
+        </div>
+
+
+
+        <hr class="mt-0">
+        <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+</div>
